@@ -303,7 +303,7 @@
 				<span class="x-text"><?php echo  $va['new-price']; ?></span>
 			</div>
 		</div>
-		<?php
+	<?php
 	}
 
 	?>

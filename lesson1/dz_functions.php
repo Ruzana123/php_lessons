@@ -17,7 +17,7 @@ echo '<br>';
 
 $b = 0;
 if (empty($b)) { //перевіряє чи встановлена перемінна
-echo '$b is either 0 or not set at all';
+	echo '$b is either 0 or not set at all';
 }
 echo '<br>';
 echo '<br>';
