@@ -17,7 +17,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						</button>
-					</div>  
+					</div>
 					<div class="container">
 						<?php
 						include 'city.php';
@@ -30,8 +30,9 @@
 									<li><a href="<?php printf('meteoprog.php?name=%s',$city);?>">Погода в <?php printf('%s', $key); ?></a></li>
 									<?php
 									}
-									if (empty($_GET['name'])) { //перевіряє чи встановлено 
-									$_GET['name'] = "Uman";
+									$city1 = $_GET['name'];
+									if (empty($city1)) { //перевіряє чи встановлено 
+									$city1 = "Uman";
 									}
 								?>
 							</ul>
@@ -42,8 +43,11 @@
 			
 		</header>
 		<div class="container" style="text-align: center;">
-			<div id="meteoprog_informer_standart" style="display:inline-block" data-params="boy:<?php echo $_GET['name']; ?>:300x100:grey:48x50" ><a href="http://www.meteoprog.ua/en/">weather</a><br />
-				<a href="http://www.meteoprog.ua/en/weather/<?php echo $_GET['name']; ?>/">Weather in <?php echo $_GET['name']; ?> </a><br /></div> 
+			<?php printf(
+			"<div id='meteoprog_informer_standart' style='display:inline-block' data-params='boy:%s:300x100:grey:48x50' ><a href='http://www.meteoprog.ua/en/'>weather</a><br />
+				<a href='http://www.meteoprog.ua/en/weather/%s/'>Weather in %s </a><br /></div>",
+				$city1, $city1, $city1);
+		?>
 		</div>
 		<script src="http://www.meteoprog.ua/ru/weather/informer/standart.js"></script>
 		<script src="js/jquery.min.js"></script>
