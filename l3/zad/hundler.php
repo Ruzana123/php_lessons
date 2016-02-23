@@ -1,31 +1,22 @@
 <pre>
 <?php
-$filename = "data.txt";
-$handle2 = fopen($filename, "r+");
-function myfile($name) //функція для визначення чи існує файл та його розміру
-{
-	if (file_exists($name)) {
-		$s=filesize($name);
-	}
-	else {
-		$s=0;
-	}
-	return $s;
-}
-$n=myfile($filename);
+include 'function.php';
+
+$handle2 = fopen("data.txt", "r+");
+$n=rz_myfile("data.txt");
 fclose($handle2);
 
 if ($n<=4) {
 	$user = array('name'=>$_POST['name'],'email'=>$_POST['email']);
 	$string=serialize($user);
-	$handle=fopen($filename, "w");
+	$handle=fopen("data.txt", "w");
 	fwrite($handle, $string);
 	print_r($user);
 	fclose($handle);
 	}
-	else{
-		$handle = fopen($filename, "r+");
-		$b=fread($handle,filesize($filename)); 
+	elseif(($_POST['name']!=null)||($_POST['email']!=null)){
+		$handle = fopen("data.txt", "r+");
+		$b=fread($handle,filesize("data.txt")); 
 		$array=unserialize($b); 
 		print_r($array); 
 		$user = array('name'=>$_POST['name'],'email'=>$_POST['email']); 
@@ -33,9 +24,12 @@ if ($n<=4) {
 		print_r($array); 
 		$string=serialize($array); 
 		fclose($handle); 
-		$handle1=fopen($filename, "w"); 
+		$handle1=fopen("data.txt", "w"); 
 		fwrite($handle1, $string); 
 		fclose($handle1);
 	}
+	else echo 'Enter data';
+
+
 ?>
 </pre>
