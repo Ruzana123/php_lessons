@@ -1,6 +1,11 @@
+<pre>
 <?php
 include 'function.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	process_request();
+}
 ?>
+</pre>
 
 <form action="" method="POST"> <!---путь куди відсил данні з форми-->
 	<p>
@@ -14,10 +19,4 @@ include 'function.php';
 	<button type="submit">Short FIO</button>
 </form>
 
-<pre>
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	process_request();
-}
-?>
-</pre>
+<a href="list.php">Result</a>;
