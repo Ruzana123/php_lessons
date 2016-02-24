@@ -3,20 +3,20 @@
 
 	function process_request() {
 		$n=rz_myfile("data.txt");
-	if(($_POST['name']!=null)||($_POST['email']!=null)){
+		if(($_POST['name']!=null)||($_POST['email']!=null)){
 
-		if($n>4){
-			$people_array = rz_get_data();
-		}
+			if($n>4){
+				$people_array = rz_get_data();
+			}
 
-		else{
-			$people_array = array();
+			else{
+				$people_array = array();
+			}
+				rz_add_user($people_array); 
+					
 		}
-			rz_add_user($people_array); 
-				
+		else echo 'Enter data';
 	}
-	else echo 'Enter data';
-		}
 function rz_get_data(){
 	$p=file_get_contents('data.txt');
 	$people=unserialize($p);

@@ -14,21 +14,21 @@
         'Ножиці',
     );
 
-    $points = array_flip($game_array); //міняє ключі і елементи масиву місцями
+    $game_points = array_flip($game_array); //міняє ключі і елементи масиву місцями
 
     if(isset($_GET['var'])){
         $el = $game_array[rand(0,count($game_array)-1)];
         echo 'Гравець - '.$_GET['var'].'  Комп*ютер - '.$el.'<br>';
          
-        if($points[$el]==0 && $points[$_GET['var']]==2){
+        if($game_points[$el]==0 && $game_points[$_GET['var']]==2){
             echo 'Переможець: - <b>Комп*ютер</b>!';
         }
          
-        elseif($points[$el]==2 && $points[$_GET['var']]==0){
+        elseif($game_points[$el]==2 && $game_points[$_GET['var']]==0){
             echo 'Переможець: - <b>Гравець</b>!';
         }
          
-        elseif($points[$el]>$points[$_GET['var']]){
+        elseif($game_points[$el]>$game_points[$_GET['var']]){
             echo 'Переможець: - <b>Комп*ютер</b>!';
         }
         elseif($_GET['var']==$el) echo '<b>Нічия</b>!';

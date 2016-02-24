@@ -16,6 +16,8 @@ include 'function.php';
 
 <pre>
 <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	process_request();
+}
 ?>
 </pre>
