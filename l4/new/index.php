@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 </pre>
 
-<form action="" method="POST"> <!---путь куди відсил данні з форми-->
+<form action="" method="POST"> <!---путь куди відсил данні з форми пишеться в action=' '-->
 	<p>
 		<label for="name">Name</label><br>
 		<input type="text" name="name">
@@ -19,4 +19,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<button type="submit">Add informations</button>
 </form>
 
-<a href="list.php">Result</a>;
+<a href="list.php">Result</a>

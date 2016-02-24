@@ -3,29 +3,30 @@
 
 function process_request() {
 
-	$n=rz_sizefile("data.txt");
+	
 
 	if(($_POST['name']!=null)||($_POST['email']!=null)){
 
-		if($n>4){
-			$people_array = rz_get_data();
-		}
-
-		else{
-			$people_array = array();
-		}
+		$people_array=rz_get_data();
 
 		rz_add_user($people_array); 
 		echo 'Данні успішно додані';
 	}
 
 	else echo 'Enter data';
-	
+
 }
 
 function rz_get_data(){
-	$p=file_get_contents('data.txt');
-	$people=unserialize($p);
+	$n=rz_sizefile("data.txt");
+	if($n>4){
+		$p=file_get_contents('data.txt');
+		$people=unserialize($p);
+	}
+
+	else{
+		$people = array();
+	}
 	return $people; // Return array of people
 }
 
