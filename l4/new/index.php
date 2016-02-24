@@ -3,6 +3,7 @@
 include 'function.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	process_request();
+	echo 'Данні успішно додані';
 }
 ?>
 </pre>

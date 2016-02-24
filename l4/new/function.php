@@ -34,7 +34,6 @@ function rz_add_user($people_array){
 function rz_write_data($people_array){
 	$string=serialize($people_array);
 	file_put_contents('data.txt', $string);
-	echo 'Данні успішно додані';
 }
 
 function rz_myfile($name) //функція для визначення чи існує файл та його розміру
