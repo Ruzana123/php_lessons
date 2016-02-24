@@ -16,19 +16,6 @@ include 'function.php';
 
 <pre>
 <?php
-	$n=rz_myfile("data.txt");
-	if(($_POST['name']!=null)||($_POST['email']!=null)){
-
-		if($n>4){
-			$people_array = rz_get_data();
-		}
-
-		else{
-			$people_array = array();
-		}
-			rz_add_user($people); 
-				
-	}
-	else echo 'Enter data';
+	process_request();
 ?>
 </pre>
