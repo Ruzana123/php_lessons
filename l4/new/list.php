@@ -15,7 +15,7 @@ include 'function.php';
 	</tr>
 	<tr>
 	<?php
-	$new_array=rz_s();
+	$new_array=rz_mas();
 	for ($i=0; $i < count($new_array); $i++) { 
 	?>	
 	<tr>

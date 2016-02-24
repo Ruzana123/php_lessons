@@ -2,7 +2,7 @@
 <?php 
 
 function process_request() {
-	$n=rz_myfile("data.txt");
+	$n=rz_sizefile("data.txt");
 	if(($_POST['name']!=null)||($_POST['email']!=null)){
 
 		if($n>4){
@@ -36,7 +36,7 @@ function rz_write_data($people_array){
 	file_put_contents('data.txt', $string);
 }
 
-function rz_myfile($name) //функція для визначення чи існує файл та його розміру
+function rz_sizefile($name) //функція для визначення чи існує файл та його розміру
 {
 	if (file_exists($name)) {
 		$s=filesize($name);
@@ -46,7 +46,7 @@ function rz_myfile($name) //функція для визначення чи іс
 	}
 	return $s;
 }	
-function rz_s(){
+function rz_mas(){
 	$s=file_get_contents('data.txt');
 	$ss=unserialize($s);
 	return $ss;
