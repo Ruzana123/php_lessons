@@ -2,7 +2,9 @@
 <?php 
 
 function process_request() {
+
 	$n=rz_sizefile("data.txt");
+
 	if(($_POST['name']!=null)||($_POST['email']!=null)){
 
 		if($n>4){
@@ -14,9 +16,11 @@ function process_request() {
 		}
 
 		rz_add_user($people_array); 
+		echo 'Данні успішно додані';
 	}
 
 	else echo 'Enter data';
+	
 }
 
 function rz_get_data(){

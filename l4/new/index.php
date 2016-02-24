@@ -3,7 +3,6 @@
 include 'function.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	process_request();
-	echo 'Данні успішно додані';
 }
 ?>
 </pre>
@@ -15,9 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	</p>
 	<p>
 		<label for="email">Email</label><br>
-		<input type="text" name="email">
+		<input type="email" name="email">
 	</p>
-	<button type="submit">Short FIO</button>
+	<button type="submit">Add informations</button>
 </form>
 
 <a href="list.php">Result</a>;
