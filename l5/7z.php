@@ -6,18 +6,19 @@
 	<body>
 		<form action="" method="POST"> <!---путь куди відсил данні з форми пишеться в action=' '-->
 			<p>
-				<label for="email">Email</label><br>
-				<input type="text" name="email">
+				<label for="str">String</label><br>
+				<input type="text" name="str">
 			</p>
-			<button type="submit">Рerform</button>
+			<button type="submit">Inverse</button>
 		</form>
 	</body>
 </html>
 
-<?php 
+<pre>
+<?php
 include 'function.php';
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		rz_valid_email($_POST['email']);
-	}
+
+	rz_inverse_tape();
 	
 ?>
+</pre>
