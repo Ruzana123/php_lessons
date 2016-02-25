@@ -90,4 +90,17 @@ foreach ($my_array1 as  $my_array) {
 echo "<br>"; 
 echo "<br>";
 
+
+//Сортування декількох масивів 
+?><pre><?php
+$ar1 = array(10, 100, 100, 0);
+$ar2 = array(1, 3, 2, 4);
+array_multisort($ar1, $ar2);
+
+var_dump($ar1);
+var_dump($ar2);
+echo "<br>"; 
+echo "<br>";
+
 ?>
+</pre>
