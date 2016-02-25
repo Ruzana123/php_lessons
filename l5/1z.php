@@ -18,7 +18,7 @@
 <?php
 include 'function.php';
 
-	?><span style="color: red;"><?php rz_1z(); ?></span><?php
+	?><span style="color: red;"><?php rz_formatting_letters($_POST['str']); ?></span><?php
 	
 ?>
 </pre>

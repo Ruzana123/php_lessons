@@ -18,7 +18,7 @@
 <?php
 include 'function.php';
 
-	rz_inverse_tape();
+	rz_inverse_tape($_POST['str']);
 	
 ?>
 </pre>

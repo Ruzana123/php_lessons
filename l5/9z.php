@@ -19,7 +19,7 @@
 include 'function.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	rz_palindrome();
+	rz_palindrome($_POST['str']);
 }
 	
 ?>

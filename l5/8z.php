@@ -18,7 +18,7 @@
 <?php
 include 'function.php';
 
-rz_lower_case();
+rz_lower_case($_POST['str']);
 	
 ?>
 </pre>
