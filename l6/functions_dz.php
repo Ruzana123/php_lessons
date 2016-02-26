@@ -23,4 +23,27 @@ function rz_valid_phone($str){
     }
 }
 
+function rz_valid_surname($str){
+    if(preg_match("/[а-я][ко]/",$str)){
+        echo 'Вірно'; 
+    }else{ 
+        echo 'Невірно'; 
+    }
+}
+
+function rz_valid_nik($str){
+    if(preg_match("/^[0-9a-z_]+$/",$str)){
+        echo 'Вірно'; 
+    }else{ 
+        echo 'Невірно'; 
+    }
+}
+
+function rz_valid_phone1($str){
+    if(preg_match('/[+](380)[0-9]{9}$/',$str)){
+        echo 'Вірно'; 
+    }else{ 
+        echo 'Невірно'; 
+    }
+}
 ?>

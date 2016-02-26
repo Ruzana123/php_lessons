@@ -1,6 +1,6 @@
 <?php
 /*
-Написаyyz функціq для перевірки чи є строка
+Написала функцію для перевірки чи є строка
 URL (типу http://google.com)
 Phone number (+38 (093) 560 50 50
 Використовуючи regular expression
@@ -45,6 +45,36 @@ Phone number (+38 (093) 560 50 50
 			</form>
 			<?php
 				rz_valid_phone($_POST['phone']);
+			?>
+			<form action="" method="POST"> <!---путь куди відсил данні з форми пишеться в action=' '-->
+				<p>
+					<label for="surname">Surname</label><br>
+					<input type="text" name="surname">
+				</p>
+				<button type="submit">Validation</button>
+			</form>
+			<?php
+				rz_valid_surname($_POST['surname']);
+			?>
+			<form action="" method="POST"> <!---путь куди відсил данні з форми пишеться в action=' '-->
+				<p>
+					<label for="nik">Nickname</label><br>
+					<input type="text" name="nik">
+				</p>
+				<button type="submit">Validation</button>
+			</form>
+			<?php
+				rz_valid_nik($_POST['nik']);
+			?>
+			<form action="" method="POST"> <!---путь куди відсил данні з форми пишеться в action=' '-->
+				<p>
+					<label for="phone1">Phone number</label><br>
+					<input type="text" name="phone1">
+				</p>
+				<button type="submit">Validation</button>
+			</form>
+			<?php
+				rz_valid_phone1($_POST['phone1']);
 			?>
 		</div>
 	</body>
