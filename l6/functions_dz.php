@@ -16,7 +16,7 @@ function rz_valid_url($str){
 }
 
 function rz_valid_phone($str){
- if(preg_match('/^[0-9]{12,12}+$/',$str)){
+ if(preg_match('/[+][3][(][0-9]{4}[)][0-9]{2}[-][0-9]{2}[-][0-9]{3}/',$str)){ //+3(8093)81-65-101
   		echo 'Вірно'; 
     }else{ 
         echo 'Невірно'; 
