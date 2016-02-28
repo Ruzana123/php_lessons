@@ -46,4 +46,20 @@ function rz_valid_phone1($str){
         echo 'Невірно'; 
     }
 }
+
+function rz_valid_kr($str){
+    if(preg_match('/[0-9]{4}\-[0-9]{4}\-[0-9]{4}-[0-9]{4}$/',$str)){
+        echo 'Вірно'; 
+    }else{ 
+        echo 'Невірно'; 
+    }
+}
+
+function rz_valid_email1($str){
+    if(preg_match('/[a-zA-Z0-9_][@][a-zA-Z0-9]/',$str)){
+        echo 'Вірно'; 
+    }else{ 
+        echo 'Невірно'; 
+    }
+}
 ?>
