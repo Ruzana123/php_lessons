@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Гостьова книга</title>
-		<link href="style.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link href="style.css" rel="stylesheet">
 	</head>
 	<body>
 		<header>
@@ -12,7 +12,7 @@
 		<?php
 		include 'functions.php'; 
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			$k=process_request();
+			$k_message =process_request();
 		}
 		?>
 		<div class="container">
@@ -34,22 +34,8 @@
 			</form>
 					
 		<h2>Messages</h2>
-		<div class="alert alert-danger" role="alert"><?php echo $k ?></div>
-			<?php
-			$new_array=rz_mas();
-			for ($i=0; $i < count($new_array); $i++) { 
-			?>
-				<div class="media">
-					  <a class="media-left media-middle" href="#">
-					   <img src="<?php rz_rand_img($img) ?>" alt="">
-					  </a>
-					  <div class="media-body">
-					    <h4 class="media-heading"><?php echo $new_array[$i]['name'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'. $new_array[$i]['email'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'. date("m.d.y");?></h4>
-					    <p><?php echo $new_array[$i]['text'] ?></p>
-					  </div>
-					  <?php
-					}
-			?>
+		<div class="alert alert-danger" role="alert"><?php echo $k_message ?></div>
+			<?php rz_message(); ?>
 		</div>
 		<footer>
 			

@@ -22,3 +22,33 @@ body .container{
 	background-image: none;
 	color: white;
 }
+.form-control:focus{
+	outline: none;
+	box-shadow: none;
+	border: 1px solid #141414;
+}
+.form-control:active{
+	outline: none;
+	box-shadow: none;
+	border: 1px solid #141414;
+}
+.form-control:visited{
+	outline: none;
+	box-shadow: none;
+	border: 1px solid #141414;
+}
+input:focus{
+	outline: none;
+	box-shadow: none;
+	border: 1px solid #141414;
+}
+input:active{
+	outline: none;
+	box-shadow: none;
+	border: 1px solid #141414;
+}
+input:visited{
+	outline: none;
+	box-shadow: none;
+	border: 1px solid #141414;
+}

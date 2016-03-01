@@ -33,7 +33,10 @@ function rz_get_data(){
 }
 
 function rz_add($people_array){
-	$user = array('name'=>$_POST['name'],'email'=>$_POST['email'],'text'=>$_POST['text']);
+	$img=rand(1, 5);
+	$date = date("d-F-Y"); 
+	$time = date("G.i");
+	$user = array('name'=>$_POST['name'],'email'=>$_POST['email'],'text'=>$_POST['text'],'avatar'=>$img,'date'=>$date,'time'=>$time,);
 	array_push($people_array, $user);
 	rz_write_data($people_array);
 }
@@ -79,8 +82,20 @@ function rz_valid_name($str){
     return $n;
 }
 
-function rz_rand_img(){
-  $p='images/'. rand(1, 5) .'.png';
-  echo $p;
-}
+function rz_message(){
+	$new_array=rz_mas();
+	for ($i=0; $i < count($new_array); $i++) { 
+	?>
+		<div class="media">
+		  	<a class="media-left media-middle" href="#">
+		   		<img src="images/<?php echo $new_array[$i]['avatar']; ?>.png" alt="">
+		  	</a>
+		  	<div class="media-body">
+		   	 	<h4 class="media-heading"><?php echo $new_array[$i]['name'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'. $new_array[$i]['email'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'. $new_array[$i]['date'].'&nbsp;'. $new_array[$i]['time'];?></h4>
+		    	<p><?php echo strip_tags($new_array[$i]['text']) ?></p>
+		  	</div>
+		  	<?php
+		}
+	}
+	
 ?>
