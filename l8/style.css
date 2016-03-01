@@ -52,3 +52,18 @@ input:visited{
 	box-shadow: none;
 	border: 1px solid #141414;
 }
+button:focus{
+	outline: none !important;
+	box-shadow: none;
+	border: 1px solid #141414;
+}
+.btn-default:active{
+	outline: none!important;
+	box-shadow: none;
+	border: 1px solid #141414;
+}
+.btn:visited{
+	outline: none!important;
+	box-shadow: none;
+	border: 1px solid #141414;
+}

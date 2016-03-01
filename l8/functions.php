@@ -73,7 +73,7 @@ function rz_valid_email1($str){
 }
 
 function rz_valid_name($str){
-    if(preg_match('/^[a-zA-Z0-9а-яА-Я.-]*$/',$str)){ 
+    if(preg_match('/^[a-zA-Zа-яА-Я.-]*$/',$str)){ 
     	$n=true;
     }
     else{ 
