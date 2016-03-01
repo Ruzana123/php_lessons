@@ -1,0 +1,24 @@
+body{
+	background-image: url(images/fon.jpg);
+}
+.container h1{
+	text-align:center;
+}
+.container form {
+	width:50%; 
+	margin-bottom: 80px;
+}
+.form-group{
+	width:50%;
+}
+.textarea{
+	margin-bottom: 15px;
+}
+.btn-default{
+	float:right;
+}
+body .container{
+	background-color: rgba(23, 13, 15, 0.4);
+	background-image: none;
+	color: white;
+}
