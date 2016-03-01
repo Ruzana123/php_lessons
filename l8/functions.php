@@ -1,6 +1,6 @@
 
 <?php 
-
+define(FILE_PATH, "data.txt");
 function process_request() {
 
 	if(($_POST['name']!=null)||($_POST['email']!=null)){
@@ -20,9 +20,9 @@ function process_request() {
 }
 
 function rz_get_data(){
-	$n=rz_sizefile("data.txt");
+	$n=rz_sizefile(FILE_PATH);
 	if($n>4){
-		$p=file_get_contents('data.txt');
+		$p=file_get_contents(FILE_PATH);
 		$people=unserialize($p);
 	}
 
@@ -43,7 +43,7 @@ function rz_add($people_array){
 
 function rz_write_data($people_array){
 	$string=serialize($people_array);
-	file_put_contents('data.txt', $string);
+	file_put_contents(FILE_PATH, $string);
 }
 
 function rz_sizefile($name) //функція для визначення чи існує файл та його розміру
@@ -57,7 +57,7 @@ function rz_sizefile($name) //функція для визначення чи і
 	return $s;
 }	
 function rz_mas(){
-	$s=file_get_contents('data.txt');
+	$s=file_get_contents(FILE_PATH);
 	$ss=unserialize($s);
 	return $ss;
 }
