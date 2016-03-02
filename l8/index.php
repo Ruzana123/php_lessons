@@ -33,13 +33,16 @@
 			include 'functions.php'; 
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				?><div class="alert alert-danger" role="alert"><?php
-				$k=process_request();?></div><?php
-			}
+				$k=process_request();?></div>
+				<div class="alert alert-danger" role="alert">
+					<?php echo $k?></div>
+					<?php rz_message(); ?>
+				</div>
+				<?php
+			} rz_message();
 		?>
-		<div class="alert alert-danger" role="alert">
-			<?php echo $k.' '.rz_get();?></div>
-			<?php rz_message(); ?>
-		</div>
+
+		
 
 		<footer>
 			

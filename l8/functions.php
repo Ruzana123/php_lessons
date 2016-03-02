@@ -60,11 +60,11 @@ function rz_get_data(){
 	return $people; // Return array of people
 }
 
-function rz_get(){
+/*function rz_get(){
 	if(rz_sizefile("data.txt")<4){
 		echo "Пусто";
 	}
-}
+}*/
 function rz_mas(){
 	$s=file_get_contents("data.txt");
 	$ss=unserialize($s);
@@ -126,18 +126,24 @@ function rz_valid_name($str){
 
 function rz_message(){
 	$new_array=rz_mas();
-	for ($i=0; $i < count($new_array); $i++) { 
-	?>
-		<div class="media">
-		  	<a class="media-left media-middle" href="#">
-		   		<img src="images/<?php echo $new_array[$i]['avatar']; ?>.png" alt="">
-		  	</a>
-		  	<div class="media-body">
-		   	 	<h4 class="media-heading"><?php echo $new_array[$i]['name'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'. $new_array[$i]['email'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'. $new_array[$i]['date'].'&nbsp;'. $new_array[$i]['time'];?></h4>
-		    	<p><?php echo strip_tags($new_array[$i]['text']) ?></p>
-		  	</div>
-		  	<?php
+	if (empty($new_array)) {
+		echo 'Файл з даними пустий';
+	}
+	else{
+		for ($i=0; $i < count($new_array); $i++) { 
+		?>
+			<div class="media">
+			  	<a class="media-left media-middle" href="#">
+			   		<img src="images/<?php echo $new_array[$i]['avatar']; ?>.png" alt="">
+			  	</a>
+			  	<div class="media-body">
+			   	 	<h4 class="media-heading"><?php echo $new_array[$i]['name'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'. $new_array[$i]['email'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'. $new_array[$i]['date'].'&nbsp;'. $new_array[$i]['time'];?></h4>
+			    	<p><?php echo strip_tags($new_array[$i]['text']) ?></p>
+			  	</div>
+			  	<?php
+			}
 		}
 	}
+	
 	
 ?>
