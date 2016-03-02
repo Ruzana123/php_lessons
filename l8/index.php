@@ -9,12 +9,7 @@
 	<body>
 		<header>
 		</header>
-		<?php
-		include 'functions.php'; 
-		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			$k=process_request();
-		}
-		?>
+		
 		<div class="container">
 			<h1>Гостьова книга</h1>
 			<form role="form" action="" method="POST">
@@ -34,10 +29,18 @@
 			</form>
 					
 		<h2>Messages</h2>
-		<div class="alert alert-danger" role="alert"><?php echo $k.rz_get();?></div>
+		<?php
+			include 'functions.php'; 
+			if ($_SERVER["REQUEST_METHOD"] == "POST") {
+				?><div class="alert alert-danger" role="alert"><?php
+				$k=process_request();?></div><?php
+			}
+		?>
+		<div class="alert alert-danger" role="alert">
+			<?php echo $k.' '.rz_get();?></div>
 			<?php rz_message(); ?>
 		</div>
-		
+
 		<footer>
 			
 		</footer>

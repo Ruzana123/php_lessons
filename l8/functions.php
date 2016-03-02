@@ -4,16 +4,22 @@
 function process_request() {
 
 	if(($_POST['name']!=null)||($_POST['email']!=null)){
-		if (rz_valid_name($_POST['name'])==true) {
-			if (rz_valid_email1($_POST['email'])==true) {
-				$people_array=rz_get_data();
-				rz_add($people_array); 
-				$s='Данні успішно додані';
-				return $s;
-			}
-				else  $message='Email введено невірно. Введіть дані повторно';
+		if (rz_valid_name($_POST['name'])!=true) {
+			$message='Ім\'я введено невірно.';
 		}
-		else $message='Ім\'я введено невірно.';
+		if (rz_valid_email1($_POST['email'])!=true) {
+			$message='Email введено невірно. Введіть дані повторно';	
+		}
+		if (rz_valid_text($_POST['text'])!=true) {
+			echo 'Введіть повідомленя';	
+		}
+		if ((rz_valid_name($_POST['name'])==true)&&(rz_valid_email1($_POST['email'])==true)&&(rz_valid_text($_POST['text'])==true)){
+			$people_array=rz_get_data();
+			rz_add($people_array); 
+			$s='Данні успішно додані';
+			return $s;
+		}
+
 	}
 	else {$message='Введіть дані. Email введено невірно. Ім\'я введено невірно.';}
 	return $message;
@@ -66,23 +72,31 @@ function rz_sizefile($name) //функція для визначення чи і
 	}
 	return $s;
 }	
-
 function rz_valid_email1($str){
     if(preg_match('/^[0-9a-z_-]+[@]{1,1}+[0-9a-z_-]+[.]{1,1}+[0-9a-z]{2,5}+$/',$str)){ 
     	$m=true;
     }
     else{ 
-        $m=false; 
+        $m=false; //echo "Помилка введення email"; 
     }
     return $m;
 }
+function rz_valid_text($str){
+    if(preg_match('/[a-zA-Zа-яА-Я0-9]+$/',$str)){ 
+    	$l=true;
+    }
+    else{ 
+        $l=false; 
+    }
+    return $l;
+}
 
 function rz_valid_name($str){
-    if(preg_match('/[a-zA-Zа-яА-Я]*$/',$str)){ 
+    if(preg_match('/[a-zA-Zа-яА-Я]+$/',$str)){ 
     	$n=true;
     }
     else{ 
-        $n=false; 
+        $n=false; echo "Помилка введення імені"; 
     }
     return $n;
 }
