@@ -12,7 +12,7 @@
 		<?php
 		include 'functions.php'; 
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			$k_message=process_request();
+			$k=process_request();
 		}
 		?>
 		<div class="container">
@@ -34,9 +34,10 @@
 			</form>
 					
 		<h2>Messages</h2>
-		<div class="alert alert-danger" role="alert"><?php echo $k_message ?></div>
+		<div class="alert alert-danger" role="alert"><?php echo $k.rz_get();?></div>
 			<?php rz_message(); ?>
 		</div>
+		
 		<footer>
 			
 		</footer>

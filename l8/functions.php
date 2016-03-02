@@ -1,6 +1,6 @@
 
 <?php 
-define(FILE_PATH, "data.txt");
+//define(FILE_PATH, "data.txt");
 function process_request() {
 
 	if(($_POST['name']!=null)||($_POST['email']!=null)){
@@ -11,7 +11,7 @@ function process_request() {
 				$s='Данні успішно додані';
 				return $s;
 			}
-				else $message='Email введено невірно. Введіть дані повторно';
+				else  $message='Email введено невірно. Введіть дані повторно';
 		}
 		else $message='Ім\'я введено невірно.';
 	}
@@ -20,16 +20,26 @@ function process_request() {
 }
 
 function rz_get_data(){
-	$n=rz_sizefile(FILE_PATH);
+	$n=rz_sizefile("data.txt");
 	if($n>4){
-		$p=file_get_contents(FILE_PATH);
+		$p=file_get_contents("data.txt");
 		$people=unserialize($p);
 	}
-
 	else{
 		$people = array();
 	}
 	return $people; // Return array of people
+}
+
+function rz_get(){
+	if(rz_sizefile("data.txt")<4){
+		echo "Пусто";
+	}
+}
+function rz_mas(){
+	$s=file_get_contents("data.txt");
+	$ss=unserialize($s);
+	return $ss;
 }
 
 function rz_add($people_array){
@@ -37,13 +47,13 @@ function rz_add($people_array){
 	$date = date("d-F-Y"); 
 	$time = date("G.i");
 	$user = array('name'=>$_POST['name'],'email'=>$_POST['email'],'text'=>$_POST['text'],'avatar'=>$img,'date'=>$date,'time'=>$time,);
-	array_push($people_array, $user);
+	array_unshift($people_array, $user);
 	rz_write_data($people_array);
 }
 
 function rz_write_data($people_array){
 	$string=serialize($people_array);
-	file_put_contents(FILE_PATH, $string);
+	file_put_contents("data.txt", $string);
 }
 
 function rz_sizefile($name) //функція для визначення чи існує файл та його розміру
@@ -56,11 +66,6 @@ function rz_sizefile($name) //функція для визначення чи і
 	}
 	return $s;
 }	
-function rz_mas(){
-	$s=file_get_contents(FILE_PATH);
-	$ss=unserialize($s);
-	return $ss;
-}
 
 function rz_valid_email1($str){
     if(preg_match('/^[0-9a-z_-]+[@]{1,1}+[0-9a-z_-]+[.]{1,1}+[0-9a-z]{2,5}+$/',$str)){ 
@@ -73,7 +78,7 @@ function rz_valid_email1($str){
 }
 
 function rz_valid_name($str){
-    if(preg_match('/^[a-zA-Zа-яА-Я.-]*$/',$str)){ 
+    if(preg_match('/[a-zA-Zа-яА-Я]*$/',$str)){ 
     	$n=true;
     }
     else{ 
