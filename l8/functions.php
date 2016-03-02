@@ -2,8 +2,31 @@
 <?php 
 //define(FILE_PATH, "data.txt");
 function process_request() {
-
+	$err_message = array();
 	if(($_POST['name']!=null)||($_POST['email']!=null)){
+		
+		if (rz_valid_name($_POST['name'])!=true) {
+			array_push($err_message, 'Ім\'я введено невірно.');
+		}
+		if (rz_valid_email1($_POST['email'])!=true) {
+			array_push($err_message, 'Email введено невірно. Введіть дані повторно');
+		}
+		if (rz_valid_text($_POST['text'])!=true) {
+			array_push($err_message, 'Введіть повідомленя');
+		}
+		foreach ($err_message as $value) {
+			echo $value;
+			echo "<br>";
+		}
+		$n=count($err_message);
+		if ($n==0) {
+			$people_array=rz_get_data();
+			rz_add($people_array); 
+			$s='Данні успішно додані';
+			return $s;
+		}
+		
+		/*
 		if (rz_valid_name($_POST['name'])!=true) {
 			$message='Ім\'я введено невірно.';
 		}
@@ -19,7 +42,7 @@ function process_request() {
 			$s='Данні успішно додані';
 			return $s;
 		}
-
+		*/
 	}
 	else {$message='Введіть дані. Email введено невірно. Ім\'я введено невірно.';}
 	return $message;
