@@ -96,7 +96,7 @@ function rz_valid_name($str){
     	$n=true;
     }
     else{ 
-        $n=false; echo "Помилка введення імені"; 
+        $n=false; // echo "Помилка введення імені"; 
     }
     return $n;
 }
