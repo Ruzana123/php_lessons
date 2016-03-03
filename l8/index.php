@@ -36,12 +36,13 @@
 				$k=process_request();?></div>
 				<div class="alert alert-success" role="alert">
 					<?php echo $k?></div>
-					<?php rz_message(); ?>
 				</div>
 				<?php
 			}
 		?>
-
+		<div class="container">
+			<?php rz_message(); ?>
+		</div>
 		<footer>
 			
 		</footer>
