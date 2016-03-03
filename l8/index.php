@@ -34,9 +34,14 @@
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				?><div class="alert alert-danger" role="alert"><?php
 				$k=process_request();?></div>
-				<div class="alert alert-success" role="alert">
+				<?php if (!empty($k)){
+					?><div class="alert alert-success" role="alert">
 					<?php echo $k?></div>
-				</div>
+				</div><?php
+				}
+				?>
+					
+				
 				<?php
 			}
 		?>

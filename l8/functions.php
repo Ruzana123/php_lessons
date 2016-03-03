@@ -123,6 +123,7 @@ function rz_valid_name($str){
     return $n;
 }
 
+
 function rz_message(){
 	$new_array=rz_mas();
 	if (empty($new_array)) {
