@@ -34,15 +34,13 @@
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				?><div class="alert alert-danger" role="alert"><?php
 				$k=process_request();?></div>
-				<div class="alert alert-danger" role="alert">
+				<div class="alert alert-success" role="alert">
 					<?php echo $k?></div>
 					<?php rz_message(); ?>
 				</div>
 				<?php
-			} rz_message();
+			}
 		?>
-
-		
 
 		<footer>
 			

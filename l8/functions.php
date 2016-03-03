@@ -3,8 +3,9 @@
 //define(FILE_PATH, "data.txt");
 function process_request() {
 	$err_message = array();
-	if(($_POST['name']!=null)||($_POST['email']!=null)){
-		
+		if(($_POST['name']==null)||($_POST['email']==null)){
+			array_push($err_message, 'Введіть дані.');
+		}
 		if (rz_valid_name($_POST['name'])!=true) {
 			array_push($err_message, 'Ім\'я введено невірно.');
 		}
@@ -43,9 +44,7 @@ function process_request() {
 			return $s;
 		}
 		*/
-	}
-	else {$message='Введіть дані. Email введено невірно. Ім\'я введено невірно.';}
-	return $message;
+
 }
 
 function rz_get_data(){
