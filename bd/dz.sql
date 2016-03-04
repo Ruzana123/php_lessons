@@ -6,23 +6,22 @@ INSERT INTO `products`(`id`, `name`, `price`, `catedory`, `images`, `description
 INSERT INTO `products`(`id`, `name`, `price`, `catedory`, `images`, `description`) VALUES ('','Dar','300','manga','/images/ff.png','bvccvzxcvvc');
 
 2. Виборка товару по id
-SELECT `id` 
-FROM `products`
+SELECT * 
+FROM `products` 
+WHERE `id` =3
 
 3. Виборка по категорії
-SELECT `catedory` 
-FROM `products`
+SELECT * 
+FROM `products` 
+WHERE `category` = 'anime'
 
-4. Виборка по ціні, більше чим 
-SELECT `price` 
-FROM `products`
-
-SELECT `price` 
+4. Виборка по ціні більше чим 
+SELECT *
 FROM `products` 
 WHERE `price` >100
 
 5. Виборка по ціні в діапазоні
-SELECT `price` 
+SELECT *
 FROM `products` 
 WHERE (`price` >100
 )
@@ -72,3 +71,6 @@ WHERE `IndepYear` >1900
 SELECT * 
 FROM `country` 
 WHERE `Name` LIKE "A%"
+
+Перейменування колонки таблиці
+ALTER TABLE `products` CHANGE `catedory` `category` VARCHAR( 20 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
