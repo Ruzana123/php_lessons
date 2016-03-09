@@ -5,12 +5,14 @@
 	<meta charset="UTF-8">
 	<title>BD table</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<form role="form" action="hundler.php" method="POST">
   <div class="table-responsive">
 	<table class='table table-condensed'>
 <?php
- 
+
 $servername = "localhost";
 $username = "ruzana";
 $password = "yzrjctyctq";
@@ -73,11 +75,9 @@ try {
                 if ($key1 == 'Capital') {
                     echo "<td>".$city[0][0]."</td>";
                 }
-                ?><form role="form" action="hundler.php" method="POST"><?php
                 if ($key1 == 'Name') {
                     echo "<td><input type='submit' name='country' value='$value'></td>";
                 }
-                ?></form><?php
             }
         }
         echo "</tr>";  
@@ -86,6 +86,7 @@ try {
 ?>  
 </table>
 </div>
+</form>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>
