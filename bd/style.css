@@ -1,0 +1,15 @@
+input {
+	background-color: transparent;
+	border: none;
+}
+input:focus, input:active {
+	outline: none;
+	box-shadow: none;
+}
+input:hover {
+	color: #00f;
+	text-decoration: underline;
+}
+pre {
+	border-radius: 0;
+}
