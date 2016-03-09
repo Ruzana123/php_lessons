@@ -55,11 +55,11 @@ try {
         echo "<tr class='info'>";
         $c=$country['Capital'];
         try{
-            $stmt1 = $conn->prepare("SELECT `Name` 
+            $stmt = $conn->prepare("SELECT `Name` 
             FROM `city` 
             WHERE `id` = '$c' "); 
-            $stmt1->execute();
-            $city = $stmt1->fetchAll();
+            $stmt->execute();
+            $city = $stmt->fetchAll();
             //print_r($city);
         }
         catch(PDOException $e)
