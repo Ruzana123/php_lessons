@@ -25,11 +25,7 @@ catch(PDOException $e)
     echo "Connection failed: " . $e->getMessage();
     }
 
-
-  include 'request_world2.php'; 
-  include "functions_table.php";
- // rz_bd_table_h($countries);
- // rz_bd_table($countries);
+    include "functions_table.php";
     $name=$_POST['country'];
     try {
     $stmt = $conn->prepare("SELECT `Code` FROM `country` WHERE `Name`= '$name'"); 
@@ -43,16 +39,16 @@ catch(PDOException $e)
     }  
 
   $cod=$code[0][0];
-try {
-    $stmt = $conn->prepare("SELECT * FROM `city` WHERE `CountryCode`= '$cod'"); 
-    $stmt->execute();
-    $codeee = $stmt->fetchAll();
-  //print_r($codeee);
-    }
-  catch(PDOException $e)
-    {
-    echo "Error: " . $e->getMessage();
-    } ?> 
+  try {
+      $stmt = $conn->prepare("SELECT `Name`, `District`, `Population` FROM `city` WHERE `CountryCode`= '$cod'"); 
+      $stmt->execute();
+      $codeee = $stmt->fetchAll();
+    //print_r($codeee);
+      }
+    catch(PDOException $e)
+      {
+      echo "Error: " . $e->getMessage();
+      } ?> 
     <h3>City <?php echo $name ?></h3>
      <table class='table table-condensed'><?php
       rz_bd_table_h($codeee);
