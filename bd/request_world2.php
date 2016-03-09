@@ -10,7 +10,7 @@
 <body>
 <form role="form" action="hundler.php" method="POST">
   <div class="table-responsive">
-	<table class='table table-condensed'>
+	<table class='table table-condensed  table-hover'>
 <?php
 
 $servername = "localhost";
