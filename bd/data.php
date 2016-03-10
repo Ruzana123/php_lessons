@@ -26,7 +26,8 @@ catch(PDOException $e)
     }
     include "functions_table.php";
     //include "index.php";
-    $order= 'ORDER BY '.$_POST['sel2'];
+    if(!empty($_POST['sel2'])){
+      $order= 'ORDER BY '.$_POST['sel2'];
     if ($_POST['sel1']!='All') {
       $sel1= 'LIMIT '.$_POST['sel1'];
     }
@@ -43,11 +44,13 @@ catch(PDOException $e)
         echo "Error: " . $e->getMessage();
         } ?> 
 
-     <table class='table table-condensed'><?php
+      <table class='table table-condensed'><?php
       rz_bd_table_h($lim);
       rz_bd_table($lim);?>
       </table><?php
 
+    }
+    
     $code=$_GET['code'];
     try {
         $stmt = $conn->query("SELECT `Name`, `District`, `Population` FROM `city` WHERE `CountryCode`= '$code'");
