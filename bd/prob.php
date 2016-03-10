@@ -25,10 +25,9 @@ catch(PDOException $e)
     }
 include "functions_table.php";
     try {
-        $stmt = $conn->prepare("SELECT * 
+        $stmt = $conn->query("SELECT * 
             FROM `products` 
             WHERE `id` = 3"); 
-        $stmt->execute();
         $tov = $stmt->fetchAll();
         }
         catch(PDOException $e)
@@ -43,10 +42,9 @@ include "functions_table.php";
     </table><?php
 
      try {
-        $stmt = $conn->prepare("SELECT * 
+        $stmt = $conn->query("SELECT * 
         FROM `products` 
         WHERE `category` = 'anime'"); 
-        $stmt->execute();
         $cat = $stmt->fetchAll();
         }
         catch(PDOException $e)
@@ -61,10 +59,9 @@ include "functions_table.php";
     </table><?php
 
     try {
-        $stmt = $conn->prepare("SELECT *
+        $stmt = $conn->query("SELECT *
         FROM `products` 
         WHERE `price` >100"); 
-        $stmt->execute();
         $c = $stmt->fetchAll();
         }
         catch(PDOException $e)
@@ -79,12 +76,11 @@ include "functions_table.php";
     </table><?php
 
     try {
-        $stmt = $conn->prepare("SELECT *
+        $stmt = $conn->query("SELECT *
         FROM `products` 
         WHERE `price` 
         BETWEEN 100 
         AND 200"); 
-        $stmt->execute();
         $interv = $stmt->fetchAll();
         }
         catch(PDOException $e)
@@ -98,11 +94,10 @@ include "functions_table.php";
       rz_bd_table($interv);?>
     </table><?php
 
-
+    /*
     try {
         ?><h3> Запрос оновлення ціни по id=5 </h3><?php
-        $stmt = $conn->prepare("UPDATE `products` SET `price` = '1000' WHERE `id` = 5"); 
-        $stmt->execute();
+        $stmt = $conn->query("UPDATE `products` SET `price` = '1000' WHERE `id` = 5"); 
         $i = $stmt->fetchAll();
         echo "Ціну оновлено";
         }
@@ -110,11 +105,11 @@ include "functions_table.php";
         {
         echo "Error: " . $e->getMessage();
     }
-
+    */
+  /*
     try {
         ?><h3> Видаленя продукту з id=9 </h3><?php
-        $stmt = $conn->prepare("DELETE FROM `products` WHERE `id`=9;"); 
-        $stmt->execute();
+        $stmt = $conn->query("DELETE FROM `products` WHERE `id`=9"); 
         $i = $stmt->fetchAll();
         echo "Видалено";
         }
@@ -122,6 +117,53 @@ include "functions_table.php";
         {
         echo "Error: " . $e->getMessage();
     }
+    */
+    /*
+    try { 
+    ?><h3> Повертає ід ост вставленого запису </h3><?php
+    $sql = "INSERT INTO `clients` (name, email) 
+    VALUES ('Vaa', 'dsfdg@bigmir.com')"; 
+    // use exec() because no results are returned 
+    $conn->exec($sql); 
+    $last_id = $conn->lastInsertId(); 
+    echo "New record created successfully. Last inserted ID is: " . $last_id; 
+    } 
+    catch(PDOException $e) 
+    { 
+    echo $sql . "<br>" . $e->getMessage(); 
+    }*/
+    
+    /*
+    try {  
+    ?><h3> Повертає кількість модифікованих рядків (вставили записи в таблицю) </h3><?php
+    $stmt = $conn->prepare("INSERT INTO `clients` (`id`, `name`, `email`) 
+    VALUES (NULL, 'Va1', 'vvvv1@aaaa.ru'),(NULL, 'Va2', 'vvv@vavvava.ru')"); 
+    $stmt->execute(); 
+    $row = $stmt->rowCount(); 
+    print_r($row); 
+    } 
+    catch(PDOException $e) 
+    { 
+    echo $sql . "<br>" . $e->getMessage(); 
+    }*/
+
+   // exec("Z:\home\/test1.ru\www\php\BD\index.php");
+
+/*
+    try { 
+    $stmt = $conn->prepare("INSERT INTO `store`.`clients` (`name`, `email`) VALUES (:name,:email)"); 
+    $stmt->bindParam(':name', $name); 
+    $stmt->bindParam(':email', $email); 
+
+    // insert a row 
+    $name = "Nikola"; 
+    $email = "Nikola@mail.ru"; 
+    $stmt->execute(); 
+    } 
+    catch(PDOException $e) { 
+    echo "Error: " . $e->getMessage(); 
+    }*/
+
     ?>
 </table>
 </div>
