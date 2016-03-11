@@ -1,0 +1,258 @@
+
+.line-header{
+	position: absolute;
+	width: 100%;
+	background-color: #fff;
+	z-index: 1000;
+	top:90px;
+	.menu-top .navbar{
+		background-color: transparent !important;
+    	border-color: transparent !important;
+	}
+	.logo-fixed{
+		display: none;
+	}
+	.row-menu{
+		width: 100%;
+		vertical-align: middle;
+	}
+	.logo-img-big{ 
+		float: left;
+	}
+	.shop-i{
+		text-align: right;
+		padding-right: 0;
+		font-size: 13px;
+		ul{
+			padding: 0;
+			padding-top: 15px;
+			li{
+				display: inline-block;
+				&:first-child{
+					padding-right: 30px;
+				}
+			}
+		}
+		a{
+			color: @base-color;
+			text-decoration: none;
+			transition: all 0.2s ease-in-out;
+			&:hover{
+				color: @base-color-active;
+			}
+		}
+	}
+	.menu-top{
+		float: left;
+		padding-left: 220px;
+		.navbar{
+			background-color: white;
+			border-color: white;
+			padding: 0;
+			margin-bottom: 0;
+		}
+		.container-fluid{
+			padding: 0;
+		}	
+	}	
+	.navbar-collapse{
+		padding: 0;
+		li{
+			a{
+				padding: 0;
+				margin: 15px 35px;
+				font-size: 14px;
+				font-weight: 400;
+				color: @base-color;
+				text-transform: uppercase;
+				transition: all 0.2s ease-in-out;
+				&:after{ 
+					content:''; 
+					width: 100%; 
+					height: 2px; 
+					opacity: 0;
+					background-color: @base-color-active;
+					position: absolute; 
+					top: 50px; 
+					left: 0;
+					transition: all 0.2s ease-in-out;
+				}
+				&:hover:after{ 
+					opacity: 1;
+				}
+			&:hover{
+					color: @base-color-active;
+					opacity: 1;
+				}
+			}
+			&:last-child a{
+				padding-right: 0;
+			}
+			.active{
+				color:@base-color-active;
+			}
+		}
+	}
+}
+
+.big-img{
+	padding-top: 218px;
+	position: relative;
+}
+.shopping-cart-logo-mini{
+	display: none;
+}
+.search-logo-mini{
+	display: none;
+}
+.fixed-header{
+	.line-header{
+		top: 20px;
+	}
+}
+.icon-list{
+	text-transform: uppercase;
+}
+.menu-wrap{
+	top: 0;
+}
+.head-block .fixed-header{
+	background-color: #fff !important;
+	.navbar-collapse li {
+		a{
+		color: @base-color !important;
+	}
+	.mega-menu{
+		a{
+			color: #6f6f6f !important;
+		}
+	}
+	.column-menu{
+		a{
+			color: #6f6f6f !important;
+		}
+	}
+	}
+	.shop-i a{
+		color: @base-color !important;
+	}
+	.logo-fixed{
+		display: inline-block;
+		float: left;
+	}
+	.logo-img-big{
+		display: none;
+	}
+}
+.fixed-header {
+	position: fixed !important;
+	width: 100%;
+	background-color: #fff !important;
+	z-index: 10;
+	height: 100px;
+	top: 0 !important;
+	padding: 18px 0 18px 0 !important;
+	border-bottom: 1px solid #e6e6e6;
+	.menu-top .navbar{
+		background-color: transparent !important;
+    	border-color: transparent !important;
+	}
+}
+
+.fixed-header{
+	z-index: 1002;
+}
+.header-absolute{
+	position: absolute;  
+	width: 100%;
+	z-index: 1002;
+}
+.head-block .line-header .navbar-collapse li a{
+	background-color: transparent;
+	&:hover{
+		background-color:transparent;
+		color: @base-color-active;
+	}
+	&:focus{
+		background-color: transparent;
+	}
+	&:active{
+		background-color: transparent;
+	}
+}
+.line-header .navbar-collapse .navbar-nav>li>.dropdown-menu a:after{
+	display: none;
+}
+
+.head-block{
+	width: 100%;
+	background-color: #1d1d1d;
+	.line-header{
+		background-color: #1d1d1d;
+		.menu-top {
+			.navbar{
+				background-color: #1d1d1d;
+				color: #fff;
+				border-color: #1d1d1d;
+			}
+		} 
+		.navbar-collapse {
+			li{
+				a{
+					color: #fff;
+					&:focus{
+						color: @base-color-active;
+					}
+				}
+			}
+		}
+		.shop-i{
+			a{
+				color: #fff;
+			}
+		}
+	}
+}
+
+.breadcrumbs{
+	width: 100%;
+	position: relative;
+	padding-bottom: 230px;
+	display: table;
+	padding-top: 325px;
+	background-color: #1d1d1d;
+}
+.table-cell{
+	position: relative;
+	display: table-cell;
+	text-align: center;
+	h1{
+		font-size: 48px;
+		color: #fff;
+		letter-spacing: 3px;
+		font-weight: 700;
+		margin-bottom: 10px;
+		text-transform: uppercase;
+	}
+	a{
+		font-size: 12px;
+		color: #fff;
+		text-transform: uppercase;
+		text-decoration: none;
+		transition: all 0.2s ease-in-out;
+		&:hover{
+			color: @base-color-active;
+		}
+	}
+	li{
+		display: inline-block;
+		font-size: 12px;
+		color: #fff;
+		line-height: 60px;
+		text-transform: uppercase;
+		&:nth-child(2){
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	}
+}
