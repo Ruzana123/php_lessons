@@ -239,18 +239,18 @@
 </div>
 </div>
 </header>
-		<div class="breadcrumbs">
-			<div class="container">
-				<div class="col-md-12 col-sm-12 col-xs-12 table-cell">
-					<h1>Blog with side bar</h1>
-					<ul class="top-ul">
-						<li><a href="#">Home</a></li>
-						<li><i class="fa fa-angle-right"></i></li>
-						<li><a href="http://test1.ru/php/blog/form.php">Blog</a></li>
-					</ul>
-				</div>
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="col-md-12 col-sm-12 col-xs-12 table-cell">
+				<h1>Blog with side bar</h1>
+				<ul class="top-ul">
+					<li><a href="#">Home</a></li>
+					<li><i class="fa fa-angle-right"></i></li>
+					<li><a href="http://test1.ru/php/blog/form.php">Blog</a></li>
+				</ul>
 			</div>
 		</div>
+	</div>
 
 
 		<?php
@@ -268,25 +268,7 @@
 
 	        catch(PDOException $e) {
 	            echo "Connection failed: " . $e->getMessage();
-	            }
-	         try { 
-		        $stmt = $conn->prepare("INSERT INTO `post` (`Images`, `Title`, `Author`, `Description`, `Paper`) VALUES (:Images, :Title, :Author, :Description, :Paper)"); 
-		        $stmt->bindParam(':Images', $Images); 
-		        $stmt->bindParam(':Title', $Title); 
-		        $stmt->bindParam(':Author', $Author); 
-		        $stmt->bindParam(':Description', $Description); 
-		        $stmt->bindParam(':Paper', $Paper); 
-		        // insert a row 
-		        $Images = $_POST['Images']; 
-		        $Title = $_POST['Title'];
-		        $Author = $_POST['Author'];
-		        $Description = $_POST['Description'];
-		        $Paper = $_POST['Paper'];
-		        $stmt->execute(); 
-		    } 
-		    catch(PDOException $e) { 
-		        echo "Error: " . $e->getMessage(); 
-		    }
+	        }
 	    ?>
 
 		<!-- product-base -->
@@ -300,27 +282,66 @@
 							<div class="form-group">
 								<div class="middle-group form-3">
 									<label class="form-label star">Title</label>
-									<input type="text" name="Title" pattern="^[A-Za-zА-Яа-яЁё\s]+$" class="form-control" minlength="2" maxlength="20" required>
+									<input type="text" name="Title" class="form-control">
+								
 								</div>
 								<div class="middle-group form-3">
 									<label class="form-label star">Images</label>
-									<input type="text" name="Images" class="form-control" minlength="2" maxlength="20" required>
+									<input type="text" name="Images" class="form-control">
 								</div>
 								<div class="middle-group form-3">
 									<label class="form-label star">Author</label>
-									<input type="text" name="Author" pattern="^[A-Za-zА-Яа-яЁё\s]+$" class="form-control" minlength="2" maxlength="20" required>
+									<input type="text" name="Author" class="form-control">
 								</div>
 								<div class="middle-group">
 									<label class="form-label star">Description</label>
-									<textarea class="form-control textarea" name="Description" rows="3" placeholder="CONTENT"></textarea>
+									<textarea class="form-control textarea" name="Description" rows="3" ></textarea>
 								</div>
 								<div class="middle-group">
 									<label class="form-label star">Paper</label>
-									<textarea class="form-control textarea" name="Paper" rows="10" placeholder="CONTENT"></textarea>
+									<textarea class="form-control textarea" name="Paper" rows="10" ></textarea>
 								</div>
 								<button type="submit" class="send">Adding data</button>
 							</div>
 						</form>
+						<?php
+						if((preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Title']))&&(preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Author']))&&($_POST['Images']!='')&&($_POST['Description']!='')&&($_POST['Paper']!='')){
+							try { 
+						        $stmt = $conn->prepare("INSERT INTO `post` (`Images`, `Title`, `Author`, `Description`, `Paper`) 
+						        VALUES (:Images, :Title, :Author, :Description, :Paper)"); 
+						        $stmt->bindParam(':Images', $Images); 
+						        $stmt->bindParam(':Title', $Title); 
+						        $stmt->bindParam(':Author', $Author); 
+						        $stmt->bindParam(':Description', $Description); 
+						        $stmt->bindParam(':Paper', $Paper); 
+						        // insert a row 
+						        $Images = $_POST['Images']; 
+						        $Title = $_POST['Title'];
+						        $Author = $_POST['Author'];
+						        $Description = $_POST['Description'];
+						        $Paper = $_POST['Paper'];
+						        $stmt->execute(); 
+						    } 
+						    catch(PDOException $e) { 
+						        echo "Error: " . $e->getMessage(); 
+						    }
+						}
+						if(!preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Title'])){
+						    echo 'Потрібно ввести вірний заголовок'."<br>";
+						}	
+						if(!preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Author'])){
+						    echo 'Потрібно ввести автора вірно'."<br>";
+						}
+						if($_POST['Images']==''){
+						    echo 'Введіть шлях до картинки'."<br>";
+						}
+						if($_POST['Description']==''){
+						    echo 'Введіть короткий опис'."<br>";
+						}
+						if($_POST['Paper']==''){
+						    echo 'Введіть статтю'."<br>";
+						}		
+				?>
 					</div>
 				</div>
 			</div>
