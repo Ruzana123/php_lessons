@@ -40,30 +40,35 @@
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
            // echo "Connected successfully"; 
-            }
+        }
 
         catch(PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
         }
 
 
-    $limit_value='LIMIT 10';
-    $order_by='ORDER BY Code';
+    $lim=(int)'10';
+    $ord='Code';   
 
     if(!empty($_POST['order_by'])){
-        $order= 'ORDER BY '.$_POST['order_by'];
+        $ord=$_POST['order_by'];
 
         if ($_POST['limit_value']!='All') {
-            $limit_value= 'LIMIT '.$_POST['limit_value'];
+            $lim=(int)$_POST['limit_value'];
         }   
         else{
-            $limit_value = ''; 
+            $lim =(int)'18446744073709551615'; 
         }     
     }
 
-    $zapros="SELECT * FROM `country` $order $limit_value";
+    $zapros="SELECT `country`.*, `city`.`Name` AS `CapitalName` FROM `country`, `city` 
+    WHERE `country`.`Capital` = `city`.`ID` ORDER BY :ord LIMIT :lim";
+    
         try {
-            $stmt = $conn->query($zapros);
+            $stmt = $conn->prepare($zapros);
+            $stmt -> bindParam( ":ord", $ord );
+            $stmt -> bindValue( ":lim", $lim, PDO::PARAM_INT );
+            $stmt -> execute();
             $countries = $stmt->fetchAll();
         }
         catch(PDOException $e) {
@@ -88,18 +93,7 @@
             <th>Code2</th>
             <?php
 
-            foreach ($countries as $key => $country) {
-
-            $c=$country['Capital'];
-            try {
-                $stmt = $conn->query("SELECT `Name` 
-                        FROM `city` 
-                        WHERE `id` = $c"); 
-                $city = $stmt->fetchAll();
-            }
-            catch(PDOException $e) {
-                //echo "Error: " . $e->getMessage();
-            } ?>
+            foreach ($countries as $key => $country) {?>
 
             <tr class='info'>
                 <td><?php echo $country['Code'] ?></td>
@@ -115,12 +109,11 @@
                 <td><?php echo $country['LocalName'] ?></td>
                 <td><?php echo $country['GovernmentForm'] ?></td>
                 <td><?php echo $country['HeadOfState'] ?></td>
-                <td><?php echo $city[0][0] ?></td>
+                <td><?php echo $country['CapitalName'] ?></td>
                 <td><?php echo $country['Code2'] ?></td>
             </tr><?php
-            }
-            ?>
-             
+            }?>
+
         </table>
     </div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
