@@ -25,40 +25,13 @@ catch(PDOException $e)
     echo "Connection failed: " . $e->getMessage();
     }
     include "functions_table.php";
-    //include "index.php";
-    if(!empty($_POST['sel2'])){
-      $order= 'ORDER BY '.$_POST['sel2'];
-    if ($_POST['sel1']!='All') {
-      $sel1= 'LIMIT '.$_POST['sel1'];
-    }
-    else{
-      $sel1='';
-    }
-     try {
-        $stmt = $conn->query("SELECT * FROM `country` $order $sel1");
-        $lim = $stmt->fetchAll();
-        //print_r($codeee);
-        }
-      catch(PDOException $e)
-        {
-        echo "Error: " . $e->getMessage();
-        } ?> 
-
-      <table class='table table-condensed'><?php
-      rz_bd_table_h($lim);
-      rz_bd_table($lim);?>
-      </table><?php
-
-    }
-    
     $code=$_GET['code'];
     try {
         $stmt = $conn->query("SELECT `Name`, `District`, `Population` FROM `city` WHERE `CountryCode`= '$code'");
         $codeee = $stmt->fetchAll();
         //print_r($codeee);
         }
-      catch(PDOException $e)
-        {
+      catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
         } ?> 
 
