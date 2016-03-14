@@ -278,7 +278,7 @@
 						<div class="by-element">
 							<h2>Adding data</h2>
 						</div>
-						<form role="form" action="form.php" method="post">
+						<form role="form" action="" method="post">
 							<div class="form-group">
 								<div class="middle-group form-3">
 									<label class="form-label star">Title</label>
@@ -304,7 +304,73 @@
 								<button type="submit" class="send">Adding data</button>
 							</div>
 						</form>
+						<?php 
+						if ($_SERVER["REQUEST_METHOD"] == "POST") {
+						?><div class="alert alert-danger" role="alert"><?php
+						$err_message = array();
+							if((!preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Title']))&&
+								(!preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Author']))&&
+								($_POST['Images']==null)&&($_POST['Description']==null)&&
+								($_POST['Paper']==null)){
+								array_push($err_message, 'Введіть дані.');
+							}
+							if(!preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Title'])) {
+								array_push($err_message, 'Потрібно ввести вірний заголовок');
+							}
+							if (!preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Author'])) {
+								array_push($err_message, 'Потрібно ввести автора вірно');
+							}
+							if ($_POST['Images']==null) {
+								array_push($err_message, 'Введіть шлях до картинки');
+							}
+							if ($_POST['Description']==null) {
+								array_push($err_message, 'Введіть короткий опис');
+							}
+							if ($_POST['Paper']==null) {
+								array_push($err_message, 'Введіть статтю');
+							}
+							$n=count($err_message);
+							if ($n!=0) {
+								foreach ($err_message as $value) {
+									echo $value;
+									echo "<br>";
+								}						
+							}
+							else{
+								echo 'Помилок не виявлено';
+							}
+							
+							if ($n==0) {
+								try { 
+							        $stmt = $conn->prepare("INSERT INTO `post` (`Images`, `Title`, `Author`, `Description`, `Paper`) 
+							        VALUES (:Images, :Title, :Author, :Description, :Paper)"); 
+							        $stmt->bindParam(':Images', $Images); 
+							        $stmt->bindParam(':Title', $Title); 
+							        $stmt->bindParam(':Author', $Author); 
+							        $stmt->bindParam(':Description', $Description); 
+							        $stmt->bindParam(':Paper', $Paper); 
+							        // insert a row 
+							        $Images = $_POST['Images']; 
+							        $Title = $_POST['Title'];
+							        $Author = $_POST['Author'];
+							        $Description = $_POST['Description'];
+							        $Paper = $_POST['Paper'];
+							        $stmt->execute(); 
+							    } 
+							    catch(PDOException $e) { 
+							        echo "Error: " . $e->getMessage(); 
+							    }
+								$s='Данні успішно додані';
+							}?></div>
+							<?php if (!empty($s)){
+								?><div class="alert alert-success" role="alert">
+								<?php echo $s?></div>
+							</div><?php
+							}
+						?>				
 						<?php
+					}
+						/*
 						if((preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Title']))&&(preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Author']))&&($_POST['Images']!='')&&($_POST['Description']!='')&&($_POST['Paper']!='')){
 							try { 
 						        $stmt = $conn->prepare("INSERT INTO `post` (`Images`, `Title`, `Author`, `Description`, `Paper`) 
@@ -340,7 +406,7 @@
 						}
 						if($_POST['Paper']==''){
 						    echo 'Введіть статтю'."<br>";
-						}		
+						}		*/
 				?>
 					</div>
 				</div>
