@@ -304,6 +304,9 @@
 								<button type="submit" class="send">Adding data</button>
 							</div>
 						</form>
+						<form role="form" action="blog-main.php" method="post" style="width:100%;">
+							<button type="submit" class="send" style="float:left;">View blog</button>
+						</form>	
 						<?php 
 						if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						?><div class="alert alert-danger" role="alert"><?php
@@ -371,44 +374,7 @@
 						?>				
 						<?php
 					}
-						/*
-						if((preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Title']))&&(preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Author']))&&($_POST['Images']!='')&&($_POST['Description']!='')&&($_POST['Paper']!='')){
-							try { 
-						        $stmt = $conn->prepare("INSERT INTO `post` (`Images`, `Title`, `Author`, `Description`, `Paper`) 
-						        VALUES (:Images, :Title, :Author, :Description, :Paper)"); 
-						        $stmt->bindParam(':Images', $Images); 
-						        $stmt->bindParam(':Title', $Title); 
-						        $stmt->bindParam(':Author', $Author); 
-						        $stmt->bindParam(':Description', $Description); 
-						        $stmt->bindParam(':Paper', $Paper); 
-						        // insert a row 
-						        $Images = $_POST['Images']; 
-						        $Title = $_POST['Title'];
-						        $Author = $_POST['Author'];
-						        $Description = $_POST['Description'];
-						        $Paper = $_POST['Paper'];
-						        $stmt->execute(); 
-						    } 
-						    catch(PDOException $e) { 
-						        echo "Error: " . $e->getMessage(); 
-						    }
-						}
-						if(!preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Title'])){
-						    echo 'Потрібно ввести вірний заголовок'."<br>";
-						}	
-						if(!preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Author'])){
-						    echo 'Потрібно ввести автора вірно'."<br>";
-						}
-						if($_POST['Images']==''){
-						    echo 'Введіть шлях до картинки'."<br>";
-						}
-						if($_POST['Description']==''){
-						    echo 'Введіть короткий опис'."<br>";
-						}
-						if($_POST['Paper']==''){
-						    echo 'Введіть статтю'."<br>";
-						}		*/
-				?>
+					?>
 					</div>
 				</div>
 			</div>
