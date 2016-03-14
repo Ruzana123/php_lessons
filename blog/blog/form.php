@@ -308,19 +308,20 @@
 						if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						?><div class="alert alert-danger" role="alert"><?php
 						$err_message = array();
-							if((!preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Title']))&&
-								(!preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Author']))&&
-								($_POST['Images']==null)&&($_POST['Description']==null)&&
+							if (($_POST['Title']==null)&&
+								($_POST['Author']==null)&&
+								(!preg_match( "/^.*\.(jpg|jpeg|png|gif)$/i", $_POST['Images']))&&
+								($_POST['Description']==null)&&
 								($_POST['Paper']==null)){
 								array_push($err_message, 'Введіть дані.');
 							}
-							if(!preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Title'])) {
+							if($_POST['Title']==null) {
 								array_push($err_message, 'Потрібно ввести вірний заголовок');
 							}
-							if (!preg_match("/^[A-Za-zА-Яа-яЁё0-9\s]+$/", $_POST['Author'])) {
+							if ($_POST['Author']==null) {
 								array_push($err_message, 'Потрібно ввести автора вірно');
 							}
-							if ($_POST['Images']==null) {
+							if (!preg_match( "/^.*\.(jpg|jpeg|png|gif)$/i", $_POST['Images'])) {
 								array_push($err_message, 'Введіть шлях до картинки');
 							}
 							if ($_POST['Description']==null) {
@@ -350,11 +351,11 @@
 							        $stmt->bindParam(':Description', $Description); 
 							        $stmt->bindParam(':Paper', $Paper); 
 							        // insert a row 
-							        $Images = $_POST['Images']; 
-							        $Title = $_POST['Title'];
-							        $Author = $_POST['Author'];
-							        $Description = $_POST['Description'];
-							        $Paper = $_POST['Paper'];
+							        $Images = htmlspecialchars($_POST['Images']); 
+							        $Title = htmlspecialchars($_POST['Title']);
+							        $Author = htmlspecialchars($_POST['Author']);
+							        $Description = htmlspecialchars($_POST['Description']);
+							        $Paper = htmlspecialchars($_POST['Paper']);
 							        $stmt->execute(); 
 							    } 
 							    catch(PDOException $e) { 
