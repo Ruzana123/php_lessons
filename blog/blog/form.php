@@ -304,9 +304,9 @@
 								<button type="submit" class="send">Adding data</button>
 							</div>
 						</form>
-						<form role="form" action="blog-main.php" method="post" style="width:100%;">
+						<!-- <form role="form" action="blog-main.php" method="post" style="width:100%;">
 							<button type="submit" class="send" style="float:left;">View blog</button>
-						</form>	
+						</form>	 -->
 						<?php 
 						if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						?><div class="alert alert-danger" role="alert"><?php
