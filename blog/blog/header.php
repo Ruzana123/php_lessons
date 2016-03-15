@@ -1,5 +1,4 @@
 <?php session_start();
-
     $servername = "localhost";
     $username = "ruzana";
     $password = "yzrjctyctq";
@@ -269,12 +268,15 @@
 					<ul>
 						<li><a href="#"><?php echo $_SESSION['username'] ?></a></li>
 					</ul>
-						<?php if(isset($_SESSION['username'])){ ?>
-					<form  class="logout-form" action="" method="POST">
-	                   <button type="submit" name="exit"  class="logout"> Logout </button>
-	               	</form>
-					<?php } if (isset($_POST['exit'])) { 
-			           		unset($_SESSION['username']);
+
+						<?php 
+						if(isset($_SESSION['username'])){ ?>
+						<form  class="logout-form" action="" method="POST">
+		                   <button type="submit" name="exit"  class="logout"> Logout </button>
+		               	</form>
+						<?php } 
+						if (isset($_POST['exit'])) { 
+				           	unset($_SESSION['username']);
 						}?>
 				</div>
 			</div>
