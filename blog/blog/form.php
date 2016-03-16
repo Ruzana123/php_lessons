@@ -1,8 +1,6 @@
-
 <?php
 	include "header.php";
 ?>
-
 <!-- product-base -->
 <div class="container">
 	<div class="row content-blog">
@@ -10,6 +8,7 @@
 				<div class="by-element">
 					<h2>Adding data</h2>
 				</div>
+				<?php if (is_logged_in()){ ?>
 				<form role="form" action="" method="post">
 					<div class="form-group">
 						<div class="middle-group form-3">
@@ -36,12 +35,15 @@
 						<button type="submit" class="send">Adding data</button>
 					</div>
 				</form>
+				<?php } 
+					else echo "Щоб додати пост ввійдіть на сайт";
+				?>
 				<!-- <form role="form" action="blog-main.php" method="post" style="width:100%;">
 					<button type="submit" class="send" style="float:left;">View blog</button>
 				</form>	 -->
 				<?php 
 				if ($_SERVER["REQUEST_METHOD"] == "POST") {
-				
+					
 				$err_message = array();
 					if ((empty($_POST['title']))&&
 						(empty($_POST['author']))&&
@@ -75,28 +77,34 @@
 						?></div><?php					
 					}					
 					if ($n==0) {
-						try { 
-					        $stmt = $conn->prepare("INSERT INTO `post` (`Images`, `Title`, `Author`, `Description`, `Paper`,`Date`) 
-					        VALUES (:images, :title, :author, :description, :paper, :datee)"); 
-					        $stmt->bindParam(':images', $images); 
-					        $stmt->bindParam(':title', $title); 
-					        $stmt->bindParam(':author', $author); 
-					        $stmt->bindParam(':description', $description); 
-					        $stmt->bindParam(':paper', $paper); 
-					        $stmt->bindParam(':datee', $date); 
-					        // insert a row 
-					        $images = htmlspecialchars($_POST['images']); 
-					        $title = htmlspecialchars($_POST['title']);
-					        $author = htmlspecialchars($_POST['author']);
-					        $description = htmlspecialchars($_POST['description']);
-					        $paper = htmlspecialchars($_POST['paper']);
-					        $date = date("d F Y");
-					        $stmt->execute(); 
-					    } 
-					    catch(PDOException $e) { 
-					        echo "Error: " . $e->getMessage(); 
-					    }
+						if (is_logged_in()){ 
+							try { 
+						        $stmt = $conn->prepare("INSERT INTO `post` (`Images`, `Title`, `Author`, `Description`, `Paper`,`Date`) 
+						        VALUES (:images, :title, :author, :description, :paper, :datee)"); 
+						        $stmt->bindParam(':images', $images); 
+						        $stmt->bindParam(':title', $title); 
+						        $stmt->bindParam(':author', $author); 
+						        $stmt->bindParam(':description', $description); 
+						        $stmt->bindParam(':paper', $paper); 
+						        $stmt->bindParam(':datee', $date); 
+						        // insert a row 
+						        $images = htmlspecialchars($_POST['images']); 
+						        $title = htmlspecialchars($_POST['title']);
+						        $author = htmlspecialchars($_POST['author']);
+						        $description = htmlspecialchars($_POST['description']);
+						        $paper = htmlspecialchars($_POST['paper']);
+						        $date = date("d F Y");
+						        $stmt->execute(); 
+						    } 
+						    catch(PDOException $e) { 
+						        echo "Error: " . $e->getMessage(); 
+						    }
+						
 						$s='Данні успішно додані '. date("d F Y");
+						}
+						else{
+							$s='Для додання даних ввійдіть в систему';
+						}
 					}
 					if (!empty($s)){
 						?><div class="alert alert-success" role="alert">

@@ -1,12 +1,11 @@
-<?php include "header.php";
-?>
+<?php include "header.php"; ?>
 <div class="container">
 	<div class="registration-blog">
 		<div class="comments" id="form-comment">
 			<div class="by-element">
 				<h2>Registration</h2>
 			</div>
-			<?php if(!isset($_SESSION['username'])){ ?>
+			<?php if (!is_logged_in()){ ?>
 			<form class="registration-form" role="form" action="" method="POST">
 			  	<div class="middle-group reg" style="texr-align:center">
 				    <label for="nick" class="form-label star">Nick</label>
@@ -18,11 +17,11 @@
 				</div>
 				<div class="middle-group reg">
 					<label for="password" class="form-label star">Password</label>
-					<input type="text" name="password" class="form-control">
+					<input type="password" name="password" class="form-control">
 				</div>
 				<div class="middle-group reg">
 					<label for="password2" class="form-label star">Confirm password</label>
-					<input type="text" name="password2" class="form-control">
+					<input type="password" name="password2" class="form-control">
 				</div>
 			  <button type="submit" class="send reg-btn">Registration</button>
 			</form>
@@ -35,6 +34,9 @@
 <?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$err_message1 = array();
+	$email=htmlspecialchars($_POST['email']);
+	$pas=htmlspecialchars($_POST['password']);
+	$nick=htmlspecialchars($_POST['nick']);
 	if (($_POST['password']!=$_POST['password2'])&&
 		(empty($_POST['nick']))&&
 		(empty($_POST['email']))&&
@@ -69,7 +71,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 	if ($n==0) {
         try {
-        	
             $stmt = $conn->query("SELECT * FROM `users`"); 
             $users = $stmt->fetchAll();
            	foreach ($users as $key => $value) {
@@ -87,7 +88,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		if (($k!=1)&&($k!=2)) {
 			try { 
-		        $stmt = $conn->prepare("INSERT INTO `users` (`nick`, `email`, `password`) VALUES (:nick, :email, :password)"); 
+		        $stmt = $conn->prepare("INSERT INTO `users` (`nick`, `email`, `password`) 
+		        VALUES (:nick, :email, :password)"); 
 		        $stmt->bindParam(':nick', $nick); 
 		        $stmt->bindParam(':email', $email); 
 		        $stmt->bindParam(':password', $password); 

@@ -13,6 +13,7 @@
     catch(PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
+    include "function.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -266,18 +267,19 @@
 						<li><a href="http://test1.ru/php/blog/users_form1.php">Enter the site</a></li>
 					</ul>
 					<ul>
-						<li><a href="#"><?php echo $_SESSION['username'] ?></a></li>
+						<li><a href="#"><?php get_username() ?></a></li>
 					</ul>
 
 						<?php 
-						if(isset($_SESSION['username'])){ ?>
-						<form  class="logout-form" action="" method="POST">
-		                   <button type="submit" name="exit"  class="logout"> Logout </button>
-		               	</form>
-						<?php } 
 						if (isset($_POST['exit'])) { 
 				           	unset($_SESSION['username']);
-						}?>
+						}
+						if(isset($_SESSION['username'])){ ?>
+						<form  class="logout-form" action="#" method="POST">
+		                   <button type="submit" name="exit"  class="logout"> Logout </button>
+		               	</form>
+						<?php } ?>
+						
 				</div>
 			</div>
 		</div>

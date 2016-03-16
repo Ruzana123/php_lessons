@@ -87,5 +87,4 @@ function rz_message(){
 		}
 	}
 	
-	
 ?>
