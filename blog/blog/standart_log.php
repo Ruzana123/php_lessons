@@ -33,7 +33,6 @@
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$email=$_POST['email'];
 		    	$pas=$_POST['password'];
-		    	
 				if (!preg_match('/^[0-9a-z_-]+[@]{1,1}+[0-9a-z_-]+[.]{1,1}+[0-9a-z]{2,5}+$/',$_POST['email'])) {
 					add_errors('Email введено не вірно');
 				}
@@ -43,7 +42,7 @@
 	           	if (empty($_POST['password'])) {
 	           		add_errors('Введіть пароль');
 	           	}
-				if ((!empty($_POST['email']))&&(!empty($_POST['password']))) {
+				if ((!empty($email))&&(!empty($pas))) {
 			        try {
 			        	$stmt = $conn->query("SELECT * FROM `users` WHERE `email`='$email'"); 
 			            $user = $stmt->fetch();
@@ -53,7 +52,6 @@
 			           	elseif ($user['password']!=md5($pas)) {
 			           		add_errors('Пароль введено невірно');
 			           	}
-			           	
 			        }
 			        catch(PDOException $e) {
 			            echo "Error: " . $e->getMessage();
