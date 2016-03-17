@@ -31,13 +31,18 @@
 				unset($_SESSION['username']);
 			}
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
-				$email=htmlspecialchars($_POST['email']);
-		    	$pas=md5(htmlspecialchars($_POST['password']));
-
-				$_SESSION['errors']= array();
+				$email=$_POST['email'];
+		    	$pas=$_POST['password'];
+		    	
 				if (!preg_match('/^[0-9a-z_-]+[@]{1,1}+[0-9a-z_-]+[.]{1,1}+[0-9a-z]{2,5}+$/',$_POST['email'])) {
 					add_errors('Email введено не вірно');
 				}
+				if (empty($_POST['email'])) {
+		            add_errors('Введіть email');
+	           	}
+	           	if (empty($_POST['password'])) {
+	           		add_errors('Введіть пароль');
+	           	}
 				if ((!empty($_POST['email']))&&(!empty($_POST['password']))) {
 			        try {
 			        	$stmt = $conn->query("SELECT * FROM `users` WHERE `email`='$email'"); 
@@ -45,21 +50,14 @@
 			           	if (empty($user['nick'])) {
 			           		add_errors('Користувача не виявлено');
 			           	}
-			           	if ($user['password']!=$pas) {
+			           	elseif ($user['password']!=md5($pas)) {
 			           		add_errors('Пароль введено невірно');
 			           	}
+			           	
 			        }
 			        catch(PDOException $e) {
 			            echo "Error: " . $e->getMessage();
 			        } 
-				}
-				else {
-					if (empty($_POST['email'])) {
-		           		add_errors('Введіть email');
-		           	}
-		           	if (empty($_POST['password'])) {
-		           		add_errors('Введіть пароль');
-		           	}
 				}
 				if (!has_errors()) {	
 					$_SESSION['username'] = $user['nick'];			

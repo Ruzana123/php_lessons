@@ -19,6 +19,9 @@ function is_logged_in_new(){
 	return  isset($_SESSION['username']);
 }
 function add_errors($msg){
+	if (!isset($_SESSION['errors'])) {
+		$_SESSION['errors']= array();
+	}
 	array_push($_SESSION['errors'],$msg);
 }
 function has_errors(){
@@ -28,12 +31,14 @@ function has_errors(){
 	else return false;
 }
 function print_errors(){
-	?><div class="alert alert-danger" role="alert"><?php
+	if (has_errors()) {
+		?><div class="alert alert-danger" role="alert"><?php
 		foreach ($_SESSION['errors'] as $value) {
 			echo $value;
 			echo "<br>";
 		}	
-	?></div><?php
-	unset($_SESSION['errors']);
+		?></div><?php
+		unset($_SESSION['errors']);
+	}	
 }
 ?>
