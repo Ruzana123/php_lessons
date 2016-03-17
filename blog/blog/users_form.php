@@ -37,13 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$email=htmlspecialchars($_POST['email']);
 	$pas=htmlspecialchars($_POST['password']);
 	$nick=htmlspecialchars($_POST['nick']);
-	if (($_POST['password']!=$_POST['password2'])&&
-		(empty($_POST['nick']))&&
-		(empty($_POST['email']))&&
-		(!preg_match('/^[0-9a-z_-]+[@]{1,1}+[0-9a-z_-]+[.]{1,1}+[0-9a-z]{2,5}+$/',$_POST['email']))&&
-		(empty($_POST['password']))) {
-		array_push($err_message1, 'Введіть дані та перевірте їх правильність.');
-	}
+	
 	if ($_POST['password']!=$_POST['password2']){
 		array_push($err_message1, 'Введені паролі не співпадають');
 	}
@@ -71,50 +65,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 	if ($n==0) {
         try {
-            $stmt = $conn->query("SELECT * FROM `users`"); 
-            $users = $stmt->fetchAll();
-           	foreach ($users as $key => $value) {
-           		if ($value['email'] == $email) {
-           			$k=2;
-           		}
-           		if ($value['nick'] == $nick) {
-           			$k=1;
-           		}
-           	}
+        	$err_message = array(); 
+			$stmt = $conn -> prepare("SELECT * FROM `users` WHERE `nick` = :nick OR `email` = :email");
+			$stmt->bindParam(':nick', $nick); 
+		    $stmt->bindParam(':email', $email); 
+		    $nick = htmlspecialchars($_POST['nick']); 
+			$email = htmlspecialchars($_POST['email']);
+			$stmt -> execute();
+            $users = $stmt->fetch();
+            if ($users['nick']==$nick) {
+            	array_push($err_message, 'Користувач з таким ніком вже існує');
+            }
+            if ($users['email']==$email) {
+            	array_push($err_message, 'Користувач з таким email вже існує');
+            }
+            $err=count($err_message);
+        	if ($err!=0) {
+				?><div class="alert alert-danger" role="alert"><?php
+				foreach ($err_message as $value) {
+					echo $value;
+					echo "<br>";
+				}	
+				?></div><?php					
+			}
+            if ($err==0){
+            	try { 
+			        $stmt = $conn->prepare("INSERT INTO `users` (`nick`, `email`, `password`) 
+			        VALUES (:nick, :email, :password)"); 
+			        $stmt->bindParam(':nick', $nick); 
+		    		$stmt->bindParam(':email', $email); 
+			        $stmt->bindParam(':password', $password);
+			        // insert a row 	
+			        $nick = htmlspecialchars($_POST['nick']); 
+					$email = htmlspecialchars($_POST['email']);
+					$password= htmlspecialchars($_POST['password']);	        
+			        if ( $stmt -> execute() == true ) {
+			        	$s = "<span> Ви створили користувача </span>";
+		        	} 
+			    } 
+			    catch(PDOException $e) { 
+			        echo "Error: " . $e->getMessage(); 
+			    }
+            }
         }
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
-        } 
-
-		if (($k!=1)&&($k!=2)) {
-			try { 
-		        $stmt = $conn->prepare("INSERT INTO `users` (`nick`, `email`, `password`) 
-		        VALUES (:nick, :email, :password)"); 
-		        $stmt->bindParam(':nick', $nick); 
-		        $stmt->bindParam(':email', $email); 
-		        $stmt->bindParam(':password', $password); 
-		        // insert a row 	
-		        $nick = htmlspecialchars($_POST['nick']); 
-				$email = htmlspecialchars($_POST['email']);
-				$password= htmlspecialchars($_POST['password']);	        
-		        if ( $stmt -> execute() == true ) {
-		        	$s = "<span> Ви створили користувача </span>";
-	        	} 
-		    } 
-		    catch(PDOException $e) { 
-		        echo "Error: " . $e->getMessage(); 
-		    }
-		}
-		if ($k==2) {
-			?><div class="alert alert-danger" role="alert"><?php
-			echo "Користувач з таким email вже існує";
-			?></div><?php				
-		}
-		if ($k==1) {
-			?><div class="alert alert-danger" role="alert"><?php
-			echo "Користувач з таким ніком вже існує";
-			?></div><?php				
-		}
+        }
 	}
 	if (!empty($s)){
 		?><div class="alert alert-success" role="alert">
@@ -122,6 +118,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	</div><?php
 	}
 }
-
 include "footer.php"; 				
 ?>

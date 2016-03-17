@@ -12,42 +12,29 @@
 		    	$pas=htmlspecialchars($_POST['password']);
 
 				$err_message = array();
-		        try {
-		        	$stmt = $conn->query("SELECT `nick` FROM `users` WHERE `email`='$email' AND `password`='$pas'"); 
-		            $users = $stmt->fetchAll();
-		            $user=$users[0][0];
-		            /*$stmt = $conn->query("SELECT * FROM `users`"); 
-		            $users = $stmt->fetchAll();
-		           	foreach ($users as $key => $value) {
-		           		if (($value['email'] == $email)&&($value['password'] == $pas)) {
-		           			$user=$value['nick'];
-		           			$em=$value['email'];
-		           			$pass=$value['password'];
-		           		}
-		           	}*/
-		           	if (empty($user)) {
-		           		array_push($err_message, 'Користувача не виявлено');
-		           	}
-		           	/*if (($em!=$email)&&($pass!=$pas)) {
-		           		array_push($err_message, 'Користувача не виявлено');
-		           	}
-		           	if ($em!=$email) {
-		           		array_push($err_message, 'email не вірний');
-		           	}
-		           	if ($pass!=$pas) {
-		           		array_push($err_message, 'Нік введено не вірно');
-		           	}*/
-		           	if (empty($_POST['email'])) {
+				if ((!empty($_POST['email']))&&(!empty($_POST['password']))) {
+			        try {
+			        	$stmt = $conn->query("SELECT * FROM `users` WHERE `email`='$email'"); 
+			            $user = $stmt->fetch();
+			           	if (empty($user['nick'])) {
+			           		array_push($err_message, 'Користувача не виявлено');
+			           	}
+			           	if ($user['password']!=$pas) {
+			           		array_push($err_message, 'Пароль введено невірно');
+			           	}
+			        }
+			        catch(PDOException $e) {
+			            echo "Error: " . $e->getMessage();
+			        } 
+				}
+				else {
+					if (empty($_POST['email'])) {
 		           		array_push($err_message, 'Введіть email');
 		           	}
 		           	if (empty($_POST['password'])) {
 		           		array_push($err_message, 'Введіть пароль');
 		           	}
-		        }
-		        catch(PDOException $e) {
-		            echo "Error: " . $e->getMessage();
-		        } 
-
+				}
 		        $n=count($err_message);
 				if ($n!=0) {
 					?><div class="alert alert-danger" role="alert"><?php
@@ -59,10 +46,10 @@
 				}	
 
 		        if ($n==0){
-		        	$_SESSION['username'] = $user;
+		        	$_SESSION['username'] = $user['nick'];
 		        }		        			
 			}
-				if(!isset($_SESSION['username'])){
+				if(!is_logged_in()){
 					?>
 					<form class="registration-form" role="form" action="" method="POST">
 					  	<div class="middle-group reg">
@@ -78,9 +65,8 @@
 				<?php
 				}
 				else{
-					get_username();
+					echo 'Hello '. get_username() . "<br>";
 				}
-
 			?>
 		</div>
 	</div>

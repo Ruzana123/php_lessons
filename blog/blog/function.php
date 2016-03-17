@@ -1,17 +1,39 @@
 <?php
 function get_username(){
 	if(is_logged_in()){
-		echo 'Hello '. $_SESSION['username'] . "<br>"; 
+		return $_SESSION['username']; 
 	}  
 	else return false; 
 };
-
 function is_logged_in(){
 	if (!isset($_SESSION['username'])) {
 		return false; 
 	} 
-	else {
-		return true; 
+	 else {
+	 	return true; 
 	}
+}
+
+
+function is_logged_in_new(){
+	return  isset($_SESSION['username']);
+}
+function add_errors($msg){
+	array_push($_SESSION['errors'],$msg);
+}
+function has_errors(){
+	if(!empty($_SESSION['errors'])){
+		return true;
+	}
+	else return false;
+}
+function print_errors(){
+	?><div class="alert alert-danger" role="alert"><?php
+		foreach ($_SESSION['errors'] as $value) {
+			echo $value;
+			echo "<br>";
+		}	
+	?></div><?php
+	unset($_SESSION['errors']);
 }
 ?>

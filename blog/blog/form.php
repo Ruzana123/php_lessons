@@ -67,6 +67,9 @@
 					if (empty($_POST['paper'])) {
 						array_push($err_message, 'Введіть статтю');
 					}
+					if (!is_logged_in()){ 
+						array_push($err_message, 'Для додання даних ввійдіть в систему');
+					}
 					$n=count($err_message);
 					if ($n!=0) {
 						?><div class="alert alert-danger" role="alert"><?php
@@ -77,34 +80,28 @@
 						?></div><?php					
 					}					
 					if ($n==0) {
-						if (is_logged_in()){ 
-							try { 
-						        $stmt = $conn->prepare("INSERT INTO `post` (`Images`, `Title`, `Author`, `Description`, `Paper`,`Date`) 
-						        VALUES (:images, :title, :author, :description, :paper, :datee)"); 
-						        $stmt->bindParam(':images', $images); 
-						        $stmt->bindParam(':title', $title); 
-						        $stmt->bindParam(':author', $author); 
-						        $stmt->bindParam(':description', $description); 
-						        $stmt->bindParam(':paper', $paper); 
-						        $stmt->bindParam(':datee', $date); 
-						        // insert a row 
-						        $images = htmlspecialchars($_POST['images']); 
-						        $title = htmlspecialchars($_POST['title']);
-						        $author = htmlspecialchars($_POST['author']);
-						        $description = htmlspecialchars($_POST['description']);
-						        $paper = htmlspecialchars($_POST['paper']);
-						        $date = date("d F Y");
-						        $stmt->execute(); 
-						    } 
-						    catch(PDOException $e) { 
-						        echo "Error: " . $e->getMessage(); 
-						    }
-						
-						$s='Данні успішно додані '. date("d F Y");
-						}
-						else{
-							$s='Для додання даних ввійдіть в систему';
-						}
+						try { 
+					        $stmt = $conn->prepare("INSERT INTO `post` (`Images`, `Title`, `Author`, `Description`, `Paper`,`Date`) 
+					        VALUES (:images, :title, :author, :description, :paper, :datee)"); 
+					        $stmt->bindParam(':images', $images); 
+					        $stmt->bindParam(':title', $title); 
+					        $stmt->bindParam(':author', $author); 
+					        $stmt->bindParam(':description', $description); 
+					        $stmt->bindParam(':paper', $paper); 
+					        $stmt->bindParam(':datee', $date); 
+					        // insert a row 
+					        $images = htmlspecialchars($_POST['images']); 
+					        $title = htmlspecialchars($_POST['title']);
+					        $author = htmlspecialchars($_POST['author']);
+					        $description = htmlspecialchars($_POST['description']);
+					        $paper = htmlspecialchars($_POST['paper']);
+					        $date = date("d F Y");
+					        $stmt->execute(); 
+					    } 
+					    catch(PDOException $e) { 
+					        echo "Error: " . $e->getMessage(); 
+					    }
+					$s='Данні успішно додані '. date("d F Y");
 					}
 					if (!empty($s)){
 						?><div class="alert alert-success" role="alert">

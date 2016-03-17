@@ -267,7 +267,7 @@
 						<li><a href="http://test1.ru/php/blog/users_form1.php">Enter the site</a></li>
 					</ul>
 					<ul>
-						<li><a href="#"><?php get_username() ?></a></li>
+						<li><a href="#"><?php echo 'Hello '. get_username() . "<br>"; ?></a></li>
 					</ul>
 
 						<?php 
