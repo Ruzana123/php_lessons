@@ -36,10 +36,10 @@
 				if (!preg_match('/^[0-9a-z_-]+[@]{1,1}+[0-9a-z_-]+[.]{1,1}+[0-9a-z]{2,5}+$/',$_POST['email'])) {
 					add_errors('Email введено не вірно');
 				}
-				if (empty($_POST['email'])) {
+				if (empty($email)) {
 		            add_errors('Введіть email');
 	           	}
-	           	if (empty($_POST['password'])) {
+	           	if (empty($pas)) {
 	           		add_errors('Введіть пароль');
 	           	}
 				if ((!empty($email))&&(!empty($pas))) {
