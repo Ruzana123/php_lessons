@@ -35,6 +35,9 @@
 		    	$pas=md5(htmlspecialchars($_POST['password']));
 
 				$_SESSION['errors']= array();
+				if (!preg_match('/^[0-9a-z_-]+[@]{1,1}+[0-9a-z_-]+[.]{1,1}+[0-9a-z]{2,5}+$/',$_POST['email'])) {
+					add_errors('Email введено не вірно');
+				}
 				if ((!empty($_POST['email']))&&(!empty($_POST['password']))) {
 			        try {
 			        	$stmt = $conn->query("SELECT * FROM `users` WHERE `email`='$email'"); 
