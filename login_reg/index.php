@@ -1,4 +1,4 @@
-<?php include "code/app.php"; ?>
+<?php  session_start(); include "code/app.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +10,7 @@
 	<div class="container" style="background-color: rgba(23, 13, 15, 0.4); color:white;">
 		<a href="?action=login" title="Login" style="font-size:18px;"> Login </a><br>
 	    <a href="?action=reg" title="Reg" style="font-size:18px;"> Registration </a><br>
-	    <a href="?comments=showComments" title="Follow to comments" style="font-size:18px;"> Follow to comments </a><br><br>
+	    <a href="?action=showComments" title="Follow to comments" style="font-size:18px;"> Follow to comments </a><br><br>
 	<?php
 		router();
 	?>

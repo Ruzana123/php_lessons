@@ -2,23 +2,26 @@
 
 	function router(){
 		$action = $_GET['action'];
-		$comments = $_GET['comments'];
-
-		switch ($action) {
+		if (empty($action)){
+			form_action_logout();
+			form_action_log();
+		}
+		else{
+			switch ($action) {
 			case 'login':
-				show_form_action();
+				form_action_logout();
+				form_action_log();
 				break;
 			case 'reg':
-				show_form_action1();
+				show_form_action_reg();
 				break;
-            default:
-                echo "Clicking on links";
-                break;
-		}
-		switch ($comments) {
 			case 'showComments':
 				show_form_action_comments();
 				break;
+            default:
+                show_form_action_err();
+                break;
+			}
 		}
 	}
 ?>
