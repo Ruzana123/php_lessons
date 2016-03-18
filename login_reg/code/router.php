@@ -1,27 +1,25 @@
 <?php
-
 	function router(){
 		$action = $_GET['action'];
-		if (empty($action)){
-			form_action_logout();
-			form_action_log();
-		}
-		else{
+		
 			switch ($action) {
 			case 'login':
-				form_action_logout();
-				form_action_log();
+				form_logout_action();
+				form_log_action();
 				break;
 			case 'reg':
-				show_form_action_reg();
+				show_reg_action();
 				break;
 			case 'showComments':
-				show_form_action_comments();
+				show_comments_action();
 				break;
+			case '':
+				form_logout_action();
+				form_log_action();
             default:
-                show_form_action_err();
+                //show_err_action();
                 break;
 			}
-		}
+		
 	}
 ?>

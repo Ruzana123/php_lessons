@@ -1,5 +1,5 @@
 <?php
-	function form_action_log(){
+	function form_log_action(){
 	    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	        $email=$_POST['email'];
 	        $pas=$_POST['password'];
@@ -23,25 +23,33 @@
 	        }                           
 	    }
 	        if(!is_logged_in_new()){
-	            show_template("login");
+	        	show_template("header");
+	        	show_template("login");
+	        	show_template("footer");
 	        }
 	        else{
-	            echo "<h1> Hello ". get_username() . "</h1><br>";
-	            ?><a href="?logout" style="color:white; text-decoration:none">Logout</a><?php
+	            show_template("welcom");
 	        }
 	}
-	function form_action_logout(){
+
+	function form_logout_action(){
 		if(isset($_GET['logout'])) { 
 	        unset($_SESSION['username']);
 	    }
 	}
-	function show_form_action_reg(){ 
+
+
+
+
+	function show_reg_action(){ 
 		bd_reg();
 	}
-	function show_form_action_err(){  
+
+	function show_err_action(){  
 		show_template("page404");
 	}
-	function show_form_action_comments()
+
+	function show_comments_action()
 	{
 		$comments = array(
 			"1"=>array("name"=>"Ruzana",
