@@ -5,7 +5,7 @@
 			switch ($action) {
 			case 'login':
 				form_logout_action();
-				form_log_action();
+				post_login_action();
 				break;
 			case 'reg':
 				show_reg_action();
@@ -15,7 +15,7 @@
 				break;
 			case '':
 				form_logout_action();
-				form_log_action();
+				post_login_action();
             default:
                 //show_err_action();
                 break;

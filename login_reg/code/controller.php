@@ -1,5 +1,18 @@
 <?php
-	function form_log_action(){
+	function login_form_action(){
+		show_template_website("login");
+	}
+
+	function redirect(){
+		if(!is_logged_in_new()){
+	        	login_form_action();
+        }
+        else{
+           	show_template_website("welcom");
+        }
+	}
+
+	function post_login_action(){
 	    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	        $email=$_POST['email'];
 	        $pas=$_POST['password'];
@@ -19,17 +32,10 @@
 	            $_SESSION['username'] = $us;          
 	        }   
 	        else {
-	            print_errors();
+	            show_template("print_error");
 	        }                           
 	    }
-	        if(!is_logged_in_new()){
-	        	show_template("header");
-	        	show_template("login");
-	        	show_template("footer");
-	        }
-	        else{
-	            show_template("welcom");
-	        }
+	        redirect();
 	}
 
 	function form_logout_action(){

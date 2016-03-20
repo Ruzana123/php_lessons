@@ -7,6 +7,14 @@
 		include "views/" . $name . ".tpl.php";
 	};
 
+
+	function show_template_website($name) 
+	{ 
+		include "views/header.tpl.php"; 
+		include "views/" . $name . ".tpl.php"; 
+		include "views/footer.tpl.php"; 
+	}
+
 	function get_username(){
 	    if(is_logged_in()){
 	        return $_SESSION['username']; 
