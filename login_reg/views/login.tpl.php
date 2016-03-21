@@ -1,5 +1,5 @@
 <?php ?>
-<form class="registration-form" role="form" action="" method="POST" style="margin-bottom: 20px;">
+<form class="registration-form" role="form" action="index.php?action=login" method="POST" style="margin-bottom: 20px;">
 	<div class="form-group">
 		<label for="exampleInputEmail1">Email address</label>
 		<input type="text" class="form-control" name="email" value="<?php if (isset($_POST['email'])) echo $_POST['email'];?>">

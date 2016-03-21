@@ -4,11 +4,13 @@
 	}
 
 	function redirect(){
+		form_logout_action();
 		if(!is_logged_in_new()){
 	        login_form_action();
         }
         else{
            	show_template_website("welcom");
+
         }
 	}
 

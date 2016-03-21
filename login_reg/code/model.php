@@ -38,12 +38,10 @@ function bd_zapros($email,$pas){
 
 
 
-
-
 function bd_reg(){
     $conn=conn();
     if (!is_logged_in()){
-        show_template("reg");
+        show_template_website("reg");
     } 
         else echo "To register, leave the current account";
 
