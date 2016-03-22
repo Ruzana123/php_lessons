@@ -24,6 +24,21 @@
 	    else return false; 
 	};
 
+
+	function save_values(){
+		foreach ($_POST as $key => $value) {
+			$_SESSION['values'][$key] = $_POST[$key];
+		}
+	}
+
+	function get_value($name){
+		if (isset($_SESSION['values'][$name])) {
+			$current_value = $_SESSION['values'][$name];
+			unset($_SESSION['values'][$name]);
+			return $current_value;
+		}
+	}
+
 	function is_logged_in(){
 	    if (!isset($_SESSION['username'])) {
 	        return false; 

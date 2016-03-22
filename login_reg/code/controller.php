@@ -3,6 +3,7 @@
 		show_template_website("login");
 		if (has_errors()) {
             show_template("print_error");
+            save_values();
         }  
 	}
 
@@ -39,7 +40,6 @@
 	function reg(){
 	    logined();
 	    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		    $err_message1 = array();
 		    $email=htmlspecialchars($_POST['email']);
 		    $pas=htmlspecialchars($_POST['password']);
 		    $nick=htmlspecialchars($_POST['nick']);
@@ -62,7 +62,7 @@
 		    if (!has_errors()) {
 		        bd_reg();
 		        if (has_errors()) {
-		           show_template("print_error");                 
+		           	show_template("print_error");                 
 		        }
 		    }
 		}
