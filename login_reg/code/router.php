@@ -6,7 +6,7 @@
 			case 'login':
 				post_login_action();
 				break;
-			case 'redirect':
+			case 'login_redirect':
 				login_form_action();
 				break;
 			case 'reg':

@@ -41,6 +41,12 @@
 	function is_logged_in_new(){
 	    return  isset($_SESSION['username']);
 	}
+	function logined(){
+		if (!is_logged_in()){
+	        show_template_website("reg");
+	    } 
+	        else show_template_website("account");
+	}
 
 	function add_errors($msg){
 	    if (!isset($_SESSION['errors'])) {

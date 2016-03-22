@@ -29,24 +29,60 @@
 	    }
 	        form_logout_action();
 			if(!is_logged_in_new()){
-		        redirect('redirect');
+		        redirect('login_redirect');
 	        }
 	        else{
 	           	redirect('welcom');
 	        }
 	}
 
+	function reg(){
+	    logined();
+	    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		    $err_message1 = array();
+		    $email=htmlspecialchars($_POST['email']);
+		    $pas=htmlspecialchars($_POST['password']);
+		    $nick=htmlspecialchars($_POST['nick']);
+		    
+		    if ($_POST['password']!=$_POST['password2']){
+		        add_errors('Введені паролі не співпадають');
+		    }
+		    if (empty($_POST['nick'])){
+		        add_errors('Введіть нік');
+		    }
+		    if (!preg_match('/^[0-9a-z_-]+[@]{1,1}+[0-9a-z_-]+[.]{1,1}+[0-9a-z]{2,5}+$/',$_POST['email'])) {
+		        add_errors('Email введено не вірно');
+		    }
+		    if (empty($_POST['email'])){
+		        add_errors('Введіть email');
+		    }
+		    if (empty($_POST['password'])){
+		        add_errors('Введiть паролі');
+		    }
+		    if (!has_errors()) {
+		        bd_reg();
+		        if (has_errors()) {
+		           show_template("print_error");                 
+		        }
+		    }
+		}
+		    if (has_errors()) {
+		        show_template("print_error");                 
+		    }
+	}
+
+
 	function form_logout_action(){
 		if(isset($_GET['logout'])) { 
 	        unset($_SESSION['username']);
+	        header('Location: '. DOMEN ."index.php");
+			die();
 	    }
 	}
 
 
-
-
 	function show_reg_action(){ 
-		bd_reg();
+		reg();
 	}
 
 	function show_err_action(){  
@@ -75,6 +111,6 @@
 		$data = array(
 			"comments" => $comments,
 		);
-		show_template("comments",$data);
+		how_template_website("comments",$data);
 	}
 ?>

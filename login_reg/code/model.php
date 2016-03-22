@@ -35,84 +35,46 @@ function bd_zapros($email,$pas){
 }
 
 
-
-
-
 function bd_reg(){
     $conn=conn();
-    if (!is_logged_in()){
-        show_template_website("reg");
-    } 
-        else echo "To register, leave the current account";
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $err_message1 = array();
-    $email=htmlspecialchars($_POST['email']);
-    $pas=htmlspecialchars($_POST['password']);
-    $nick=htmlspecialchars($_POST['nick']);
-    
-    if ($_POST['password']!=$_POST['password2']){
-        add_errors('Введені паролі не співпадають');
-    }
-    if (empty($_POST['nick'])){
-        add_errors('Введіть нік');
-    }
-    if (!preg_match('/^[0-9a-z_-]+[@]{1,1}+[0-9a-z_-]+[.]{1,1}+[0-9a-z]{2,5}+$/',$_POST['email'])) {
-        add_errors('Email введено не вірно');
-    }
-    if (empty($_POST['email'])){
-        add_errors('Введіть email');
-    }
-    if (empty($_POST['password'])){
-        add_errors('Введiть паролі');
-    }
-
-    if (has_errors()) {
-        show_template("print_error");                 
-    }
-    if (!has_errors()) {
-        try {
-            $err_message = array(); 
-            $stmt = $conn -> prepare("SELECT * FROM `users` WHERE `nick` = :nick OR `email` = :email");
-            $stmt->bindParam(':nick', $nick); 
-            $stmt->bindParam(':email', $email); 
-            $nick = htmlspecialchars($_POST['nick']); 
-            $email = htmlspecialchars($_POST['email']);
-            $stmt -> execute();
-            $users = $stmt->fetch();
-            if ($users['nick']==$nick) {
-                add_errors('Користувач з таким ніком вже існує');
-            }
-            if ($users['email']==$email) {
-                add_errors('Користувач з таким email вже існує');
-            }
-            if (!has_errors()){
-                try { 
-                    $stmt = $conn->prepare("INSERT INTO `users` (`nick`, `email`, `password`) 
-                    VALUES (:nick, :email, :password)"); 
-                    $stmt->bindParam(':nick', $nick); 
-                    $stmt->bindParam(':email', $email); 
-                    $stmt->bindParam(':password', $password);
-                    // insert a row     
-                    $nick = htmlspecialchars($_POST['nick']); 
-                    $email = htmlspecialchars($_POST['email']);
-                    $password= md5(htmlspecialchars($_POST['password']));            
-                    if ( $stmt -> execute() == true ) {
-                        show_template("good_result");
-                    } 
+    try {
+        $err_message = array(); 
+        $stmt = $conn -> prepare("SELECT * FROM `users` WHERE `nick` = :nick OR `email` = :email");
+        $stmt->bindParam(':nick', $nick); 
+        $stmt->bindParam(':email', $email); 
+        $nick = htmlspecialchars($_POST['nick']); 
+        $email = htmlspecialchars($_POST['email']);
+        $stmt -> execute();
+        $users = $stmt->fetch();
+        if ($users['nick']==$nick) {
+            add_errors('Користувач з таким ніком вже існує');
+        }
+        if ($users['email']==$email) {
+            add_errors('Користувач з таким email вже існує');
+        }
+        if (!has_errors()){
+            try { 
+                $stmt = $conn->prepare("INSERT INTO `users` (`nick`, `email`, `password`) 
+                VALUES (:nick, :email, :password)"); 
+                $stmt->bindParam(':nick', $nick); 
+                $stmt->bindParam(':email', $email); 
+                $stmt->bindParam(':password', $password);
+                // insert a row     
+                $nick = htmlspecialchars($_POST['nick']); 
+                $email = htmlspecialchars($_POST['email']);
+                $password= md5(htmlspecialchars($_POST['password']));            
+                if ( $stmt -> execute() == true ) {
+                    show_template("good_result");
                 } 
-                catch(PDOException $e) { 
-                    echo "Error: " . $e->getMessage(); 
-                }
+            } 
+            catch(PDOException $e) { 
+                echo "Error: " . $e->getMessage(); 
             }
         }
-        catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-        if (has_errors()) {
-           show_template("print_error");                 
-        }
+    }
+    catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
     }
 }
-}
+
 ?>
