@@ -1,18 +1,11 @@
 <?php
 	function login_form_action(){
 		show_template_website("login");
+		if (has_errors()) {
+            show_template("print_error");
+        }  
 	}
 
-	function redirect(){
-		form_logout_action();
-		if(!is_logged_in_new()){
-	        login_form_action();
-        }
-        else{
-           	show_template_website("welcom");
-
-        }
-	}
 
 	function post_login_action(){
 	    if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -32,12 +25,15 @@
 	        }
 	        if (!has_errors()) {    
 	            $_SESSION['username'] = $us;          
-	        }   
-	        else {
-	            show_template("print_error");
-	        }                           
+	        }                      
 	    }
-	        redirect();
+	        form_logout_action();
+			if(!is_logged_in_new()){
+		        redirect('redirect');
+	        }
+	        else{
+	           	redirect('welcom');
+	        }
 	}
 
 	function form_logout_action(){

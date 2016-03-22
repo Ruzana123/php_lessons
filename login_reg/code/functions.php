@@ -1,6 +1,6 @@
 <?php
 
-	function show_template($name,$data=NULL){	
+	function show_template($name,$data=NULL) {	
 		if ($data){
 			extract($data);
 		}
@@ -8,14 +8,16 @@
 	};
 
 
-	function show_template_website($name) 
-	{ 
+	function show_template_website($name,$data=NULL) { 
+		if ($data){
+			extract($data);
+		}
 		include "views/header.tpl.php"; 
 		include "views/" . $name . ".tpl.php"; 
 		include "views/footer.tpl.php"; 
 	}
 
-	function get_username(){
+	function get_username() {
 	    if(is_logged_in()){
 	        return $_SESSION['username']; 
 	    }  
@@ -30,7 +32,11 @@
 	        return true; 
 	    }
 	}
-
+	
+	function redirect($action){
+		header('Location: '. DOMEN ."index.php?action=". $action);
+		die();
+	}
 
 	function is_logged_in_new(){
 	    return  isset($_SESSION['username']);

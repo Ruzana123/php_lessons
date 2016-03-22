@@ -52,31 +52,25 @@ function bd_reg(){
     $nick=htmlspecialchars($_POST['nick']);
     
     if ($_POST['password']!=$_POST['password2']){
-        array_push($err_message1, 'Введені паролі не співпадають');
+        add_errors('Введені паролі не співпадають');
     }
     if (empty($_POST['nick'])){
-        array_push($err_message1, 'Введіть нік');
+        add_errors('Введіть нік');
     }
     if (!preg_match('/^[0-9a-z_-]+[@]{1,1}+[0-9a-z_-]+[.]{1,1}+[0-9a-z]{2,5}+$/',$_POST['email'])) {
-        array_push($err_message1, 'Email введено не вірно');
+        add_errors('Email введено не вірно');
     }
     if (empty($_POST['email'])){
-        array_push($err_message1, 'Введіть email');
+        add_errors('Введіть email');
     }
     if (empty($_POST['password'])){
-        array_push($err_message1, 'Введiть паролі');
+        add_errors('Введiть паролі');
     }
 
-    $n=count($err_message1);
-    if ($n!=0) {
-        ?><div class="alert alert-danger" role="alert"><?php
-        foreach ($err_message1 as $value) {
-            echo $value;
-            echo "<br>";
-        }   
-        ?></div><?php                   
+    if (has_errors()) {
+        show_template("print_error");                 
     }
-    if ($n==0) {
+    if (!has_errors()) {
         try {
             $err_message = array(); 
             $stmt = $conn -> prepare("SELECT * FROM `users` WHERE `nick` = :nick OR `email` = :email");
@@ -87,21 +81,12 @@ function bd_reg(){
             $stmt -> execute();
             $users = $stmt->fetch();
             if ($users['nick']==$nick) {
-                array_push($err_message, 'Користувач з таким ніком вже існує');
+                add_errors('Користувач з таким ніком вже існує');
             }
             if ($users['email']==$email) {
-                array_push($err_message, 'Користувач з таким email вже існує');
+                add_errors('Користувач з таким email вже існує');
             }
-            $err=count($err_message);
-            if ($err!=0) {
-                ?><div class="alert alert-danger" role="alert"><?php
-                foreach ($err_message as $value) {
-                    echo $value;
-                    echo "<br>";
-                }   
-                ?></div><?php                   
-            }
-            if ($err==0){
+            if (!has_errors()){
                 try { 
                     $stmt = $conn->prepare("INSERT INTO `users` (`nick`, `email`, `password`) 
                     VALUES (:nick, :email, :password)"); 
@@ -111,9 +96,9 @@ function bd_reg(){
                     // insert a row     
                     $nick = htmlspecialchars($_POST['nick']); 
                     $email = htmlspecialchars($_POST['email']);
-                    $password= htmlspecialchars($_POST['password']);            
+                    $password= md5(htmlspecialchars($_POST['password']));            
                     if ( $stmt -> execute() == true ) {
-                        $s = "<span> Ви створили користувача </span>";
+                        show_template("good_result");
                     } 
                 } 
                 catch(PDOException $e) { 
@@ -124,11 +109,9 @@ function bd_reg(){
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
-    }
-    if (!empty($s)){
-        ?><div class="alert alert-success" role="alert">
-        <?php echo $s?></div>
-    </div><?php
+        if (has_errors()) {
+           show_template("print_error");                 
+        }
     }
 }
 }

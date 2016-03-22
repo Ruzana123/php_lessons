@@ -1,5 +1,5 @@
 <?php ?>
-<form class="registration-form" role="form" action="" method="POST">
+<form class="registration-form" role="form" action="index.php?action=reg" method="POST">
   	<div class="middle-group reg">
 	    <label for="nick" class="form-label">Nick</label>
 	    <input type="text" name="nick" class="form-control">
