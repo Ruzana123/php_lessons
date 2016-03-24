@@ -61,9 +61,10 @@
 	}
 	function logined(){
 		if (!is_logged_in()){
+			show_template("header");
 	        show_template("reg");
 	    } 
-	        else redirect("welcom"); //show_template_website("account");
+	    else redirect("welcom");
 	}
 
 	function add_errors($msg){

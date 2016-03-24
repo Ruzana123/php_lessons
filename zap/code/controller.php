@@ -75,7 +75,6 @@
 
 
 	function show_reg_action(){ 
-		show_template("header");
 		reg();
 		show_template("print_error");
 		show_template("footer");
@@ -107,7 +106,7 @@
 		$data = array(
 			"comments" => $comments,
 		);
-		how_template_website("comments",$data);
+		show_template_website("comments",$data);
 	}
 
 	function mail_action(){
