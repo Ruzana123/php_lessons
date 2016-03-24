@@ -77,7 +77,7 @@
 	function show_reg_action(){ 
 		show_template("header");
 		reg();
-		print_errors();
+		show_template("print_error");
 		show_template("footer");
 	}
 
