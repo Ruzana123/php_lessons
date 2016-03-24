@@ -1,0 +1,228 @@
+/**** Isotope Filtering ****/
+.isotope-item {
+  z-index: 2;
+}
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+/**** Isotope CSS3 transitions ****/
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:         top, left, opacity;
+          transition-property:         transform, opacity;
+}
+/**** disabling Isotope CSS3 transitions ****/
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+/* End: Recommended Isotope styles */
+/* disable CSS transitions for containers with infinite scrolling*/
+.isotope.infinite-scrolling {
+  -webkit-transition: none;
+     -moz-transition: none;
+      -ms-transition: none;
+       -o-transition: none;
+          transition: none;
+}
+
+
+.isotope{
+    margin-bottom: 320px;
+    margin-top: 70px;
+    width: 100%;
+    text-align: center;
+}
+
+.control-element{
+    a{
+        &:focus{
+            outline: none;
+            border:none;
+        }
+        &:active{
+            outline: none;
+            border:none;
+        }
+    }
+    i{
+        height: 28px;
+        width: 28px;
+        border: 1px solid @base-color-active;
+        border-radius: 50px;
+        line-height: 25px;
+        font-size: 12px;
+        color: #fff;
+        margin-top: 20px;
+        background-color: @base-color-active;
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+#works,
+.works {
+    width: 100%;
+    a{
+        display: inline-block;
+    }
+}
+
+#filter {
+    display: inline-block;
+    list-style: none;
+    float: none;
+    width: 100%;
+    margin-bottom: 75px;
+    li {
+        display: inline-block;
+        list-style: none;
+    }
+}
+#filter li a {
+    background: #fff;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    display: inline-block;
+    border-radius: 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: none;
+    border: 1px solid #ececec;
+    color: @base-color;
+    transition: all 0.4s ease;
+}
+#filter li a:hover,
+#filter li a.current {
+    color: @base-color-active;
+}
+
+.work {
+    position: relative;
+    width: 31%;
+    margin: 13px;
+    &:hover{
+        .hover-content{
+            opacity: 1;
+            top: 30%;
+        }
+        .white-fon{
+            opacity: 1;
+        }
+    }
+}
+.white-fon{
+    position: absolute;
+    text-align: center;
+    top: 35px;
+    right: 35px;
+    left: 35px;
+    bottom: 35px;
+    background-color: #fff;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+}
+.clearfix{
+    li{
+        a{
+            padding: 10px 13px;
+            margin: 0 5px;
+            font-size: 10px;
+        }
+    }
+}
+
+.hover-content{
+    position: absolute;
+    top: 50%;
+    left: 28%;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+    h4{
+        color: @base-color;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    hr{
+        width: 37px;
+        border-color: @base-color;
+    }
+    a{
+        color: #6f6f6f;
+        font-family: CrimsonText;
+        font-size: 18px;
+        font-style: italic;
+        transition: all 0.2s ease-in-out;
+        &:hover{
+            color: @base-color-active;
+        }
+    }
+}
+
+
+.mfp-move-horizontal {
+  
+  /* start state */
+  .mfp-with-anim {
+    opacity: 0;
+    transition: all 0.3s;
+    
+    transform: translateX(-50px);
+  }
+  
+  &.mfp-bg {
+    opacity: 0;
+    transition: all 0.3s;
+  }
+  
+  /* animate in */
+  &.mfp-ready {
+    .mfp-with-anim {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    &.mfp-bg {
+      opacity: 0.8;
+    }
+  }
+  
+  /* animate out */
+  &.mfp-removing {
+    
+    .mfp-with-anim {
+      transform: translateX(50px);
+      opacity: 0;
+    }
+    &.mfp-bg {
+      opacity: 0;
+    }
+    
+  } 
+}
+
+
