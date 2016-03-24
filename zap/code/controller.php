@@ -186,7 +186,7 @@
 				array_push($err_message, 'Для додання даних ввійдіть в систему');
 			}
 			if (is_logged_in()){ 
-				if (is_admin()==true){
+				if (is_admin()!=true){
 					array_push($err_message, 'У вас немає прав для здійснення цієї дії');
 				}
 			}

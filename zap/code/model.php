@@ -39,12 +39,13 @@ function bd_zapros($email,$pas){
 }
 
 function is_admin(){
-    $conn=conn();    
+    $conn=conn(); 
     try {
-        $stmt = $conn->prepare("SELECT `admin` FROM `users` WHERE `email`='$email' AND `admin` = '1'"); 
+        $stmt = $conn->prepare("SELECT * FROM `users` WHERE `nick`=:nick"); 
+        $stmt->bindParam(':nick', $_SESSION['username']); 
         $stmt->execute();
         $user = $stmt->fetch();
-        if (!empty($user['admin'])) {
+        if ($user['admin']==1) {
             return true;
         }
         else{
