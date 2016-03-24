@@ -115,6 +115,20 @@
 	        $email=$_POST['email'];
 	        $mail=$_POST['text'];
 	        $subject=$_POST['subject'];
+	        $message = '
+	        <html>
+	        <head>
+	          <title>'.$subject.'</title>
+	        </head>
+	        <body>
+	          <p>'.$mail.'</p>
+	        </body>
+	        </html>
+	        ';
+		    $headers  = 'MIME-Version: 1.0' . "\r\n";
+		    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		    $headers .= 'From: '.$name.'<'.$email.'>' . "\r\n";
+
 	        if (!preg_match('/^[0-9a-z_-]+[@]{1,1}+[0-9a-z_-]+[.]{1,1}+[0-9a-z]{2,5}+$/',$_POST['email'])) {
 	            add_errors('Email введено не вірно');
 	        }
@@ -131,7 +145,7 @@
 	            add_errors('Введіть повідомлення');
 	        }
 	        if (!has_errors()) {    
-	            mail("ruzana3008@gmail.com", "Message", $name . " " . $subject . " " . $email . " " . $mail);
+	            mail("ruzana3008@gmail.com",  $subject , $message, $headers);
 	            show_template("good_mail");
 	        } 
 	        else{
