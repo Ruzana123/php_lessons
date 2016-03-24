@@ -37,8 +37,8 @@
 	}
 
 	function reg(){
+	    logined();
 	    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	    	logined();
 		    $email=htmlspecialchars($_POST['email']);
 		    $pas=htmlspecialchars($_POST['password']);
 		    $nick=htmlspecialchars($_POST['nick']);
@@ -76,8 +76,8 @@
 
 	function show_reg_action(){ 
 		show_template("header");
-		show_template("reg");
 		reg();
+		print_errors();
 		show_template("footer");
 	}
 

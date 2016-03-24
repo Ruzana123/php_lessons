@@ -61,7 +61,7 @@
 	}
 	function logined(){
 		if (!is_logged_in()){
-	        print_errors();
+	        show_template("reg");
 	    } 
 	        else redirect("welcom"); //show_template_website("account");
 	}
