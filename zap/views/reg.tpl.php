@@ -1,4 +1,4 @@
-<?php ?>
+<?php  ?>
 <div class="container">
 	<div class="registration-blog">
 		<div class="comments" id="form-comment">

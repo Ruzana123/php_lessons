@@ -21,7 +21,7 @@
 <div class="container main-blog">
 	<div class="row content-blog contact comments">
 		<form role="form" action="" method="post">
-			<div class="form-group mail">
+			<div class="form-group">
 				<div class="middle-group form-3">
 					<label class="form-label star">Name</label>
 					<input type="text" name="name" class="form-control">
@@ -35,7 +35,6 @@
 					<input type="text" name="subject" class="form-control">
 				</div>
 				<div class="middle-group">
-					<label for="text">Text</label><br>
 					<textarea class="form-control textarea" name="text" rows="9" placeholder="CONTENT"></textarea>
 				</div>
 				<button type="submit" class="send">Send me</button>
