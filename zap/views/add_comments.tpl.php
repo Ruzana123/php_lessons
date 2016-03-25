@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="registration-blog">
 		<div class="comments" id="form-comment">
-			<div class="comments" id="form-comment">	<div class="by-element">
+			<div class="comments" id="form-comment"> <div class="by-element">
 					<h2>Add comments</h2>
 				</div>
 				<form role="form" action="" method="POST" style="margin-bottom:130px;">
