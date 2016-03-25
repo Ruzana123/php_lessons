@@ -39,7 +39,6 @@
 							<a href="#" class="next-article">Next article &nbsp; <i class="fa fa-long-arrow-right"></i></a>
 						</div>
 						<div class="comments">
-								<a href="<?php get_url_post("add_comments",'id',$id_post) ?>" class="button-in-blog" style="float:right;">Add comment</a>
 							<div class="by-element">
 								<h2>Comment</h2>
 							</div>
@@ -58,6 +57,7 @@
 								<?php } ?> 
 							</div>
 						</div>
+						<a href="<?php get_url_post("add_comments",'id',$id_post) ?>" class="button-in-blog" style="float:right;">Add comment</a>
 					
 
 					</div>
