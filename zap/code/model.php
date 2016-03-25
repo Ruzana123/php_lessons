@@ -146,7 +146,7 @@ function print_comments($id_post){
         $stmt = $conn->prepare("SELECT * FROM `comments` WHERE `id_post`=:id_post"); 
         $stmt->bindParam(':id_post',$id_post); 
         $stmt->execute();
-        $comments = $stmt->fetch(PDO::FETCH_ASSOC);
+        $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $comments; 
     } 
     catch(PDOException $e) { 
@@ -154,7 +154,7 @@ function print_comments($id_post){
     }
 }
 
-function add_comment(){
+function bd_add_comment(){
     global $conn;
     try { 
         $stmt = $conn->prepare("INSERT INTO `comments`(`img`, `author`, `email`, `date`, `text`, `id_post`)

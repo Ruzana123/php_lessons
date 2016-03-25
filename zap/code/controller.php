@@ -67,8 +67,8 @@
 		}
 			
 			if (!has_errors()) {
-		        //redirect('single_post');
-		        add_comment();
+		        bd_add_comment();
+		        
 		    }
 		    else{
 	        	show_template("print_error");

@@ -40,20 +40,23 @@
 							<a href="#" class="next-article">Next article &nbsp; <i class="fa fa-long-arrow-right"></i></a>
 						</div>
 						<div class="comments">
-								<a href="<?php get_url("add_comments") ?>" class="button-in-blog" style="float:right;">Add comment</a>
+								<a href="<?php get_url_post("add_comments",'id',$id_post) ?>" class="button-in-blog" style="float:right;">Add comment</a>
 							<div class="by-element">
 								<h2>Comment</h2>
 							</div>
 							<div class="comments-content">
+								<?php foreach ($comments as $key => $com) {
+									?>
 								<div class="comment-post" style="width:100%;">
-									<a href="#" class="comment-img"> <img src="<?php echo $comments['images'] ?>" alt=""></a>
+									<a href="#" class="comment-img"> <img src="<?php echo $com['images'] ?>" alt=""></a>
 									<div class="comment-info-post">
-										<a href="#"><h4><?php echo $comments['author'] ?></h4></a>
-										<span><?php echo $comments['date'] ?></span>
-										<p>“<?php echo $comments['text'] ?>”</p>
+										<a href="#"><h4><?php echo $com['author'] ?></h4></a>
+										<span><?php echo $com['date'] ?></span>
+										<p>“<?php echo $com['text'] ?>”</p>
 										<a href="#form-comment" class="reply">Reply <i class="fa fa-share"></i></a>
 									</div>
 								</div>
+								<?php } ?> 
 								<!-- <div class="more-comments">
 									<div class="sub">
 										<a href="#" class="more" id="comment-button-more">More comment <i class="fa fa-chevron-down"></i></a>

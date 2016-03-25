@@ -18,7 +18,7 @@
 							<label class="form-label star">Images</label>
 							<input type="text" name="images" class="form-control">
 						</div>
-						<input type=hidden name="id_post" VALUE="$posts['ID']" class="form-control"> 
+						<input type=hidden name="id_post" value="<?php echo $_GET['id'] ?>" class="form-control"> 
 						<textarea class="form-control textarea" rows="11" name="comment" placeholder="COMMENT"></textarea>
 						<button type="submit" class="send">Send message</button>
 					</div>
