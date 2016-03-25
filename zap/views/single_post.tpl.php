@@ -2,7 +2,7 @@
 	$id_post=$_GET['id'];
 	$posts=single_post_bd($id_post);
 	$comments=print_comments($id_post);
- ?>
+?>
 
 <div class="container">
 			<div class="row content-blog">
@@ -47,38 +47,15 @@
 								<?php foreach ($comments as $key => $com) {
 									?>
 								<div class="comment-post" style="width:100%;">
+									<a href="#" class="comment-img"> <img src="images/blog/com.png" alt=""></a>
 									<div class="comment-info-post">
-										<a href="#"><h4><?php echo $com['author'] ?></h4></a>
-										<span><?php echo $com['date'] ?></span>
-										<p>“<?php echo $com['text'] ?>”</p>
+										<a href="#"><h4><?php echo $com['author']; ?></h4></a>
+										<span><?php echo $com['date']; ?></span>
+										<p>“<?php echo $com['text']; ?>”</p>
 										<a href="#form-comment" class="reply">Reply <i class="fa fa-share"></i></a>
 									</div>
 								</div>
 								<?php } ?> 
-								<!-- <div class="more-comments">
-									<div class="sub">
-										<a href="#" class="more" id="comment-button-more">More comment <i class="fa fa-chevron-down"></i></a>
-										<div class="comment-post hidden-comment first-hidden-comment">
-											<a href="#" class="comment-img"> <img src="images/blog/com.png" alt=""></a>
-											<div class="comment-info-post">
-												<a href="#"><h4>John Snow</h4></a>
-												<span>24.03.2015 at 10:21</span>
-												<p>“Sensibus oportere signiferumque id mea. At usu lucilius phaedrum, vix oratio epicurei ne. Eripuit conceptam sea cu, ius minim delectus euripidis cu. Probo nonumy gubergren id nec. In est probo ridens, his laoreet euripidis et.”</p>
-												<a href="#form-comment" class="reply">Reply <i class="fa fa-share"></i></a>
-											</div>
-										</div>
-										<div class="comment-post hidden-comment">
-											<a href="#" class="comment-img"> <img src="images/blog/com.png" alt=""></a>
-											<div class="comment-info-post">
-												<a href="#"><h4>John Snow</h4></a>
-												<span>24.03.2015 at 10:21</span>
-												<p>“Sensibus oportere signiferumque id mea. At usu lucilius phaedrum, vix oratio epicurei ne. Eripuit conceptam sea cu, ius minim delectus euripidis cu. Probo nonumy gubergren id nec. In est probo ridens, his laoreet euripidis et.”</p>
-												<a href="#form-comment" class="reply">Reply <i class="fa fa-share"></i></a>
-											</div>
-										</div>
-										<a href="#" class="more" id="comment-button-hidden">Hide comment</a>
-									</div>
-								</div> -->
 							</div>
 						</div>
 					

@@ -45,7 +45,7 @@
 
 	function add_comments() {
 		 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	        $email=$_POST['for-email'];
+	 		$email=$_POST['for-email'];
 	        $author=$_POST['author'];
 	        $comment=$_POST['comment'];     
 			if (empty($author)){
@@ -60,16 +60,19 @@
 			if (empty($comment)){
 			    add_errors('Введіть коментар');
 			}
-		}
-			if (!has_errors()) {
+		
+			if (!has_errors() /*&& !isset($_COOKIE['TestCookie'])*/) {
+				//setcookie("TestCookie","va",time()+30);
 		        bd_add_comment(); 
 		        //redirect_new("single_post","id",$_POST['id']);
 		        show_template("single_post");
 		    }
 		    else{
+		    	//add_errors('vvvvvvvvvvvv');
 	        	show_template("print_error");
+	        	
 	        }
-		
+	    }
 	}
 
 	function reg(){

@@ -103,10 +103,9 @@
 		echo DOMEN ."index.php?action=". $action."&" .$arg_key."=".$arg_value;
 	}
 
-	function redirect_new($action=null, $arg_key=null, $arg_val=null)
-	{
+	function redirect_new($action=null, $arg_key=null, $arg_val=null){
 		if ($action && $arg_key) {
-			header("Location: " . DOMEN . '?action=' . $action . '&' . $arg_key . '=' . $arg_val);
+			header("Location: " . DOMEN . '?action=' . $action . "&" . $arg_key . '=' . $arg_val);
 			die();
 		} elseif ( $action ) {
 			header("Location: " . DOMEN . "index.php?action=" . $action);
