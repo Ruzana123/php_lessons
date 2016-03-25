@@ -1,27 +1,5 @@
 <?php
-        $servername = "localhost";
-        $username = "ruzana";
-        $password = "yzrjctyctq";
-
-        try {
-            $conn = new PDO("mysql:host=$servername;dbname=blog", $username, $password);
-            // set the PDO error mode to exception
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-           // echo "Connected successfully"; 
-            }
-
-        catch(PDOException $e) {
-            echo "Connection failed: " . $e->getMessage();
-            }
-
-        try {
-            $stmt = $conn->query("SELECT * FROM `post`"); 
-            $posts = $stmt->fetchAll();
-        }
-        catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        } 
-        
+   	$posts=main_blog();
 ?>
 
 		<div class="container main-blog">

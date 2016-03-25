@@ -177,5 +177,17 @@ function bd_add_comment(){
     }
 }
 
+function main_blog(){
+    global $conn;
+    try {
+        $stmt = $conn->query("SELECT * FROM `post`"); 
+        $posts = $stmt->fetchAll();
+        return $posts;
+    }
+    catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    } 
+}
+
 
 ?>
