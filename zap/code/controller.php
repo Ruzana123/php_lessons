@@ -36,8 +36,53 @@
 	        }
 	}
 
+	function comments_action(){
+		show_template ("header");
+		add_comments();
+		show_template ("add_comments");
+		show_template ("footer");
+	}
+
+	function add_comments() {
+		 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	        $email=$_POST['for-email'];
+	        $author=$_POST['author'];
+	        $img=$_POST['images'];
+	        $comment=$_POST['comment'];     
+			if (empty($author)){
+			    add_errors('Введіть ім*я');
+			}
+			if (empty($email)){
+			    add_errors('Введіть email');
+			}
+			if (!preg_match('/^[0-9a-z_-]+[@]{1,1}+[0-9a-z_-]+[.]{1,1}+[0-9a-z]{2,5}+$/',$email)) {
+			    add_errors('Email введено не вірно');
+			}
+			if (!preg_match( "/^.*\.(jpg|jpeg|png|gif)$/i", $img)){
+			    add_errors('Введіть шлях до картинки');
+			}
+			if (empty($comment)){
+			    add_errors('Введіть коментар');
+			}
+		}
+			
+			if (!has_errors()) {
+		        //redirect('single_post');
+		        add_comment();
+		    }
+		    else{
+	        	show_template("print_error");
+	        }
+		
+	}
+
 	function reg(){
-	    logined();
+	    if (!is_logged_in()){
+			show_template("header");
+	        show_template("reg");
+	    } 
+	    else redirect("welcom");
+
 	    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		    $email=htmlspecialchars($_POST['email']);
 		    $pas=htmlspecialchars($_POST['password']);
@@ -144,6 +189,9 @@
 	        if (empty($mail)) {
 	            add_errors('Введіть повідомлення');
 	        }
+	        if (!is_logged_in()){ 
+				array_push($err_message, 'Для додання даних ввійдіть в систему');
+			}
 	        if (!has_errors()) {    
 	            mail("ruzana3008@gmail.com",  $subject , $message, $headers);
 	            show_template("good_mail");
@@ -156,7 +204,15 @@
 
 	function form_action(){
 		show_template("header"); 
-		show_template("form");
+		if (!is_logged_in()){ 
+			show_template("add_err");
+		}
+		elseif (is_admin()!=true){
+			show_template("add_err1");
+		}
+		else{
+			show_template("form"); 
+		}
 		add_post();
 		show_template("footer"); 
 	}
@@ -171,6 +227,8 @@
 	function blog_action(){
 		show_template_website("blog-main");
 	}
+
+	
 
 	function add_post(){
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -197,9 +255,6 @@
 			if (empty($_POST['paper'])) {
 				array_push($err_message, 'Введіть статтю');
 			}
-			if (!is_logged_in()){ 
-				array_push($err_message, 'Для додання даних ввійдіть в систему');
-			}
 			if (is_logged_in()){ 
 				if (is_admin()!=true){
 					array_push($err_message, 'У вас немає прав для здійснення цієї дії');
@@ -216,6 +271,11 @@
 		?>				
 		<?php
 	}
-	
 }
+
+	function post_action(){
+		show_template_website('single_post');
+	}
+
+
 ?>

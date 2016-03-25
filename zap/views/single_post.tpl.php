@@ -1,5 +1,8 @@
 <?php  
-	$posts=single_post_bd($_GET['id']);
+	$id_post=$_GET['id'];
+	$posts=single_post_bd($id_post);
+	$comments=print_comments($id_post);
+	print_r($comments);
  ?>
 
 <div class="container">
@@ -15,7 +18,7 @@
 								<a href="#"><i class="fa fa-eye"></i> 567</a>
 								<a href="#"><i class="fa fa-bookmark-o"></i> Photography</a>
 								<div class="date">
-									<a href="#" class="day">07</a><a href="#" class="month">jun</a>
+									<a href="#" class="day"><?php echo  $posts['Date'] ?></a>
 								</div>
 							</div>
 							<div class="article-information">
@@ -37,29 +40,21 @@
 							<a href="#" class="next-article">Next article &nbsp; <i class="fa fa-long-arrow-right"></i></a>
 						</div>
 						<div class="comments">
+								<a href="<?php get_url("add_comments") ?>" class="button-in-blog" style="float:right;">Add comment</a>
 							<div class="by-element">
-								<h2>Comment (37)</h2>
+								<h2>Comment</h2>
 							</div>
 							<div class="comments-content">
-								<div class="comment-post">
-									<a href="#" class="comment-img"> <img src="images/blog/com.png" alt=""></a>
+								<div class="comment-post" style="width:100%;">
+									<a href="#" class="comment-img"> <img src="<?php echo $comments['images'] ?>" alt=""></a>
 									<div class="comment-info-post">
-										<a href="#"><h4>John Snow</h4></a>
-										<span>24.03.2015 at 10:21</span>
-										<p>“Sensibus oportere signiferumque id mea. At usu lucilius phaedrum, vix oratio epicurei ne. Eripuit conceptam sea cu, ius minim delectus euripidis cu. Probo nonumy gubergren id nec. In est probo ridens, his laoreet euripidis et.”</p>
+										<a href="#"><h4><?php echo $comments['author'] ?></h4></a>
+										<span><?php echo $comments['date'] ?></span>
+										<p>“<?php echo $comments['text'] ?>”</p>
 										<a href="#form-comment" class="reply">Reply <i class="fa fa-share"></i></a>
 									</div>
 								</div>
-								<div class="comment-post">
-									<a href="#" class="comment-img"> <img src="images/blog/com.png" alt=""></a>
-									<div class="comment-info-post">
-										<a href="#"><h4>John Snow</h4></a>
-										<span>24.03.2015 at 10:21</span>
-										<p>“Sensibus oportere signiferumque id mea. At usu lucilius phaedrum, vix oratio epicurei ne. Eripuit conceptam sea cu, ius minim delectus euripidis cu. Probo nonumy gubergren id nec. In est probo ridens, his laoreet euripidis et.”</p>
-										<a href="#form-comment" class="reply">Reply <i class="fa fa-share"></i></a>
-									</div>
-								</div>
-								<div class="more-comments">
+								<!-- <div class="more-comments">
 									<div class="sub">
 										<a href="#" class="more" id="comment-button-more">More comment <i class="fa fa-chevron-down"></i></a>
 										<div class="comment-post hidden-comment first-hidden-comment">
@@ -82,10 +77,11 @@
 										</div>
 										<a href="#" class="more" id="comment-button-hidden">Hide comment</a>
 									</div>
-								</div>
+								</div> -->
 							</div>
 						</div>
-						
+					
+
 					</div>
 				</div>
 				<aside class="col-md-3 col-sm-12 sidebar">

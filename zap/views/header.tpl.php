@@ -182,11 +182,11 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More<span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="http://test1.ru/php/zap/index.php?action=blog_main">Blog</a></li>
-									<li><a href="http://test1.ru/php/zap/index.php?action=form">Adding data</a></li>
-									<li><a href="http://test1.ru/php/zap/index.php?action=reg">Registration</a></li>
-									<li><a href="http://test1.ru/php/zap/index.php?action=login">Enter the site  </a></li>
-									<li><a href="http://test1.ru/php/zap/index.php?action=contact">Contact</a></li>
+									<li><a href="<?php get_url("blog_main") ?>">Blog</a></li>
+									<li><a href="<?php get_url("form") ?>">Adding data</a></li>
+									<li><a href="<?php get_url("reg") ?>">Registration</a></li>
+									<li><a href="<?php get_url("login") ?>">Enter the site</a></li>
+									<li><a href="<?php get_url("contact") ?>">Contact</a></li>
 								</ul>
 							</li>
 						</ul>

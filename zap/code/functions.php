@@ -59,13 +59,6 @@
 	function is_logged_in_new(){
 	    return  isset($_SESSION['username']);
 	}
-	function logined(){
-		if (!is_logged_in()){
-			show_template("header");
-	        show_template("reg");
-	    } 
-	    else redirect("welcom");
-	}
 
 	function add_errors($msg){
 	    if (!isset($_SESSION['errors'])) {
@@ -101,4 +94,14 @@
 		}	
 		?></div><?php	
 	}
+
+	function get_url($action){
+		echo DOMEN ."index.php?action=". $action;
+	}
+
+	function get_url_post($action,$arg_key,$arg_value){
+		echo DOMEN ."index.php?action=". $action."&" .$arg_key."=".$arg_value;
+	}
+
+
 ?>

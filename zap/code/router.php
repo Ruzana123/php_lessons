@@ -34,6 +34,12 @@
 			case 'welcom':
 				show_template_website("welcom");
 				break;
+			case 'single_post':
+				post_action();
+				break;
+			case 'add_comments':
+				comments_action();
+				break;
             default:
                 show_err_action();
                 break;

@@ -2,8 +2,7 @@
     if (!defined("HOME")) {
         die('Сторінка не доступна.');
     }
-    
-function conn(){
+
     $servername = "localhost";
     $username = "ruzana";
     $password = "yzrjctyctq";
@@ -16,11 +15,11 @@ function conn(){
     catch(PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
-    return $conn;
-}
+    global $conn;
+
 
 function bd_zapros($email,$pas){
-    $conn=conn();
+    global $conn;
     try {
         $stmt = $conn->prepare("SELECT * FROM `users` WHERE `email`='$email'"); 
         $stmt->execute();
@@ -39,7 +38,7 @@ function bd_zapros($email,$pas){
 }
 
 function is_admin(){
-    $conn=conn();  
+    global $conn;  
     $nickname=get_username();
     try {
         $stmt = $conn->prepare("SELECT * FROM `users` WHERE `nick`=:nick"); 
@@ -59,7 +58,7 @@ function is_admin(){
 }
 
 function bd_reg(){
-    $conn=conn();
+    global $conn;
     try {
         $err_message = array(); 
         $stmt = $conn -> prepare("SELECT * FROM `users` WHERE `nick` = :nick OR `email` = :email");
@@ -101,7 +100,7 @@ function bd_reg(){
 
 
 function post(){
-    $conn=conn();
+    global $conn;
     try { 
         $stmt = $conn->prepare("INSERT INTO `post` (`Images`, `Title`, `Author`, `Description`, `Paper`,`Date`) 
         VALUES (:images, :title, :author, :description, :paper, :datee)"); 
@@ -124,4 +123,61 @@ function post(){
         echo "Error: " . $e->getMessage(); 
     }
 }
+
+
+function single_post_bd($id){
+    global $conn;    
+    try {
+        $stmt = $conn-> prepare("SELECT * FROM `post` WHERE `ID`=:id"); 
+        $stmt->bindParam(':id',$id); 
+        $stmt->execute();
+        $posts = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $posts;
+        
+    }
+    catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+function print_comments($id_post){
+    global $conn;
+    try { 
+        $stmt = $conn->prepare("SELECT * FROM `comments` WHERE `id_post`=:id_post"); 
+        $stmt->bindParam(':id_post',$id_post); 
+        $stmt->execute();
+        $comments = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $comments; 
+    } 
+    catch(PDOException $e) { 
+        echo "Error: " . $e->getMessage(); 
+    }
+}
+
+function add_comment(){
+    global $conn;
+    try { 
+        $stmt = $conn->prepare("INSERT INTO `comments`(`img`, `author`, `email`, `date`, `text`, `id_post`)
+        VALUES (:images, :author, :email, :datee, :comment, :id_post)"); 
+        $stmt->bindParam(':images', $images); 
+        $stmt->bindParam(':author', $author); 
+        $stmt->bindParam(':email', $email); 
+        $stmt->bindParam(':datee', $date); 
+        $stmt->bindParam(':comment', $comment); 
+        $stmt->bindParam(':id_post', $id_post); 
+        // insert a row 
+        $images = $_POST['images']; 
+        $author = $_POST['author'];
+        $email = $_POST['for-email'];
+        $comment = $_POST['comment'];
+        $id_post = $_POST['id_post'];
+        $date = date("d F Y");        
+        $stmt->execute(); 
+    } 
+    catch(PDOException $e) { 
+        echo "Error: " . $e->getMessage(); 
+    }
+}
+
+
 ?>

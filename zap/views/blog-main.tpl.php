@@ -45,7 +45,8 @@
 							</div>
 							<p class="blog-product-info"><?php echo $post['Description']?></p>
 						</div>
-						<a href="#" class="button-in-blog">Read more</a>
+				
+						<a href="<?php get_url_post("single_post",'id',$post['ID']) ?>" class="button-in-blog">Read more</a>
 					</article>
 					<?php }?>
 					<div class="pages">
