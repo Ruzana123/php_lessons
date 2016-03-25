@@ -14,10 +14,6 @@
 							<label class="form-label star">Email address</label>
 							<input type="email" name="for-email" class="form-control">
 						</div>
-						<div class="middle-group form-3">
-							<label class="form-label star">Images</label>
-							<input type="text" name="images" class="form-control">
-						</div>
 						<input type=hidden name="id_post" value="<?php echo $_GET['id'] ?>" class="form-control"> 
 						<textarea class="form-control textarea" rows="11" name="comment" placeholder="COMMENT"></textarea>
 						<button type="submit" class="send">Send message</button>

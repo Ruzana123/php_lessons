@@ -47,7 +47,6 @@
 		 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	        $email=$_POST['for-email'];
 	        $author=$_POST['author'];
-	        $img=$_POST['images'];
 	        $comment=$_POST['comment'];     
 			if (empty($author)){
 			    add_errors('Введіть ім*я');
@@ -58,17 +57,14 @@
 			if (!preg_match('/^[0-9a-z_-]+[@]{1,1}+[0-9a-z_-]+[.]{1,1}+[0-9a-z]{2,5}+$/',$email)) {
 			    add_errors('Email введено не вірно');
 			}
-			if (!preg_match( "/^.*\.(jpg|jpeg|png|gif)$/i", $img)){
-			    add_errors('Введіть шлях до картинки');
-			}
 			if (empty($comment)){
 			    add_errors('Введіть коментар');
 			}
 		}
-			
 			if (!has_errors()) {
-		        bd_add_comment();
-		        
+		        bd_add_comment(); 
+		        //redirect_new("single_post","id",$_POST['id']);
+		        show_template("single_post");
 		    }
 		    else{
 	        	show_template("print_error");

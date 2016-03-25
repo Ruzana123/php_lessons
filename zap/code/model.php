@@ -157,16 +157,14 @@ function print_comments($id_post){
 function bd_add_comment(){
     global $conn;
     try { 
-        $stmt = $conn->prepare("INSERT INTO `comments`(`img`, `author`, `email`, `date`, `text`, `id_post`)
-        VALUES (:images, :author, :email, :datee, :comment, :id_post)"); 
-        $stmt->bindParam(':images', $images); 
+        $stmt = $conn->prepare("INSERT INTO `comments`(`author`, `email`, `date`, `text`, `id_post`)
+        VALUES (:author, :email, :datee, :comment, :id_post)"); 
         $stmt->bindParam(':author', $author); 
         $stmt->bindParam(':email', $email); 
         $stmt->bindParam(':datee', $date); 
         $stmt->bindParam(':comment', $comment); 
         $stmt->bindParam(':id_post', $id_post); 
         // insert a row 
-        $images = $_POST['images']; 
         $author = $_POST['author'];
         $email = $_POST['for-email'];
         $comment = $_POST['comment'];

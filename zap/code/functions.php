@@ -105,7 +105,7 @@
 
 	function redirect_new($action = null, $arg_key = null, $arg_val = null)
 	{
-		if ($action&&$arg_key) {
+		if ($action && $arg_key) {
 			header( "Location: " . DOMEN . '?action=' . $action . '&' . $arg_key . '=' . $arg_val );
 			die();
 		} elseif ($action) {

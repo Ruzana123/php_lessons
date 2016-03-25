@@ -2,7 +2,6 @@
 	$id_post=$_GET['id'];
 	$posts=single_post_bd($id_post);
 	$comments=print_comments($id_post);
-	print_r($comments);
  ?>
 
 <div class="container">
@@ -48,7 +47,6 @@
 								<?php foreach ($comments as $key => $com) {
 									?>
 								<div class="comment-post" style="width:100%;">
-									<a href="#" class="comment-img"> <img src="<?php echo $com['images'] ?>" alt=""></a>
 									<div class="comment-info-post">
 										<a href="#"><h4><?php echo $com['author'] ?></h4></a>
 										<span><?php echo $com['date'] ?></span>
