@@ -48,11 +48,11 @@
             $stmt = $conn->prepare("DELETE FROM `todo`.`todos` WHERE `todos`.`id` = $id_todo;"); 
             $stmt->bindParam(':id_post',$id_todo); 
             $stmt->execute();
+            add_good('Task has been deleted');
         }
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
         } 
-        add_good('Task has been deleted');
     }
 
     function substitute_todos1($id_todo){
@@ -61,11 +61,11 @@
             $stmt = $conn->prepare("UPDATE `todos` SET `marker`=1 WHERE `todos`.`id` = $id_todo;"); 
             $stmt->bindParam(':id_post',$id_todo); 
             $stmt->execute();
+            add_good('Mission accomplished');
         }
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
         } 
-        add_good('Mission accomplished');
     }
 
     function substitute_todos0($id_todo){
@@ -74,11 +74,11 @@
             $stmt = $conn->prepare("UPDATE `todos` SET `marker`=0 WHERE `todos`.`id` = $id_todo;"); 
             $stmt->bindParam(':id_post',$id_todo); 
             $stmt->execute();
+            add_good('New accomplished');
         }
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
         } 
-        add_good('New accomplished');
     }
 
 ?>

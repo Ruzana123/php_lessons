@@ -46,7 +46,7 @@
 					</ul>
 				</div>
 				<div class="col-md-4">
-					<form role="form" action="index.php?action=todols" method="POST">
+					<form role="form" action="index.php?action=todos" method="POST">
 						<label for="todo" style="display: block;">Add new task</label>
 						<input type="text" class="form-control" name="todo" placeholder="todo..." style="width:75%; display: inline-block;">
 						<button type="submit" class="btn btn-success">Додати</button>

@@ -19,7 +19,7 @@
 			case 'delete':
 				delete_todos($_GET['id']);
 				show_template("good"); 
-				show_template("todols"); 
+				show_template("todos"); 
 				break;
 			case '':
 				todos_action();

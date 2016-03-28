@@ -7,7 +7,7 @@
 		add_todos();
 		show_template("todos"); 
 	}
-
+	
 	function show_err_action(){  
 		show_template("page404");
 	}
