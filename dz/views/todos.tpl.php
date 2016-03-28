@@ -13,7 +13,7 @@
 			<h1 style="display: inline-block; margin-right:15px;">Latest task</h1><h4 style="display: inline-block; color:gray;">manage your tasks</h4>
 			
 			<div class="row todos">
-				<?php show_template("good"); ?>
+				<?php show_template("good"); show_template("print_error");?>
 				<div class="col-md-8">
 					<ul class="list-group">
 						<?php 

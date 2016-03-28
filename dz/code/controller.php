@@ -13,14 +13,12 @@
 	}
 
 	function new_todo_action(){
-		substitute_todos0($_GET['id']);
-		
+		substitute_todos($_GET['id'],0);
 		redirect("todos");
 	} 
 
 	function done_todo_action(){
-		substitute_todos1($_GET['id']);
-		 
+		substitute_todos($_GET['id'],1);
 		redirect("todos");
 	} 
 	function add_todos(){
@@ -33,9 +31,6 @@
 				request_add_todos($todo);
 				//redirect("todos"); 
 		    }
-		    else{
-	        	show_template("print_error");
-	        }
 		}
 	}
 
