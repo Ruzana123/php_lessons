@@ -1,0 +1,8 @@
+.glyphicon{
+	top: -10px;
+    font-size: 11px;
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{
+	border: none;
+	outline: none;
+}
