@@ -13,6 +13,7 @@
 			<h1 style="display: inline-block; margin-right:15px;">Latest task</h1><h4 style="display: inline-block; color:gray;">manage your tasks</h4>
 			
 			<div class="row todos">
+				<?php show_template("good"); ?>
 				<div class="col-md-8">
 					<ul class="list-group">
 						<?php 
@@ -39,9 +40,8 @@
 									<a href="<?php get_url_post("delete",'id',$todo['id']) ?>" style="color:blue; text-decoration:none"><span class="glyphicon glyphicon-remove" aria-hidden="true"></a>
 					 			</div>
 							 </li>
-							<?php } ?>
-						  	
-						<?php  }
+							<?php } 
+						 }
 						?>
 					</ul>
 				</div>

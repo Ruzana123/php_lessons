@@ -46,7 +46,6 @@
         global $conn;
         try {
             $stmt = $conn->prepare("DELETE FROM `todo`.`todos` WHERE `todos`.`id` = $id_todo;"); 
-            $stmt->bindParam(':id_post',$id_todo); 
             $stmt->execute();
             add_good('Task has been deleted');
         }
@@ -59,7 +58,6 @@
         global $conn;
         try {
             $stmt = $conn->prepare("UPDATE `todos` SET `marker`=1 WHERE `todos`.`id` = $id_todo;"); 
-            $stmt->bindParam(':id_post',$id_todo); 
             $stmt->execute();
             add_good('Mission accomplished');
         }
@@ -72,7 +70,6 @@
         global $conn;
         try {
             $stmt = $conn->prepare("UPDATE `todos` SET `marker`=0 WHERE `todos`.`id` = $id_todo;"); 
-            $stmt->bindParam(':id_post',$id_todo); 
             $stmt->execute();
             add_good('New accomplished');
         }

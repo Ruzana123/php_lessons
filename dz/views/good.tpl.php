@@ -1,3 +1,4 @@
+<div class="container">
 <?php
 if (has_good()) {
         ?><div class="alert alert-success" role="alert"><?php
@@ -9,3 +10,4 @@ if (has_good()) {
         unset($_SESSION['good']);
     }  
 ?>
+</div>
