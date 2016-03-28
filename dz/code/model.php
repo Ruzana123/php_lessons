@@ -36,6 +36,7 @@
             $stmt = $conn->prepare("INSERT INTO `todos`(`todo`) VALUES (:todo)"); 
             $stmt->bindParam(':todo', $todo); 
             $stmt->execute();
+            add_good('Todos created');
         }
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -45,7 +46,7 @@
     function delete_todos($id_todo){
         global $conn;
         try {
-            $stmt = $conn->prepare("DELETE FROM `todo`.`todos` WHERE `todos`.`id` = $id_todo;"); 
+            $stmt = $conn->prepare("DELETE FROM `todo`.`todos` WHERE `todos`.`id` = :$id_todo;"); 
             $stmt->execute();
             add_good('Task has been deleted');
         }
