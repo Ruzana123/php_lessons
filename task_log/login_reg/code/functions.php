@@ -69,6 +69,16 @@
 		die();
 	}
 
+	function redirect_new($action,$argument_key = NULL,$argument_value = NULL){
+        if ($argument_key) {
+            header("Location:".  DOMEN ."index.php?action=".$action.'&'.$argument_key.'='.$argument_value);
+            die();
+        }else{
+            header("Location:".  DOMEN ."index.php?action=".$action);
+            die();
+        }
+    }
+    
 	function is_logged_in_new(){
 	    return  isset($_SESSION['username']);
 	}
@@ -119,6 +129,10 @@
 	}
 
 	function get_url_post($action,$arg_key,$arg_value){
+		echo DOMEN ."index.php?action=". $action."&" .$arg_key."=".$arg_value;
+	}
+
+	function get_url_category($action,$arg_key,$arg_value){
 		echo DOMEN ."index.php?action=". $action."&" .$arg_key."=".$arg_value;
 	}
 ?>

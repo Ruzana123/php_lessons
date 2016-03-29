@@ -28,9 +28,7 @@
 				new_todo_action();
 				break;
 			case 'delete':
-				delete_todos($_GET['id']);
-				show_template("good"); 
-				show_template("todos"); 
+				delete_action();
 				break;
 			case '':
 				post_login_action();

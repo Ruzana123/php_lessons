@@ -86,6 +86,7 @@ function bd_zapros($email,$pas){
             $stmt->bindParam(':id_user', $id_user); 
             $stmt->bindParam(':id_list', $id_list); 
             $stmt->execute();
+            tasks_all_count($_GET['id_category']);
             add_good('Todos created');
         }
         catch(PDOException $e) {
@@ -99,6 +100,7 @@ function bd_zapros($email,$pas){
             $stmt = $conn->prepare("DELETE FROM `todos` WHERE `id` = :id_todo;"); 
             $stmt->bindParam(':id_todo',$id_todo);
             $stmt->execute();
+            tasks_all_count($_GET['id_category']);
             add_good('Task has been deleted');
         }
         catch(PDOException $e) {
@@ -113,7 +115,6 @@ function bd_zapros($email,$pas){
             $stmt->bindParam(':id_todo',$id_todo);
             $stmt->bindParam(':marker',$marker);
             $stmt->execute();
-            add_good('New accomplished');
         }
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -133,6 +134,26 @@ function bd_zapros($email,$pas){
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
         } 
+    }
+
+    function tasks_all_count($list_id){
+        global $conn;
+        try {
+            $count = $conn -> prepare( "SELECT COUNT(*) AS 'tasks_count' FROM `todos` WHERE `id_list`=:list_id" 
+            );
+            $count -> bindParam(':id_list', $list_id);
+            $count -> execute();
+            $tasks_count = $count -> fetch(PDO::FETCH_ASSOC);
+            
+            $counts = $conn -> prepare("UPDATE `task_list` SET `tasks_count` = :count WHERE `list_id` = :list_id" 
+            );
+            $counts -> bindParam(':count', $tasks_count['tasks_count']);
+            $counts -> bindParam(':list_id', $list_id);
+            $counts -> execute(); 
+        } 
+        catch (PDOException $e) {
+            error_log( "Update tasks count: " . $e -> getMessage() );
+        }
     }
 
 function bd_reg(){

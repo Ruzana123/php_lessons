@@ -11,6 +11,11 @@
         }  
 	}
 
+	function delete_action(){
+		delete_todos($_GET['id']);
+		redirect_new("todos","id_category",$_GET['category']);
+	}
+
 	function todos_action(){ 
 		add_todos($_GET['id']);
 		show_template_website("todos");
@@ -18,12 +23,12 @@
 
 	function new_todo_action(){
 		substitute_todos($_GET['id'],0);
-		redirect("todos");
+		redirect_new("todos","id_category",$_GET['category']);
 	} 
 
 	function done_todo_action(){
 		substitute_todos($_GET['id'],1);
-		redirect("todos");
+		redirect_new("todos","id_category",$_GET['category']);
 	} 
 	function add_todos($id_list){
 		 if ($_SERVER["REQUEST_METHOD"] == "POST") {
