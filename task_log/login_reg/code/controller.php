@@ -33,8 +33,8 @@
 			}
 			if (!has_errors()) {
 				$user_mas=request_user_id(get_username());
-				request_add_todos($todo,$user_mas['id'],$id_list);
-				//redirect("todos"); 
+				request_add_todos($todo,$user_mas['id'],$_POST['id_list']);
+				redirect("todos"); 
 		    }
 		}
 	}

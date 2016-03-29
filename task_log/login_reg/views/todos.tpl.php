@@ -52,6 +52,7 @@
 							<div class="col-md-4">
 								<form role="form" action="index.php?action=todos" method="POST">
 									<label for="todo" style="display: block;">Add new task</label>
+									<input type="hidden" name = "id_list" value="<?php echo $_GET['id'] ?>">
 									<input type="text" class="form-control" name="todo" placeholder="todo..." style="width:75%; display: inline-block;">
 									<button type="submit" class="btn btn-success">Додати</button>
 								</form>

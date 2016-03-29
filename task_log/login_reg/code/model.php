@@ -149,6 +149,7 @@ function bd_reg(){
                 $email = htmlspecialchars($_POST['email']);
                 $password= md5(htmlspecialchars($_POST['password']));            
                 if ( $stmt -> execute() == true ) {
+                    $_SESSION['username']=$nick;
                     show_template("good_result");
                 } 
             } 
