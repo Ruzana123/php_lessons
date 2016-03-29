@@ -18,13 +18,14 @@
 					<ul class="list-group">
 						<?php 
 						if (is_logged_in()){
+							$user_mas=request_user_id(get_username());
 							foreach (request_task_list() as $key => $list) {
 								?><div class="alert alert-success" role="alert">
-								<a href="<?php get_url_post("todos",'id',$list['list_id'])?>"> <?php echo $list['name']; ?></a>
+								<a href="<?php get_url_post("todos",'id',$list['list_id'])?>"> <?php echo $list['name'];  $count=count_task($list['list_id'],$user_mas['id']); 
+								echo  "   ".$count[COUNT(`todo`)];?></a>
 								</div><?php
 							}
-
-							$user_mas=request_user_id(get_username());
+							//$user_mas=request_user_id(get_username());
 							if(!empty($_GET['id'])){
 								foreach (request_todos($user_mas['id'],$_GET['id']) as $key => $todo) {
 								if ($todo[marker]==1){

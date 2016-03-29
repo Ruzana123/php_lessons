@@ -120,6 +120,21 @@ function bd_zapros($email,$pas){
         } 
     }
 
+    function count_task($id,$id_user){
+        global $conn;
+        try {
+            $stmt = $conn->prepare("SELECT COUNT(`todo`) FROM `todos` WHERE `id_list`=:id AND `id_user`=:id_user"); 
+            $stmt->bindParam(':id',$id);
+            $stmt->bindParam(':id_user', $id_user); 
+            $stmt->execute();
+            $count = $stmt->fetch();
+            return $count;
+        }
+        catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        } 
+    }
+
 function bd_reg(){
     global $conn;
     try {
