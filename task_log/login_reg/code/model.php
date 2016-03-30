@@ -65,13 +65,28 @@ function bd_zapros($email,$pas){
         } 
     }
 
-    function request_task_list(){
+    function request_task_list($user){
        global $conn;
         try {
-            $stmt = $conn->prepare("SELECT * FROM `task_list`"); 
+            $stmt = $conn->prepare("SELECT * FROM `task_list` WHERE `id_user`=:user"); 
+            $stmt->bindParam(':user', $user); 
             $stmt->execute();
             $lists = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $lists;
+        }
+        catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        } 
+    }
+
+    function request_add_category($name,$id_user){
+        global $conn;
+        try {
+            $stmt = $conn->prepare("INSERT INTO `task_list`(`name`,`id_user`)  VALUES (:name,:id_user)"); 
+            $stmt->bindParam(':name', $name); 
+            $stmt->bindParam(':id_user', $id_user); 
+            $stmt->execute();
+            add_good('Category created');
         }
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -86,7 +101,6 @@ function bd_zapros($email,$pas){
             $stmt->bindParam(':id_user', $id_user); 
             $stmt->bindParam(':id_list', $id_list); 
             $stmt->execute();
-            tasks_all_count($_GET['id_category']);
             add_good('Todos created');
         }
         catch(PDOException $e) {
@@ -100,7 +114,6 @@ function bd_zapros($email,$pas){
             $stmt = $conn->prepare("DELETE FROM `todos` WHERE `id` = :id_todo;"); 
             $stmt->bindParam(':id_todo',$id_todo);
             $stmt->execute();
-            tasks_all_count($_GET['id_category']);
             add_good('Task has been deleted');
         }
         catch(PDOException $e) {
@@ -136,7 +149,7 @@ function bd_zapros($email,$pas){
         } 
     }
 
-    function tasks_all_count($list_id){
+    /*function tasks_all_count($list_id){
         global $conn;
         try {
             $count = $conn -> prepare( "SELECT COUNT(*) AS 'tasks_count' FROM `todos` WHERE `id_list`=:list_id" 
@@ -154,7 +167,7 @@ function bd_zapros($email,$pas){
         catch (PDOException $e) {
             error_log( "Update tasks count: " . $e -> getMessage() );
         }
-    }
+    }*/
 
 function bd_reg(){
     global $conn;

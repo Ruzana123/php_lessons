@@ -19,7 +19,13 @@
 				show_comments_action();
 				break;
 			case 'todos':
+				category_action();
+				break;
+			case 'task':
 				todos_action();
+				break;
+			case 'category':
+				category_action();
 				break;
 			case 'done':
 				done_todo_action();

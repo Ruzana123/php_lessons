@@ -13,23 +13,29 @@
 
 	function delete_action(){
 		delete_todos($_GET['id']);
-		redirect_new("todos","id_category",$_GET['category']);
+		redirect_new("task","id_category",$_GET['category']);
 	}
 
 	function todos_action(){ 
 		add_todos($_GET['id']);
+		show_template_website("task");
+	}
+
+	function category_action(){
+		add_category();
 		show_template_website("todos");
 	}
 
 	function new_todo_action(){
 		substitute_todos($_GET['id'],0);
-		redirect_new("todos","id_category",$_GET['category']);
+		redirect_new("task","id_category",$_GET['category']);
 	} 
 
 	function done_todo_action(){
 		substitute_todos($_GET['id'],1);
-		redirect_new("todos","id_category",$_GET['category']);
+		redirect_new("task","id_category",$_GET['category']);
 	} 
+
 	function add_todos($id_list){
 		 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	 		$todo=$_POST['todo'];
@@ -44,6 +50,19 @@
 		}
 	}
 
+	function add_category(){
+		 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	 		$name=$_POST['category'];
+			if (empty($name)){
+			    add_errors('Введіть категорію');
+			}
+			if (!has_errors()) {
+				$user_mas=request_user_id(get_username());
+				request_add_category($name,$user_mas['id']);
+				//redirect("todos"); 
+		    }
+		}
+	}
 
 	function post_login_action(){
 	    if ($_SERVER["REQUEST_METHOD"] == "POST") {

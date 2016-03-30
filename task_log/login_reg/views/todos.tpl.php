@@ -19,17 +19,27 @@
 						<?php 
 						if (is_logged_in()){
 							$user_mas=request_user_id(get_username());
-							foreach (request_task_list() as $key => $list) {
+							foreach (request_task_list($user_mas['id']) as $key => $list) {
 								?><div class="alert alert-success" role="alert">
-								<a href="<?php get_url_category("todos",'id_category',$list['list_id'])?>"><?php echo $list['name'];  $count=count_task($list['list_id'],$user_mas['id']); 
+								<a href="<?php get_url_category("task",'id_category',$list['list_id'])?>"><?php echo $list['name'];  $count=count_task($list['list_id'],$user_mas['id']); 
 								echo  "   (".$count[COUNT(`todo`)];?>)</a>
 								</div><?php
 							}
+								if(!empty($_GET['id_category'])){
+									redirect_new("task","id_category",$_GET['category']);
+								}
+							?> <div >
+								<form role="form" action="index.php?action=category" method="POST">
+									<label for="todo" style="display: block;">Add new category</label>
+									<input type="text" class="form-control" name="category" placeholder="category..." style="width:75%; display: inline-block;">
+									<button type="submit" class="btn btn-success">Додати</button>
+								</form>
+							</div><?php
+
 							//$user_mas=request_user_id(get_username());
-							if(!empty($_GET['id_category'])){
+							/*if(!empty($_GET['id_category'])){
 								foreach (request_todos($user_mas['id'],$_GET['id_category']) as $key => $todo) {
-								if ($todo[marker]==1){
-								?>
+								if ($todo[marker]==1){?>
 						 		<li class="list-group-item" style="text-decoration:line-through">
 						    		<span class="badge todos">done</span>
 								    <?php echo $todo[todo]; ?>
@@ -46,7 +56,7 @@
 										<a href="<?php echo get_url_post("delete",'id',$todo['id']). '&category=' . $_GET['id_category']; ?>" style="color:blue; text-decoration:none"><span class="glyphicon glyphicon-remove" aria-hidden="true"></a>
 						 			</div>
 								 </li> <?php
-										}
+									}
 									?>
 								</ul>
 							</div>
@@ -58,7 +68,7 @@
 									<button type="submit" class="btn btn-success">Додати</button>
 								</form>
 							</div><?php
-						}
+						}*/
 							
 				}
 				else{
