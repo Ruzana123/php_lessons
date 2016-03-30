@@ -38,6 +38,72 @@ function bd_zapros($email,$pas){
     } 
 }
 
+    function request_user_id($user){
+       $conn=conn();
+        try {
+            $stmt = $conn->prepare("SELECT * FROM `users` WHERE `nick`=:user "); 
+            $stmt->bindParam(':user', $user); 
+            $stmt->execute();
+            $user_mas = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $user_mas;
+        }
+        catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        } 
+    }
+
+    function request_todos($user){
+       $conn=conn();
+        try {
+            $stmt = $conn->prepare("SELECT * FROM `todos` WHERE `id_user`=$user "); 
+            $stmt->execute();
+            $todos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $todos;
+        }
+        catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        } 
+    }
+
+    function request_add_todos($todo){
+        $conn=conn();
+        try {
+            $stmt = $conn->prepare("INSERT INTO `todos`(`todo`) VALUES (:todo)"); 
+            $stmt->bindParam(':todo', $todo); 
+            $stmt->execute();
+            add_good('Todos created');
+        }
+        catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        } 
+    }
+
+    function delete_todos($id_todo){
+       $conn=conn();
+        try {
+            $stmt = $conn->prepare("DELETE FROM `todos` WHERE `id` = :id_todo;"); 
+            $stmt->bindParam(':id_todo',$id_todo);
+            $stmt->execute();
+            add_good('Task has been deleted');
+        }
+        catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        } 
+    }
+
+    function substitute_todos($id_todo,$marker){
+        $conn=conn();
+        try {
+            $stmt = $conn->prepare("UPDATE `todos` SET `marker`=:marker WHERE `id` = :id_todo;"); 
+            $stmt->bindParam(':id_todo',$id_todo);
+            $stmt->bindParam(':marker',$marker);
+            $stmt->execute();
+            add_good('New accomplished');
+        }
+        catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        } 
+    }
 
 function bd_reg(){
     $conn=conn();

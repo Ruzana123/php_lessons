@@ -10,6 +10,19 @@
 		include "views/" . $name . ".tpl.php";
 	};
 
+	function add_good($msg){
+	    if (!isset($_SESSION['good'])) {
+	        $_SESSION['good']= array();
+	    }
+	    array_push($_SESSION['good'],$msg);
+	}
+
+	function has_good(){
+	    if(!empty($_SESSION['good'])){
+	        return true;
+	    }
+	    else return false;
+	}
 
 	function show_template_website($name,$data=NULL) { 
 		if ($data){
@@ -90,5 +103,22 @@
 	        ?></div><?php
 	        unset($_SESSION['errors']);
 	    }   
+	}
+
+	function print_errors_add($name){
+	?><div class="alert alert-danger" role="alert"><?php
+		foreach ($name as $value) {
+			echo $value;
+			echo "<br>";
+		}	
+		?></div><?php	
+	}
+
+	function get_url($action){
+		echo DOMEN ."index.php?action=". $action;
+	}
+
+	function get_url_post($action,$arg_key,$arg_value){
+		echo DOMEN ."index.php?action=". $action."&" .$arg_key."=".$arg_value;
 	}
 ?>

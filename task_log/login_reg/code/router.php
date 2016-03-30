@@ -36,6 +36,9 @@
 			case 'delete':
 				delete_action();
 				break;
+			case 'delete_category':
+				delete_category_action();
+				break;
 			case '':
 				post_login_action();
 				break;

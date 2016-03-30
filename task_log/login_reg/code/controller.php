@@ -16,6 +16,11 @@
 		redirect_new("task","id_category",$_GET['category']);
 	}
 
+	function delete_category_action(){
+		delete_category($_GET['id_category']);
+		redirect_new("todos");
+	}
+
 	function todos_action(){ 
 		add_todos($_GET['id']);
 		show_template_website("task");

@@ -22,7 +22,8 @@
 							foreach (request_task_list($user_mas['id']) as $key => $list) {
 								?><div class="alert alert-success" role="alert">
 								<a href="<?php get_url_category("task",'id_category',$list['list_id'])?>"><?php echo $list['name'];  $count=count_task($list['list_id'],$user_mas['id']); 
-								echo  "   (".$count[COUNT(`todo`)];?>)</a>
+								?><a href="<?php echo get_url_post("delete_category",'id_category',$list['list_id']); ?>" style="color:blue; text-decoration:none; float:right;"><span class="glyphicon glyphicon-remove" aria-hidden="true"></a>
+								<?php echo  "   (".$count[COUNT(`todo`)];?>)</a>
 								</div><?php
 							}
 								if(!empty($_GET['id_category'])){

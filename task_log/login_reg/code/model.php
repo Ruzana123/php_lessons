@@ -102,6 +102,7 @@ function bd_zapros($email,$pas){
             $stmt->bindParam(':id_list', $id_list); 
             $stmt->execute();
             add_good('Todos created');
+            redirect_new("task","id_category",$id_list);
         }
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -115,6 +116,25 @@ function bd_zapros($email,$pas){
             $stmt->bindParam(':id_todo',$id_todo);
             $stmt->execute();
             add_good('Task has been deleted');
+        }
+        catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        } 
+    }
+
+    function delete_category($list_id){
+       global $conn;
+        try {
+            $stmt = $conn->prepare("DELETE FROM `task_list`  WHERE `list_id` = :list_id;"); 
+            $stmt->bindParam(':list_id',$list_id);
+            $stmt->execute();
+            add_good('Category has been deleted');
+
+            $stmt1 = $conn->prepare("DELETE FROM `todos`  WHERE `id_list` = :list_id;"); 
+            $stmt1->bindParam(':list_id',$list_id);
+            $stmt1->execute();
+            add_good('Task this category has been deleted');
+        
         }
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
