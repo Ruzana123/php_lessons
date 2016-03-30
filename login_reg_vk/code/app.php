@@ -3,7 +3,7 @@
 	    die('Сторінка не доступна.');
 	}
 	session_start();
-	define("DOMEN", "http://test1.ru/php/login_reg_vk/");
+	define("DOMEN", "http://student4.e-u.org.ua/task_log/login_reg/");
 	include "router.php";
 	include "controller.php";
 	include "model.php";

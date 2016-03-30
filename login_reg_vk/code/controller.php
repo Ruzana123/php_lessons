@@ -11,10 +11,6 @@
         }  
 	}
 
-	function vk_aktion(){
-		show_template("vk");
-	}
-
 	function delete_action(){
 		delete_todos($_GET['id']);
 		redirect_new("task","id_category",$_GET['category']);

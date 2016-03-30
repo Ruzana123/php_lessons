@@ -4,8 +4,8 @@
     }
     
     $servername = "localhost";
-    $username = "ruzana";
-    $password = "yzrjctyctq";
+    $username = "Ruzana";
+    $password = "123";
     try {
         $conn = new PDO("mysql:host=$servername;dbname=form", $username, $password);
         // set the PDO error mode to exception
