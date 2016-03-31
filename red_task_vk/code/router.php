@@ -52,7 +52,7 @@
 				show_template_website("welcom");
 				break;
 			case 'vk':
-				show_template("vk");
+				vk_login();
 				break;
             default:
                 show_err_action();

@@ -189,7 +189,49 @@
 	}
 
 	function vk_login(){
+		
+	    $params = array(
+	        'client_id'     => CLIENT_ID,
+	        'redirect_uri'  => REDIRECT_URI,
+	        'response_type' => 'code'
+	    );
+				
+		if (isset($_GET['code'])) {
+		    $result = false;
+		    $params = array(
+		        'client_id' => CLIENT_ID,
+		        'client_secret' => CLIENT_SERCET,
+		        'code' => $_GET['code'],
+		        'redirect_uri' => REDIRECT_URI
+		    );
 
+		    $token = json_decode(file_get_contents('https://oauth.vk.com/access_token' . '?' . urldecode(http_build_query($params))), true);
+
+		    if (isset($token['access_token'])) {
+		        $params = array(
+		            'uids'         => $token['user_id'],
+		            'fields'       => 'uid,first_name,last_name,screen_name,sex,bdate,photo_big',
+		            'access_token' => $token['access_token']
+		        );
+
+		        $userInfo = json_decode(file_get_contents('https://api.vk.com/method/users.get' . '?' . urldecode(http_build_query($params))), true);
+		        if (isset($userInfo['response'][0]['uid'])) {
+		            $userInfo = $userInfo['response'][0];
+		            $result = true;
+		        }
+		    }
+	    
+	    if (vk_zapros($userInfo['first_name'],$userInfo['uid'])==true) {
+	    	$_SESSION['username']=$userInfo['first_name'];
+	    	$_SESSION['img']=$userInfo['photo_big'];
+	    	redirect("welcom");
+	    }
+	    else{
+	    	$_SESSION['username']=$userInfo['first_name'];
+	    	$_SESSION['img']=$userInfo['photo_big'];
+	    	redirect("welcom");
+	    }
+	}
 	}
 		
 

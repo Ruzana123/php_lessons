@@ -21,17 +21,12 @@
 	    			<li><a href="?action=todos" title="Task" style="font-size:18px;"> Task </a><br></li>
 				</ul>
 				<?php 	
-					$client_id = CLIENT_ID; // ID приложения
-	    $client_secret = CLIENT_SERCET; // Защищённый ключ
-	    $redirect_uri = REDIRECT_URI; // Адрес сайта
-
+				 $params = array(
+			        'client_id'     => CLIENT_ID,
+			        'redirect_uri'  => REDIRECT_URI,
+			        'response_type' => 'code'
+			    );
 				    $url = 'http://oauth.vk.com/authorize';
-
-				    $params = array(
-				        'client_id'     => $client_id,
-				        'redirect_uri'  => $redirect_uri,
-				        'response_type' => 'code'
-				    );
 
 				    echo $link = '<p><a href="' . $url . '?' . urldecode(http_build_query($params)) . '">Вхід через ВК</a></p>';
 
