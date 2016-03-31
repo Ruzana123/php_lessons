@@ -54,17 +54,29 @@
 	function name_category(){
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	 		$name=$_POST['category_name'];
-			edit_category($_GET['id_category'],$name);
-			redirect("todos");
+	 		if (empty($name)){
+			    add_errors('Введіть назву категорії');
+			    show_template("print_error");
+			}
+			else{
+				edit_category($_GET['id_category'],$name);
+				redirect("todos");
+			}
 		}
 	}
 
 	function new_task_name(){
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	 		$name=$_POST['task_name'];
-	 		$user_mas=request_user_id(get_username());
-			edit_task($_GET['id'],$name,$_GET['category'],$user_mas['id']);
-			redirect_new("task","id_category",$_GET['category']);
+	 		if (empty($name)){
+			    add_errors('Введіть завдання');
+			    show_template("print_error");
+			}
+			else{
+				$user_mas=request_user_id(get_username());
+				edit_task($_GET['id'],$name,$_GET['category'],$user_mas['id']);
+				redirect_new("task","id_category",$_GET['category']);
+			}
 		}
 	}
 
