@@ -7,9 +7,12 @@
 </head>
 <body>
 	<?php 
-		$client_id = '5384665'; // ID приложения
+		$client_id = CLIENT_ID; // ID приложения
+	    $client_secret = CLIENT_SERCET; // Защищённый ключ
+	    $redirect_uri = REDIRECT_URI; // Адрес сайта
+		/*$client_id = '5384665'; // ID приложения
 	    $client_secret = 'Zs3mdTvrB4B2FoemXkFl'; // Защищённый ключ
-	    $redirect_uri = 'http://student4.e-u.org.ua/task_log/login_reg/index.php?action=vk'; // Адрес сайта
+	    $redirect_uri = 'http://student4.e-u.org.ua/task_log/login_reg/index.php?action=vk'; // Адрес сайта*/
 
 	    $url = 'http://oauth.vk.com/authorize';
 

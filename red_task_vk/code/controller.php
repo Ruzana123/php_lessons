@@ -117,6 +117,9 @@
 	        }                      
 	    }
 	        form_logout_action();
+	        if(isset($_SESSION['img'])) { 
+	        	 form_logout_action_vk();
+	        }
 			if(!is_logged_in_new()){
 		        redirect('login_redirect');
 	        }
@@ -162,6 +165,14 @@
 	function form_logout_action(){
 		if(isset($_GET['logout'])) { 
 	        unset($_SESSION['username']);
+	        header('Location: '. DOMEN ."index.php");
+			die();
+	    }
+	}
+
+	function form_logout_action_vk(){
+		if(!isset($_GET['logout'])) { 
+	        unset($_SESSION['username']);
 	        unset($_SESSION['img']);
 	        header('Location: '. DOMEN ."index.php");
 			die();
@@ -176,5 +187,10 @@
 	function show_err_action(){  
 		show_template("page404");
 	}
+
+	function vk_login(){
+
+	}
+		
 
 ?>
