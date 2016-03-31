@@ -116,16 +116,13 @@
 	            $_SESSION['username'] = $us;          
 	        }                      
 	    }
-	        form_logout_action();
-	        if(isset($_SESSION['img'])) { 
-	        	 form_logout_action_vk();
-	        }
 			if(!is_logged_in_new()){
 		        redirect('login_redirect');
 	        }
 	        else{
 	           	redirect('welcom');
 	        }
+
 	}
 
 	function reg(){
@@ -163,22 +160,11 @@
 	}
 
 	function form_logout_action(){
-		if(isset($_GET['logout'])) { 
-	        unset($_SESSION['username']);
-	        header('Location: '. DOMEN ."index.php");
-			die();
-	    }
+        unset($_SESSION['username']);
+        unset($_SESSION['img']);
+        header('Location: '. DOMEN ."index.php");
+		die();
 	}
-
-	function form_logout_action_vk(){
-		if(!isset($_GET['logout'])) { 
-	        unset($_SESSION['username']);
-	        unset($_SESSION['img']);
-	        header('Location: '. DOMEN ."index.php");
-			die();
-	    }
-	}
-
 
 	function show_reg_action(){ 
 		reg();
@@ -189,7 +175,7 @@
 	}
 
 	function vk_login(){
-		
+
 	    $params = array(
 	        'client_id'     => CLIENT_ID,
 	        'redirect_uri'  => REDIRECT_URI,
