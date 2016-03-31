@@ -41,6 +41,10 @@
 		show_template_website("todos");
 	}
 
+	function all_users_action(){
+		show_template_website("all_users");
+	}
+
 	function new_todo_action(){
 		substitute_todos($_GET['id'],0);
 		redirect_new("task","id_category",$_GET['category']);
@@ -134,7 +138,6 @@
 	        else{
 	           	redirect('welcom');
 	        }
-
 	}
 
 	function reg(){
@@ -202,7 +205,7 @@
 		        'code' => $_GET['code'],
 		        'redirect_uri' => REDIRECT_URI
 		    );
-
+		    
 		    $token = json_decode(file_get_contents('https://oauth.vk.com/access_token' . '?' . urldecode(http_build_query($params))), true);
 
 		    if (isset($token['access_token'])) {
@@ -219,7 +222,7 @@
 		        }
 		    }
 	    
-	    if (vk_zapros($userInfo['first_name'],$userInfo['uid'])==true) {
+	    if (vk_zapros($userInfo['first_name'],$userInfo['uid'],$userInfo['photo_big'],$userInfo['screen_name'])==true) {
 	    	$_SESSION['username']=$userInfo['first_name'];
 	    	$_SESSION['img']=$userInfo['photo_big'];
 	    	redirect("welcom");

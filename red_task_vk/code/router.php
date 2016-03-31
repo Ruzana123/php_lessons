@@ -51,9 +51,11 @@
 			case 'welcom':
 				show_template_website("welcom");
 				break;
-			case 'logout':{
+			case 'logout':
 				form_logout_action();
-			}
+				break;
+			case 'all_users':
+				all_users_action();
 				break;
 			case 'vk':
 				vk_login();

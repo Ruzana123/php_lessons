@@ -19,6 +19,10 @@
 					<li><a href="?action=login" title="Login" style="font-size:18px;"> Login </a><br></li>
 	    			<li><a href="?action=reg" title="Reg" style="font-size:18px;"> Registration </a><br></li>
 	    			<li><a href="?action=todos" title="Task" style="font-size:18px;"> Task </a><br></li>
+	    			<?php if (is_admin()){
+	    				?><li><a href="?action=all_users" title="All users" style="font-size:18px;"> All users </a><br></li><?php
+	    			}?>
+	    				
 				</ul>
 				<?php 	
 				 $params = array(

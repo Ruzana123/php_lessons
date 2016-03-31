@@ -37,7 +37,27 @@ function bd_zapros($email,$pas){
     } 
 }
 
-function vk_zapros($vk_name,$vk_id){
+function is_admin(){
+    global $conn;  
+    $nickname=$_SESSION['username'];
+    try {
+        $stmt = $conn->prepare("SELECT * FROM `users` WHERE `nick`=:nick"); 
+        $stmt->bindParam(':nick', $nickname); 
+        $stmt->execute();
+        $user = $stmt->fetch();
+        if ($user['admin']==1) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    } 
+}
+
+function vk_zapros($vk_name,$vk_id,$vk_img,$vk_link){
     global $conn;
      try {
         $stmt = $conn->prepare("SELECT * FROM `users` WHERE `vk_name`=:vk_name AND `vk_id`=:vk_id"); 
@@ -46,9 +66,11 @@ function vk_zapros($vk_name,$vk_id){
         $stmt->execute();
         $user = $stmt->fetch();
         if (empty($user)) {
-                $stmt = $conn->prepare("INSERT INTO `users`(`vk_name`, `vk_id`,`nick`) VALUES (:vk_name,:vk_id,:vk_name)"); 
+                $stmt = $conn->prepare("INSERT INTO `users`(`vk_name`, `vk_id`,`nick`,`vk_img`,`vk_link`) VALUES (:vk_name,:vk_id,:vk_name,:vk_img,:vk_link)"); 
                 $stmt->bindParam(':vk_name', $vk_name); 
                 $stmt->bindParam(':vk_id', $vk_id); 
+                $stmt->bindParam(':vk_img', $vk_img); 
+                $stmt->bindParam(':vk_link', $vk_link); 
                 $stmt->execute();
                 return false;
         }
@@ -71,6 +93,19 @@ function vk_zapros($vk_name,$vk_id){
             $stmt->execute();
             $user_mas = $stmt->fetch(PDO::FETCH_ASSOC);
             return $user_mas;
+        }
+        catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        } 
+    }
+
+    function all_users(){
+        global $conn;
+        try {
+            $stmt = $conn->prepare("SELECT * FROM `users`"); 
+            $stmt->execute();
+            $all_users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $all_users;
         }
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
