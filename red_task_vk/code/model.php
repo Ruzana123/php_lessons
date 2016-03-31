@@ -196,14 +196,14 @@ function vk_zapros($vk_name,$vk_id){
         } 
     }
 
-    function edit_task($name,$list_id,$id_user,$id_task){
+    function edit_task($id_task, $name,$list_id,$id_user){
         global $conn;
         try {
-            $stmt = $conn->prepare("UPDATE `todos` SET `todo`=:name WHERE `id_list` = :list_id AND `id_user`=:id_user AND `id`=:id_task");
+            $stmt = $conn->prepare("UPDATE `todos` SET `todo`=:name WHERE `id`=:id_task AND `id_list` = :list_id AND `id_user`=:id_user");
+            $stmt->bindParam(':id_task',$id_task);
             $stmt->bindParam(':name',$name); 
             $stmt->bindParam(':list_id',$list_id);
             $stmt->bindParam(':id_user',$id_user);
-            $stmt->bindParam(':id_task',$id_task);
             $stmt->execute();
             add_good('Task renamed');
         }

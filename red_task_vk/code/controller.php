@@ -59,11 +59,11 @@
 		}
 	}
 
-	function name_task_name(){
+	function new_task_name(){
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	 		$name=$_POST['task_name'];
 	 		$user_mas=request_user_id(get_username());
-			edit_task($name,$_GET['category'],$user_mas['id'],$_GET['id']);
+			edit_task($_GET['id'],$name,$_GET['category'],$user_mas['id']);
 			redirect_new("task","id_category",$_GET['category']);
 		}
 	}
