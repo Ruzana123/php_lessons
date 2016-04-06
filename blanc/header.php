@@ -3,13 +3,15 @@
 	<!--head-->
 	<head>
 		<meta charset="UTF-8">
-		<title>Classico</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Blanc</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.5">
 		<!-- bootstrap.min -->
 		<link href="css/bootstrap.min.css" rel="stylesheet" >
 		<!-- fonts -->
 		<link href='https://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<!-- JqueryUI -->
+		<link rel="stylesheet" href="css/lib/jqueryui.css">
 		<!-- style.css -->
 		<link href="css/style.css" rel="stylesheet" >
 		<!-- responsive.css -->
@@ -20,15 +22,15 @@
 	<body>
 		<!--header-->
 		<header class="site-header">
-			<!-- container -->
+			<!-- container --> 
 			<div class="container"> 
 				<!-- header-bar -->
-				<div class="col-md-12 header-bar">
+				<div class="header-bar">
 					<!-- header-bar-content -->
 					<div class="header-bar-content">
 						<!-- secondary-left -->
 						<div class="secondary-left">
-							<span>Hello, we are Classico Commerce from London, UK</span>
+							<span>Hello, we are Blanc eCommerce from London, UK</span>
 						</div>
 						<!--end secondary-left -->
 						<!--secondary-right-navigation -->
@@ -55,21 +57,23 @@
 				<!-- header-content -->
 				<div class="row header-content">
 					<div class="col-md-12">
-						<div class="col-md-4">
+						<div class="col-md-3 title-banner">
 							<a href="#" class="site-title">Blanc</a>
 						</div>
-						<div class="col-md-5">
-							<form class="form-search" method="GET" class="product-search">
-								<input type="search" name="blanc-search" class="search-field" placeholder="Search for product">
+						<div class="col-md-6 site-search">
+							<div class="widget-product-search">
+								<form role="search" method="GET" class="blanc-product-search">
+									<!-- input -->  
+									<input type="search" name="blanc-search" id="blanc-product-search-field" class="search-field" placeholder="Search for product">
 									<!-- select -->
-										<select name="categories" id="categories" class="jquery-ui-select">
-											<option selected="selected">All categories</option>
-											<option>Category 2</option>
-											<option>Category 3</option>
-									    </select>
-									<!-- end select -->
+									<select name="categories" id="categories" class="jquery-ui-select">
+										<option selected="selected">All categories</option>
+										<option>Category 2</option>
+										<option>Category 3</option>
+									</select>
 									<button type="submit"><i class="fa fa-search"></i></button>
-							</form>
+								</form>
+							</div>
 						</div>
 						<div class="col-md-3 site-header-cart">
 							<a href="#"><i class="fa fa-shopping-cart"></i><span>Shopping Bag </span></a><span class="dark-price">$255,99</span>
@@ -97,7 +101,7 @@
 							<!-- navbar-collapse -->
 						    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						      	<ul class="nav navbar-nav">
-							        <li class="active"><a href="#">HOME</a></li>
+							        <li class="active"><a href="blanc.php">HOME</a></li>
 							        <li class="dropdown">
 						          	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SHOP<span class="caret"></span></a>
 						          	<ul class="dropdown-menu"><!-- dropdown-menu -->
@@ -149,8 +153,9 @@
 							            <li><a href="#">One more separated link</a></li>
 				          			</ul>
 				        		</li>
-						       <li><a href="#">CHECKOUT</a></li>
-						       <li><a href="#">BUY THEME!</a></li>
+						       <li><a href="product-classic.php">PRODUCT</a></li>
+						       <li><a href="cart.php">CART</a></li>
+						       <li><a href="contact-us.php">CONTACT US</a></li>
 				      		</ul>	<!--end navbar-nav -->
 			    		</div><!-- end navbar-collapse -->
 			  		</div><!-- end container-fluid -->

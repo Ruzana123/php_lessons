@@ -1,0 +1,128 @@
+.navigation-in-page{
+	padding-bottom: 30px;
+	margin-top: 12px;
+	border-bottom: 1px solid @border-color;
+	li{
+		display: inline-block;
+		color: #8c8c8c;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 24px;
+	}
+	a{
+		color: #8c8c8c;
+	}
+}
+.map{
+	filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    transition: all 0.2s linear;
+    margin-top: 35px;
+    margin-bottom: 40px;
+    &:hover{
+		filter: grayscale(0);
+	    -webkit-filter: grayscale(0);
+	    -moz-filter: grayscale(0);
+    }
+}
+.contact-content{
+	margin-bottom: 50px;
+}
+.contact-us-form{
+	input{
+		height: 45px;
+		border: 1px solid @border-color;
+		width: 47%;
+		margin-bottom: 20px;
+
+	    padding: 14px 15px;
+	    color: #3d3d3d;
+	   	font-size: 14px;
+	    font-weight: 300;
+		&:nth-child(2){
+			float: right;
+		}
+		&:nth-child(4){
+			float: right;
+		}
+	}
+	textarea{
+		border: 1px solid @border-color;
+		color: #3d3d3d;
+		padding: 14px 16px;
+		font-size: 14px;
+		margin-bottom: 18px;
+	}
+}
+.contact-info{
+	h3{
+	 	color: #3d3d3d;
+		font-size: 24px;
+		font-weight: 400;
+		line-height: 30px;
+		margin-bottom: 17px;
+		margin-top: -6px;
+	}
+	p{
+		color: #8c8c8c;
+		font-size: 14px;
+		font-weight: 300;
+		margin-bottom: 25px;
+	}
+	span{
+		color: #a6a6a6;
+		font-size: 14px;
+		line-height: 26px;
+		display: block;
+	}
+	.contact-us-details{
+		border-bottom: 1px solid @border-color;
+		border-top: 1px solid @border-color;
+		padding-top: 13px;
+    	padding-bottom: 18px;
+	}
+	a{
+		font-size: 15px;
+		line-height: 26px;
+	}
+	.website{
+		color: @active-color-red;
+	}
+	.icons-social-networks{
+		margin-top:18px;
+		li{
+			display: inline-block;
+			i{
+				color: #a8a8a8;
+				font-size: 18px;
+				font-weight: 400;
+				padding-right: 20px;
+				transition: all 0.2s linear;
+				&:hover{
+					color: @active-color-red;
+				}
+			}	
+			a{
+				transition: all 0.2s linear;
+			}		
+		}
+	}
+}
+.button-send{
+	transition: all 0.2s linear;
+	opacity: 0.9;
+	letter-spacing: 1.5px;
+	background-color: #3d3d3d;
+	color: white;
+	border: none;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 45px;
+	text-transform: uppercase;
+	padding-right: 30px;
+    padding-left: 30px;
+	&:hover{
+		background-color: @active-color-red;
+	}
+}
