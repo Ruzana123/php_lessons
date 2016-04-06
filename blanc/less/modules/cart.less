@@ -115,6 +115,9 @@
 		a{
 			color: #3d3d3d;
 			font-weight: 600;
+			&:hover{
+				color: @active-color-red;	
+			}
 		}
 		span{
 			border: 1px solid #ddd;
@@ -203,14 +206,43 @@
 	.ui-widget-content{
 		border: 1px solid #3d3d3d;
 	}
+	.ui-button-text{
+		display: none;
+	}
+	.ui-spinner a.ui-spinner-button{
+		border-color: #3d3d3d;
+		padding-right: 30px;
+		&:last-child{
+			border-top: 1px solid #3d3d3d;
+		}
+	}
+	.ui-spinner-up:before {
+	    content: '+';
+	    font-size: 16px;
+	    font-weight: 400;
+	    margin-left: 13px;
+	    color: black;
+	}
+	.ui-spinner-down:before {
+	    content: '–';
+	    color: black;
+	    margin-left: 13px;
+	    font-size: 16px;
+	    font-weight: 400;
+	}
+	.ui-spinner-down {
+		border-top: 1px solid #3d3d3d;
+	}
 	.spinner{
 		color: black;
+		margin: 0;
 		font-size: 18px;
 		font-weight: 700;
 		line-height: 30px;
 	}
 	input{
 		height: 40px;
+		width: 80px;
     	padding-left: 20px;
 	}
 

@@ -300,6 +300,9 @@ input[type=search]::-webkit-input-placeholder {
   color: #3d3d3d;
   font-weight: 600;
 }
+.checkout .calculate a:hover {
+  color: #d14b4b;
+}
 .checkout .calculate span {
   border: 1px solid #ddd;
   padding: 28px 45px 28px 28px;
@@ -380,14 +383,43 @@ input[type=search]::-webkit-input-placeholder {
 .td-qty .ui-widget-content {
   border: 1px solid #3d3d3d;
 }
+.td-qty .ui-button-text {
+  display: none;
+}
+.td-qty .ui-spinner a.ui-spinner-button {
+  border-color: #3d3d3d;
+  padding-right: 30px;
+}
+.td-qty .ui-spinner a.ui-spinner-button:last-child {
+  border-top: 1px solid #3d3d3d;
+}
+.td-qty .ui-spinner-up:before {
+  content: '+';
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 13px;
+  color: black;
+}
+.td-qty .ui-spinner-down:before {
+  content: '–';
+  color: black;
+  margin-left: 13px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.td-qty .ui-spinner-down {
+  border-top: 1px solid #3d3d3d;
+}
 .td-qty .spinner {
   color: black;
+  margin: 0;
   font-size: 18px;
   font-weight: 700;
   line-height: 30px;
 }
 .td-qty input {
   height: 40px;
+  width: 80px;
   padding-left: 20px;
 }
 .navigation-in-page {
@@ -523,6 +555,12 @@ footer .navbar-default {
 }
 .footer-widgets {
   margin-bottom: 53px;
+}
+.footer-widgets button span {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 5px 22px;
 }
 .footer-widget h2 {
   color: black;
