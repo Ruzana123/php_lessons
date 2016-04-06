@@ -9,11 +9,11 @@
 				<li><i class="fa fa-angle-right"></i></li>
 				<li><a href="#">Pages</a></li>
 				<li><i class="fa fa-angle-right"></i></li>
-				<li>About us</li>
+				<li><a href="#">About us</a></li>
 			</ul>
 			<!--end navigation-in-page -->
 			<!-- product-information -->
-			<div class="row product-information">
+			<div class="row block-product-information">
 				<!-- product-images -->
 				<div class="col-md-6 product-images">
 					<div class="col-md-2 mini-image">
@@ -60,10 +60,11 @@
 					</div>
 					<div class="color"><!-- color -->
 						<span>Color</span>
-						<span>White with black</span>
+						<span class="color-selection">White with black</span>
 					</div>
 					<div class="quantity"><!-- quantity -->
 						<span>Quantity:</span>
+						<input type="number" id="spinner" name="value" value="1" min="1" max="9999">					
 					</div>
 					<div class="add-to-cart"><!-- add-to-cart -->
 						<button type="submit" class="buttons_added">Add to cart</button>

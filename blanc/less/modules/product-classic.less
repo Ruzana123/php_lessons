@@ -1,23 +1,31 @@
-.product-information{
+.block-product-information{
 	margin-top: 60px;
 	margin-bottom: 95px;
 	.mini-image{
-		padding-left: 0;
-		padding-right: 0;
+		padding: 0;
+		margin-right: -15px;
+		margin-left: -15px;
 		a{
 			display: block;
 		}
 		li{
-			margin-bottom: 12px;
+			margin-bottom: 10px;
 		}
 	}
 }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+ -webkit-appearance: none; 
+ margin: 0; 
+}
+
 .entry-summary{
 	text-align: left;
 	h2{
 		color: #3d3d3d;
 		font-size: 30px;
 		font-weight: 400;
+		margin-top: -5px;
 		line-height: 47px;
 	}
 	a{
@@ -26,6 +34,9 @@
 		font-weight: 400;
 		line-height: 32px;
 		display: block;
+		&:hover{
+			color: @active-color-red;
+		}
 	}
 	p{
 		color: grey;
@@ -84,23 +95,83 @@
 	}
 }
 .color{
-	margin-bottom: 12px;
+	margin-bottom: 15px;
+	.color-selection{
+		color: #4d4d4d;
+		padding: 5px 125px 5px 15px;
+		display: inline-block;
+		font-size: 12px;
+		font-weight: 500;
+		line-height: 24px;
+		border: 1px solid #d9d9d9;
+	}	
 	span{
 		color: #313131;
+		display: block;
 		font-size: 14px;
 		font-weight: 600;
 		line-height: 30px;
 	}
 }
 .quantity{
-	margin-bottom: 15px;
+	.ui-spinner-up {
+	    position: absolute;
+	    right: 10px;
+	    display: block;
+	}
+	.ui-spinner-down {
+	    position: absolute;
+	    left: 10px;
+	}
+	
+	.ui-spinner a.ui-spinner-button{
+		border: none;
+		top: 10%;
+		height: 35px;
+		color: #4d4d4d;
+		font-weight: 100;
+	}
+	.ui-spinner .ui-icon{
+		top: 70%;
+	}
+	.ui-spinner-up:before {
+	    content: '+';
+	    border-left: 1px solid @border-color;
+	    font-size: 28px;
+	    font-weight: 100;
+	    color: #4d4d4d;
+	}
+	.ui-spinner-down:before {
+	    content: '-';
+	    border-right: 1px solid @border-color;
+	    color: #4d4d4d;
+	    padding-right: 5px;
+	    font-size: 28px;
+	    font-weight: 100;
+	}
+
+	margin-bottom: 25px;
 	span{
+		display: block;
 		color: #313131;
 		font-size: 14px;
+		width: 118px;
+		border: none;
 		font-weight: 600;
-		line-height: 30px;
+		line-height: 28px;
+	}
+	input{
+		text-align: center;
+		height: 37px;
+		width: 114px;
+		border: 1px solid @border-color;
+		color: #4d4d4d;
+		font-size: 12px;
+		font-weight: 500;
+		line-height: 24px;
 	}
 }
+
 .add-to-cart{
 	font-size: 13px;
 	font-weight: 400;
@@ -159,6 +230,9 @@
 			display: inline-block;
 			a{
 				padding-left: 10px;
+				&:hover{
+					color: @active-color-red;
+				}
 			}
 		}
 	}

@@ -28,11 +28,11 @@
 					<tbody>
 						<?php for ($i=0; $i <4 ; $i++) { ?>
 							<tr class="line">
-								<td class="td-exe"><button type="submit" class="button-exe">X</button></td>
-								<td class="td-product"><a href="#"><img src="images/assets/img.png" alt=""></a><a href="#">Brown Leather Driving Gloves for Men</a></td>
+								<td class="td-exe"><button type="submit" class="button-exe"><img src="images/assets/x.png" alt=""></button></td>
+								<td class="td-product"><a href="#"><img src="images/assets/img.png" alt=""></a><a href="#" class="name-product">Brown Leather Driving Gloves for Men</a></td>
 								<td class="cost td-price">$321.00</td>
 								<td class="td-qty">
-									<input type="number" id="spinner-line" name="value" value="04" min="1" max="9999">
+									<input type="number" class="spinner" name="value" value="1" min="1" max="9999">
 								</td>
 								<td class="cost td-total">$321.00</td>
 							</tr> 
@@ -41,6 +41,60 @@
 				</table>
 			</div>
 			<!--end table-main -->
+			<!-- checkout -->
+			<div class="row checkout">
+				<div class="col-md-6"> 
+					<!-- coupon -->
+					<div class="coupon">
+						<h2>Have a coupon?</h2>
+						<form action="" class="coupon-form">
+							<input type="text" placeholder="Enter coupon code"> 
+							<button type="submit" class="button-send coupon-btn">Add coupon</button> 
+						</form>
+					</div>
+					<!--end coupon -->
+					<!-- calculate -->
+					<div class="calculate">
+						<h2>Calculate Shopping</h2>
+						<span><a href="#">Click here </a>to calculate shipping fee, based on your location or shipping address.</span>
+					</div>
+					<!-- calculate -->					
+				</div>
+				<div class="col-md-6"> 
+					<!-- total-table -->
+					<table class="total-table">
+						<thead>
+						<tr>
+							<th colspan="2">Shopping Bag Total</th>
+						</tr>
+					</thead>
+						<tbody>
+							<tr>
+								<td>Subtotal</td>
+								<td class="subtotal">$321.00</td>
+							</tr> 
+							<tr>
+								<td>Items</td>
+								<td class="items">Freeshipping</td>
+							</tr> 
+							<tr>
+								<td>Total</td>
+								<td class="total">$321.00</td>
+							</tr> 
+						</tbody>
+						<tfoot>
+							<tr class="btn-cart-line">
+								<td>
+									<a href="#" class="btn-cart first-btn button-send">Update cart</a>
+								</td>
+								<td><a href="#" class="btn-cart button-send">Continue to checkout</a></td>
+							</tr>
+						</tfoot>
+					</table>
+					<!--end total-table -->
+				</div>
+			</div>
+			<!--end checkout -->
 		</div>
 		<!--end main-cart -->
 	</div>
