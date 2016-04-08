@@ -28,8 +28,8 @@
 					<tbody>
 						<?php for ($i=0; $i <4 ; $i++) { ?>
 							<tr class="line">
-								<td class="td-exe"><button type="submit" class="button-exe"><img src="images/assets/x.png" alt=""></button></td>
-								<td class="td-product"><a href="#"><img src="images/assets/img.png" alt=""></a><a href="#" class="name-product">Brown Leather Driving Gloves for Men</a></td>
+								<td class="td-exe"><a href="#" class="button-exe"><img src="images/assets/x.png" alt=""></a></td>
+								<td class="td-product"><a href="#"><img src="images/assets/img.png" alt="" width="94" height="106"></a><a href="#" class="name-product">Brown Leather Driving Gloves for Men</a></td>
 								<td class="cost td-price">$321.00</td>
 								<td class="td-qty">
 									<input type="number" class="spinner" name="value" value="1" min="1" max="9999">

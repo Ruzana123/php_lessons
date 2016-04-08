@@ -1,31 +1,47 @@
+/* home */
 .widget-menu{
     border: 3px solid #f2f2f2;
 }
+
 .widget-title{
     color: #333;
    	font-size: 16px;
 	font-weight: 600;
     text-transform: uppercase;
     background-color: #f2f2f2;
-    padding: 27px;
-    letter-spacing: 1px;
+    padding: 26px;
+    letter-spacing: 0.2px;
     text-align: center;
 }
+
+.category-item{
+	a:hover{
+		color: black;
+	}
+}
+
 .product-categories{
 	li{
 		color: #747474;
 		font-size: 14px;
+		&:last-child{
+	    	a{
+	    		border: none;
+	    	}
+		}
 	}
 	a{
 		padding: 19px 23px;
 	    display: block;
 	    color: #737373;
 	    border-bottom: 1px solid @border-color;
-	}
+	}	
 }
+
 .widget {
     margin-bottom: 38px;
 }
+
 .widget-products{
 	.widget-title{
 		background-color:  white;
@@ -40,6 +56,7 @@
     	border-bottom: 1px solid @border-color;
 	}
 }
+
 .widget-nimi-product{
 	li{
 		padding: 27px 0 30px 0;
@@ -80,28 +97,33 @@
 		font-weight: 400;
 		transition: all 0.2s linear;
 		&:hover{
-			color: @active-color-red;
+			color: black;
 		}
 	}
 	h2{
 		font-size: 30px;
 		color: #333;
+		letter-spacing: 2.5px;
 		font-weight: 500;
 		margin-bottom: 5px;
 	}
 }
+
 .mini-banner{
 	a{
 		display: block;
 	}
 }
+
 .banners{
-	margin-bottom: 65px;
+	margin-bottom: 60px;
 }
+
 .big-banner{
 	position: relative;
 	margin-bottom: 20px;
 }
+
 .banner-content{
 	position: absolute;
     top: 50%;
@@ -126,6 +148,7 @@
     }
     .banner-price {
     	margin-bottom: 25px;
+    	letter-spacing: 0px;
     	sup{
 			font-size: 18px;
 		    position: relative;
@@ -150,37 +173,51 @@
 
 .main-banner-content{
     font-weight: 300;
-    top:52%;
+    top:50%;
     letter-spacing: 1px;
     h2{
     	letter-spacing: 5px;
     	font-size: 48px;
+    	margin-bottom: 25px;
     }
     p{
     	font-size: 16px;
+    	letter-spacing: 0;
+    	margin-bottom: 18px;
+    }
+    h3{
+    	margin-bottom: 5px;
+    	margin-top: 27px;
     }
 } 
+
 .block-title{
 	text-align: center;
 	margin-bottom: 40px;
 	span{
 		font-size: 16px;
 		font-weight: 400;
+		letter-spacing: 0.5px;
+		line-height: 20px;
 	}
 	h2{
 		color: #3d3d3d;
 		font-size: 36px;
+		letter-spacing: 1.5px;
 		font-weight: 600;
 		text-transform: uppercase;
 	}
 }
+
 .product{
 	margin-bottom: 35px;
 }
+
 .product-img{
 	margin-bottom: 9px;
 	display: block;
 }
+
 .link-product{
 	transition: all 0.2s linear;
 	display: block;
@@ -191,19 +228,19 @@
 		}
 	}
 }  
+
 .product-information{
 	text-align: center;
 	.category{
 		font-size: 13px;
 		color: #999;
-		font-size: 13px;
 		font-weight: 500;
 		line-height: 22px;
 	}
 	a{
 		transition: all 0.2s linear;
 		&:hover{
-			color: @active-color-red;
+			color: black;
 		}
 	}
 	h3{
@@ -219,12 +256,14 @@
 		font-weight: 500;
 	}
 }
+
 .advert-banner{
 	margin-top: 30px;
 	a{
 		display: block;
 	}
 }
+
 .site-content{
 	margin-bottom: 88px;
 }

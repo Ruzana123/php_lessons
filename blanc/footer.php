@@ -52,7 +52,7 @@
 						<p>Enter email and we'll send you a coupon with 10% off your next order. Add any text here. Lorem ipsum sit amet.</p>
 						<form method="POST">
 							<input type="text" name="username" placeholder="Your Name (required)">
-							<button type="submit" class="button button-red">Sign up</button>
+							<button type="submit" class="button button-footer">Sign up</button>
 						</form>
 					</div>	
 					<!--end footer-widget -->
@@ -114,9 +114,12 @@
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/jquery.magnific-popup.js"></script>
 		<script src="js/jquery.vide.min.js"></script>
+		<script src="js/swiper.jquery.min.js"></script>
+		<script src="js/swiper.min.js"></script>
 		<script src="js/owl.carousel.js"></script>
 		<script src="js/jquery-ui.js"></script>
 		<script src="js/main.js"></script>
+
 
 	</body>
 </html>
