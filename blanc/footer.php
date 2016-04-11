@@ -4,7 +4,7 @@
 			<div class="container">
 				<div class="row footer-widgets">
 					<!-- footer-widget -->
-					<div class="col-md-3 footer-widget">
+					<div class="col-md-3 col-sm-6 col-xs-12 footer-widget">
 						<h2>Blanc</h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 						<div class="contact-us-details">
@@ -15,9 +15,9 @@
 						</div>
 					</div>	
 					<!--end footer-widget -->	
-					<div class="col-md-3 footer-widget">
+					<div class="col-md-3 col-sm-6 col-xs-12 footer-widget widget-pages">
 						<h3>Useful links</h3>
-						<ul class="widget-pages">
+						<ul>
 							<li><a href="#">Track Your Order</a></li>
 							<li><a href="#">Contact Us</a></li>
 							<li><a href="#">Frequently Asked Questions</a></li>
@@ -28,7 +28,7 @@
 					</div>	
 					<!--end footer-widget -->
 					<!-- footer-widget -->
-					<div class="col-md-3 footer-widget">
+					<div class="col-md-3 col-sm-6 col-xs-12 footer-widget">
 						<h3>Recent post</h3>
 						<ul class="recent-post">
 							<li>
@@ -47,7 +47,7 @@
 					</div>	
 					<!--end footer-widget -->
 					<!-- footer-widget -->
-					<div class="col-md-3 footer-widget">
+					<div class="col-md-3 col-sm-6 col-xs-12 footer-widget">
 						<h3>Newsletter</h3>
 						<p>Enter email and we'll send you a coupon with 10% off your next order. Add any text here. Lorem ipsum sit amet.</p>
 						<form method="POST">
@@ -63,9 +63,9 @@
 			<!-- footer-main.footer-menu -->
 			<div class="container footer-main">
 				<div class="row">
-					<div class="col-md-7 footer-menu">					
+					<div class="col-md-6 col-sm-12 footer-menu footer-navigation">					
 						<!-- footer-navigation -->
-						<ul class="footer-navigation">
+						<ul>
 							<li class="nav-element">
 								<a href="#">Home</a>
 							</li>
@@ -91,7 +91,7 @@
 					</div>
 				
 					<!-- payment-methods -->
-					<div class="col-md-5 payment-methods">
+					<div class="col-md-6 col-sm-12 payment-methods">
 							<a href="#"><img src="images/assets/cart1.png" alt=""></a>
 							<a href="#"><img src="images/assets/cart2.png" alt=""></a>
 							<a href="#"><img src="images/assets/cart3.png" alt=""></a>

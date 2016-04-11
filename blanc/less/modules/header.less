@@ -23,6 +23,10 @@
     }
 }
 
+.site-header-cart{
+	padding-right: 0;
+}
+
 .secondary-menu{
 	li{
 		border-right: 1px solid @border-color;
@@ -46,6 +50,9 @@
 
 .title-banner{
 	padding-left: 0;
+	a{
+		display: block;
+	}
 }
 
 .site-title {
@@ -79,15 +86,38 @@
 	margin: 0 auto;
 	display: table;
 	li a{
-		padding-top: 24px;
-		padding-bottom: 24px;
+		padding: 24px 25px;
 		font-size: 13px;
 		font-weight: 600;
 		text-transform: uppercase;
 		transition: all 0.2s linear;
 	}
+	.dropdown-menu{
+		padding: 0;
+		li a{
+			padding: 18px 18px;
+		    display: block;
+		    color: #737373;
+		    border-bottom: 1px solid #e6e6e6;
+			font-size: 14px;
+			font-weight: 300;
+			text-transform: none;
+		}
+	}
 }
-
+.dropdown-toggle{
+	span{
+		display: none;
+	}
+	&:before{
+		font-family: FontAwesome;
+		content: "\f107";
+		position: absolute;
+		right: 12px;
+		color: #a7a7a7;
+		font-size: 11px;
+	}
+}
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
 	background-color: transparent;
 }
@@ -102,6 +132,7 @@
 
 .navbar-default{
 	background-color: white;
+	margin-bottom: 0px;
 }
 
 .navbar-default .navbar-nav>li>a{
@@ -114,14 +145,12 @@
 
 /* site-search */
 .site-search {
-	form.blanc-product-search {
-		> * {
-			display: inline-block;
-			height: 45px;
-			border: 2px solid #f2f2f2;
-		    color: #999;		    
-		    font-weight: 400;
-		}
+	.ui-selectmenu-button .ui-selectmenu-text{		
+		display: inline-block;
+		height: 45px;
+		border: 2px solid #f2f2f2;
+	    color: #999;		    
+	    font-weight: 400;		
 	}
 	.ui-button-text{
 		font-size: 14px;
@@ -134,9 +163,8 @@
 	.ui-selectmenu-button {
 		font-family: 'Ralewey', sans-serif;
 		float: left;
+		border:none;
 		width: 132px !important;
-		border-right: 0 !important;
-		border-left: 0 !important;
 		&:focus {
 			outline: none;
 		}
@@ -145,6 +173,7 @@
 			color: #999;
 			font-size: 12px;
 			font-weight: 400;
+			width: 133px;
 		}
 		.ui-icon {
 			text-indent: 0;
@@ -197,7 +226,7 @@
 		background-color: #fff;
 		border: 1px solid @border-color;
 		position: relative;
-		top: -1px;
+		top: -3px;
 	}
 	.ui-menu-item {
 		list-style-image: none;
@@ -218,5 +247,130 @@
 		border: none;
 		color: @active-color-red;
 		margin: inherit;
+	}
+}
+.ui-widget{
+	font-size: 14px;
+}
+
+/* header-responsive */
+@media only screen and (max-width: 1200px){
+	.site-search input {
+		width: 263px;
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	.site-search input {
+		width: 260px;
+	}
+	.site-header-cart{
+		padding-right: 15px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px){
+	.site-search input{
+		width: 150px;
+	}
+	.site-header-cart{
+		font-size: 11px;
+	}
+	.navbar-nav li a{
+		padding: 24px 16px;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	.title-banner {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+	.site-search {
+		input{
+			width: 46%;
+		}
+	}
+	.site-header-cart{
+	  	font-size: 12px;
+	}
+	.navbar-nav{
+		li a{
+			padding: 10px 16px;
+			&:before{
+				display: none;
+			}
+		}
+	}
+	.widget-product-search{
+		float: left;
+	}
+}
+
+@media only screen and (min-width: 568px) and (max-width: 768px){
+	.secondary-menu li{
+		padding: 4px 5px;
+    	font-size: 13px;
+	}
+	.secondary-left{
+		font-size: 13px;
+	}
+}
+@media only screen and (max-width: 568px){
+	.header-content{
+		padding-top: 25px;
+    	padding-bottom: 25px;
+	}
+	.header-bar-content{
+		padding: 10px 0;
+	}
+	.col-xs-12{
+		text-align: center;
+	}
+	.site-search{
+		width: 100%;
+	}
+	.secondary-right-navigation {
+		text-align: center;
+		width: 100%;
+		float: none;
+		li{
+			float: none;
+			text-align: center;
+		}		
+	}
+	.secondary-menu li:first-child{
+		padding-left: 0;
+	}
+	.secondary-left{
+		padding-bottom: 10px;
+		text-align: center;
+		width: 100%;
+	}
+	.widget-product-search{
+		float: right;
+	}
+	.site-header-cart{
+		width: 100%;
+	}
+	.site-header-cart{
+		text-align: center;
+	}
+	.title-banner{
+		margin-bottom: 15px;
+	}
+}
+
+@media screen and (max-width:380px){
+	.site-search input {
+	    width: 31%;
+	}
+	.secondary-left{
+		font-size: 12px;
+	}
+	.secondary-menu{
+		a{
+			font-size: 12px;
+		}
 	}
 }

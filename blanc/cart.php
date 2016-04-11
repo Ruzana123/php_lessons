@@ -4,7 +4,7 @@
 		<!-- main-cart -->
 		<div class="main-cart">
 			<!-- navigation-in-page -->
-			<ul class="navigation-in-page">
+			<ul class="navigation-in-page breadcrumbs">
 				<li><a href="#">Home</a></li>
 				<li><i class="fa fa-angle-right"></i></li>
 				<li><a href="#">Pages</a></li>
@@ -49,7 +49,7 @@
 						<h2>Have a coupon?</h2>
 						<form action="" class="coupon-form">
 							<input type="text" placeholder="Enter coupon code"> 
-							<button type="submit" class="button-send coupon-btn">Add coupon</button> 
+							<button type="submit" class="coupon-btn">Add coupon</button> 
 						</form>
 					</div>
 					<!--end coupon -->
@@ -85,9 +85,9 @@
 						<tfoot>
 							<tr class="btn-cart-line">
 								<td>
-									<a href="#" class="btn-cart first-btn button-send">Update cart</a>
+									<a href="#" class="btn-cart first-btn">Update cart</a>
 								</td>
-								<td><a href="#" class="btn-cart button-send">Continue to checkout</a></td>
+								<td><a href="#" class="btn-cart">Continue to checkout</a></td>
 							</tr>
 						</tfoot>
 					</table>

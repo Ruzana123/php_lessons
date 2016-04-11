@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Blanc</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.5">
+		<meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1.5">
 		<!-- bootstrap.min -->
 		<link href="css/bootstrap.min.css" rel="stylesheet" >
 		<!-- fonts -->
@@ -58,10 +58,10 @@
 				<!-- header-content -->
 				<div class="row header-content">
 					<div class="col-md-12">
-						<div class="col-md-3 title-banner">
-							<a href="index.php" class="site-title">Blanc</a>
+						<div class="col-md-3 col-sm-3 col-xs-12 title-banner">
+							<a href="index.php"><img src="images/logo.png" alt="" height="42" width="201"></a>
 						</div>
-						<div class="col-md-6 site-search">
+						<div class="col-md-6 col-sm-6 col-xs-8 site-search">
 							<div class="widget-product-search">
 								<form role="search" method="GET" class="blanc-product-search">
 									<!-- input -->  
@@ -76,7 +76,7 @@
 								</form>
 							</div>
 						</div>
-						<div class="col-md-3 site-header-cart">
+						<div class="col-md-3 col-sm-3 col-xs-4 site-header-cart">
 							<a href="#"><i class="fa fa-shopping-cart"></i><span>Shopping Bag </span></a><span class="dark-price">$255,99</span>
 						</div>
 					</div>

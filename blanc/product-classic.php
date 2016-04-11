@@ -4,7 +4,7 @@
 		<!-- main-product -->
 		<div class="main-product">
 			<!-- navigation-in-page -->
-			<ul class="navigation-in-page">
+			<ul class="navigation-in-page breadcrumbs">
 				<li><a href="#">Home</a></li>
 				<li><i class="fa fa-angle-right"></i></li>
 				<li><a href="#">Pages</a></li>
@@ -51,7 +51,7 @@
 						<li><i class="fa fa-star-o"></i></li>
 						<li><i class="fa fa-star-o"></i></li>
 					</ul>
-					<span class="review">25 Reviews</span>
+					<a href="#" class="review">25 Reviews</a>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 					<div class="offers"><!-- offers -->
 						<span class="old-price">$90.00</span>

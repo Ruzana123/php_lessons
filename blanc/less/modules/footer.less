@@ -6,7 +6,8 @@ footer{
 	.button-footer{
 		background-color: #cd0000;
 		border: none;
-		padding: 5px 14px;		
+		transition: all 0.2s linear;
+		padding: 5px 14px;
 		&:hover{
 			color: darken(white, 10%);
 			background-color: darken(@active-color-red, 10%);
@@ -25,7 +26,7 @@ footer{
 		span{
 			color:white;
 			text-transform: uppercase;
-			letter-spacing: 0.5px;
+			letter-spacing: 1.5px;
 			padding: 5px 15px;
 		}
 	}
@@ -72,8 +73,11 @@ footer{
 	}
 	.website{
 		color: @active-color-red;
+		&:hover{
+			text-decoration: underline;
+		}
 	}
-	.widget-pages{
+	ul{
 		a{
 			margin-bottom: 5px;
 			margin-top: 8px;
@@ -131,6 +135,9 @@ footer{
 			font-size: 13px;
 			font-weight: 300;
 		}	
+		&:focus{
+			border-color: darken(@border-color, 10%);
+		}
 	}	
 }
 
@@ -138,8 +145,7 @@ footer{
 	background-color: @active-color-red;
     color: white;
     border: white;
-    padding: 10px 22px;
-    transition: all 0.2s linear;
+    padding: 10px 22px;    
     &:hover{
 		color: darken(white, 10%);
 		background-color: darken(@active-color-red, 10%);
@@ -216,6 +222,79 @@ footer{
 	a{
 		color: #e04628;
 		display: inline-block;
+		&:hover{
+			text-decoration: underline;
+		}
 	}
 }
 
+
+
+/* footer-responsive */
+@media only screen and (max-width: 1200px){
+	.payment-methods a{
+		margin-right: 0;
+	}
+	.footer-navigation a{
+		padding-right: 10px;
+		font-size: 11px;
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	.payment-methods{
+		text-align: center;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px){
+	.footer-widgets{
+		margin-bottom: 0;
+	}
+	.footer-widget{
+		margin-bottom: 25px;
+	}
+	.footer-widget .recent-post li{
+		padding-bottom: 5px;
+	}
+	.footer-widget ul a{
+		margin-bottom: 0;
+	}
+	.footer-navigation{
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	.footer-main{
+		padding-bottom: 20px;
+    	padding-top: 20px;
+	}
+	.copyright{
+		padding-bottom: 20px;
+    	padding-top: 20px;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	.footer-widget{
+		text-align: center;
+		margin-bottom: 25px;
+	}
+	.footer-navigation{
+		text-align: center;
+		margin-bottom: 10px;
+	}
+	.footer-widget input{
+		margin-bottom: 20px;
+	}
+	.copyright{
+		padding-bottom: 20px;
+    	padding-top: 20px;
+	}
+}
+
+@media only screen and (min-width: 568px) and (max-width: 768px){
+}
+@media only screen and (max-width: 568px){
+}
+@media screen and (max-width:380px){
+}
